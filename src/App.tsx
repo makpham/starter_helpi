@@ -32,7 +32,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <p>
-          Makayla Pham, Trung Nguyen
+          Makayla Pham, Trung Nguyen, Araf
         </p>
         <a
           className="App-link"
