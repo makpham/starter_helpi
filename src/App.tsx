@@ -3,7 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
 import Home from './pages/Home';
-import Main from './pages/Main';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
 
@@ -35,8 +34,6 @@ function App() {
     switch (page) {
       case 'home':
         return <Home />;
-      case 'main':
-        return <Main />;
       case 'basic-questions':
         return <BasicQuestions />;
       case 'detailed-questions':
@@ -66,7 +63,6 @@ function App() {
         </a>
       </header>
       <button onClick={() => setPage('home')}>Home</button>
-      <button onClick={() => setPage('main')}>Main</button>
       <button onClick={() => setPage('basic-questions')}>Basic Questions</button>
       <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
       {renderPage()}
