@@ -12,12 +12,14 @@
     transition: all .2s ease-in-out;
     background-color: white;
     color:black;
+    margin: 3em;
 }
 .container:hover{
     transform: scale(1.01);
     cursor: pointer;
 }
 .description{
+    text-align: left;
     margin: auto;
     width: 90%;
     word-wrap: break-word;
