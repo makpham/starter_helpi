@@ -68,6 +68,7 @@ function App() {
       <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
       {renderPage()}
       <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
+      <Option OptionDescription='' OptionTitle='Basic Questions' OptionHeight='30em'/>
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>

@@ -13,7 +13,7 @@ export function Option(prop: OptionProps){
     return <div className='container' style={{height: prop.OptionHeight}}>
             <h1 className='title'>{prop.OptionTitle}</h1>
             <p className='description'>
-                {prop.OptionTitle}
+                {prop.OptionDescription}
             </p>
     </div>
 }
