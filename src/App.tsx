@@ -27,21 +27,21 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className='header-top'>
+          <a href="" target="" rel="noreferrer">
+            <button>&lt; Back</button>
+          </a>
+          <a href="" target="" rel="noreferrer">
+            <button>Detailed Questions</button>
+          </a>
+          <a href="" target="" rel="noreferrer">
+            <button>Basic Questions</button>
+          </a>
+        </div>
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
         <p>
           Makayla Pham, Trung Nguyen, Jared Miller, Araf Jahin
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
