@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
+import { Option } from './Option';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -66,6 +67,7 @@ function App() {
       <button onClick={() => setPage('basic-questions')}>Basic Questions</button>
       <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
       {renderPage()}
+      <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
