@@ -45,6 +45,7 @@ function App() {
         </a>
       </header>
       <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
+      <Option OptionDescription='' OptionTitle='Basic Questions' OptionHeight='30em'/>
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
