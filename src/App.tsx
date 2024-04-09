@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
-import Home from "./pages/Home";
-import BasicQuestions from "./pages/BasicQuestions";
-import DetailedQuestions from "./pages/DetailedQuestions";
-import { MenuBar } from "./components/Menu";
-import img from "./CISC275Logo.webp";
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { Button, Form } from 'react-bootstrap';
+import Home from './pages/Home';
+import BasicQuestions from './pages/BasicQuestions';
+import DetailedQuestions from './pages/DetailedQuestions';
+import { Option } from './components/Option';
+
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
