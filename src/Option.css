@@ -1,0 +1,24 @@
+.container{
+    user-select: none;
+    border: gray;
+    border-width: 1px;
+    border-style: solid;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gray;
+    color: rebeccapurple;
+    display: inline-block;
+    width: 30%;
+    transition: all .2s ease-in-out;
+    background-color: white;
+    color:black;
+}
+.container:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}
+.description{
+    margin: auto;
+    width: 90%;
+    word-wrap: break-word;
+}
