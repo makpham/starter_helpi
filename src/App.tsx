@@ -44,13 +44,15 @@ function App() {
           Learn React
         </a>
       </header>
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
       <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
+      <footer className="App-footer">
+        <Form>
+          <Form.Label>API Key:</Form.Label>
+          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+          <br></br>
+          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+        </Form>
+      </footer>
     </div>
   );
 }
