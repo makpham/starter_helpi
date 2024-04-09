@@ -7,6 +7,7 @@ import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
 import { Option } from './components/Option';
 
+
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -17,7 +18,8 @@ if (prevKey !== null) {
 
 function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  
+
+  const detailed_description = "Are you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.";
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -67,8 +69,8 @@ function App() {
       <button onClick={() => setPage('basic-questions')}>Basic Questions</button>
       <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
       {renderPage()}
-      <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
-      <Option OptionDescription='' OptionTitle='Basic Questions' OptionHeight='30em'/>
+      <Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/>
+      <Option OptionDescription="" OptionTitle='Basic Questions' OptionHeight='30em'/>
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
