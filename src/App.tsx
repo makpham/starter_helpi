@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Form } from 'react-bootstrap';
+import Home from './pages/Home';
+import BasicQuestions from './pages/BasicQuestions';
+import DetailedQuestions from './pages/DetailedQuestions';
 import { Option } from './Option';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -25,6 +28,22 @@ function App() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+
+  const [page, setPage] = useState('home');
+
+  function renderPage() {
+    switch (page) {
+      case 'home':
+        return <Home />;
+      case 'basic-questions':
+        return <BasicQuestions />;
+      case 'detailed-questions':
+        return <DetailedQuestions />;
+      default:
+        return <Home />;
+    }
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -44,6 +63,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <button onClick={() => setPage('home')}>Home</button>
+      <button onClick={() => setPage('basic-questions')}>Basic Questions</button>
+      <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
+      {renderPage()}
       <Option OptionDescription='' OptionTitle='Detailed Questions' OptionHeight='30em'/>
       <footer className="App-footer">
         <Form>
