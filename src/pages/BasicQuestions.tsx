@@ -7,31 +7,31 @@ function BasicQuestions() {
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const questions = [
     {
-      question: "Question 1?",
+      question: "1. What are your top three professional strengths, and how have they influenced your career choices?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 2?",
+      question: "2. Describe a time when you overcame a significant challenge at work. What did you learn from that experience?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 3?",
+      question: "3. How do you prioritize your tasks and manage time when facing tight deadlines?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 4?",
+      question: "4. Other than financial incentives, what motivates you to perform well in your job?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 5?",
+      question: "5. Can you give an example of how you have continued to learn and grow professionally in the past year?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 6?",
+      question: "6. How do you balance teamwork with individual responsibility in a work environment?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
     {
-      question: "Question 7?",
+      question: "7. What type of work environment do you succeed in, and why?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
     },
   ];
