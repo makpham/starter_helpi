@@ -71,12 +71,8 @@ function App() {
   {page === 'home' && (
     <div>
       <h1>Home</h1>
-      <button className="App-button-option" onClick={() => setPage('basic-questions')}>
-        <Option OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='30em'/>
-      </button>
-      <button className="App-button-option" onClick={() => setPage('detailed-questions')}>
-        <Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/>
-      </button>
+        <Option onClick={() => setPage('basic-questions')} OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='100%'/>
+        <Option onClick={() => setPage('basic-questions')} OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='100%'/>
     </div>
   )}
   {(page === 'basic-questions' || page === 'detailed-questions') && (
