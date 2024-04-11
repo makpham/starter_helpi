@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Button, Form } from 'react-bootstrap';
-import Home from './pages/Home';
-import BasicQuestions from './pages/BasicQuestions';
-import DetailedQuestions from './pages/DetailedQuestions';
-import { Option } from './components/Option';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
+import Home from "./pages/Home";
+import BasicQuestions from "./pages/BasicQuestions";
+import DetailedQuestions from "./pages/DetailedQuestions";
+import { MenuBar } from "./components/Menu";
+import img from "./CISC275Logo.webp";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -18,10 +17,14 @@ if (prevKey !== null) {
 }
 
 function App() {
+  const menuItems = [
+    { label: "Home", route: "/" },
+    { label: "Detailed Question", route: "detailed-quesetions" },
+    { label: "Basic Question", route: "basic-quesetions" },
+  ];
+
   const [key, setKey] = useState<string>(keyData); //for api key input
 
-  const detailed_description = "Are you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.";
-  const basic_description = "Are you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.";
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -34,46 +37,33 @@ function App() {
   }
 
   return (
-    <Router>
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>
-          Makayla Pham, Trung Nguyen, Jared Miller, Araf Jahin
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <BrowserRouter>
+      <header>
+        <Link to="/"><img src={img} className="logo" alt="404"/></Link>
+        <h1 className="site-name">Starter Helpi</h1>
+        <MenuBar items={menuItems} />
+
       </header>
-
       <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/basic-questions" element={<BasicQuestions />} />
-          <Route path="/detailed-questions" element={<DetailedQuestions />} />
-        </Routes>
-
-      <body className='App-body'>
-
-</body>
-      
+        <Route path="/" element={<Home />} />
+        <Route path="detailed-questions" element={<DetailedQuestions />} />
+        <Route path="basic-questions" element={<BasicQuestions />} />
+      </Routes>
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
-          <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
+          <Form.Control
+            type="password"
+            placeholder="Insert API Key Here"
+            onChange={changeKey}
+          ></Form.Control>
           <br></br>
-          <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
+          <Button className="Submit-Button" onClick={handleSubmit}>
+            Submit
+          </Button>
         </Form>
       </footer>
-    </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

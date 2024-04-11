@@ -1,18 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Question.css'
+import Question from './Question';
 
 function BasicQuestions() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
+  const questions = [
+    {
+      question: "Question 1?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 2?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 3?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 4?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 5?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 6?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+    {
+      question: "Question 7?",
+      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
+    },
+  ];
+
+  const handleChoiceSelected = (choice: any) => {
+    console.log(`You selected: ${choice}`);
+    // handle the selected choice here
+    if (currentQuestion === questions.length - 1) {
+      setIsLastQuestionAnswered(true);
+    } else {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const handleGetResult = () => {
+    console.log('Get the result');
+    // handle getting the result here
+  };
+
   return (
     <div>
-      <h1>Basic Questions</h1>
-      <ol>
-        <li>What are your top three professional strengths, and how have they influenced your career choices?</li>
-        <li>Describe a time when you overcame a significant challenge at work. What did you learn from that experience?</li>
-        <li>How do you prioritize your tasks and manage time when facing tight deadlines?</li>
-        <li>Other than financial incentives, what motivates you to perform well in your job?</li>
-        <li>Can you give an example of how you have continued to learn and grow professionally in the past year?</li>
-        <li>How do you balance teamwork with individual responsibility in a work environment?</li>
-        <li>What type of work environment do you succeed in, and why?</li>
-      </ol>
+      <header>
+        <h1>Basic Questions</h1>
+      </header>
+      <body>
+      <div className="question-container">
+  <Question
+    question={questions[currentQuestion].question}
+    choices={questions[currentQuestion].choices}
+    onChoiceSelected={handleChoiceSelected}
+  />
+  <div className="result-button">
+    {isLastQuestionAnswered && (
+      <button onClick={handleGetResult}>Get Result</button>
+    )}
+  </div>
+</div>
+      </body>
     </div>
   );
 }
