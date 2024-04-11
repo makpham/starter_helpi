@@ -20,6 +20,7 @@ function App() {
   const [key, setKey] = useState<string>(keyData); //for api key input
 
   const detailed_description = "Are you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.";
+  const basic_description = "Are you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.";
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -65,12 +66,18 @@ function App() {
           Learn React
         </a>
       </header>
-      <button onClick={() => setPage('home')}>Home</button>
-      <button onClick={() => setPage('basic-questions')}>Basic Questions</button>
-      <button onClick={() => setPage('detailed-questions')}>Detailed Questions</button>
+
+      <body className='App-body'>
+        <div>
+          <button onClick={() => setPage('home')}>Home</button>
+        </div>
+        <div>
+          <button onClick={() => setPage('basic-questions')}><Option OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='30em'/></button>
+          <button onClick={() => setPage('detailed-questions')}><Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/></button>
+        </div>
       {renderPage()}
-      <Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/>
-      <Option OptionDescription="" OptionTitle='Basic Questions' OptionHeight='30em'/>
+      </body>
+      
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
