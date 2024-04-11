@@ -76,8 +76,8 @@ function App() {
                 display: "flex",
                 height: "100%",
                 justifyContent: "-moz-initial",
-                gap: "1em",
-                padding: "1em",
+                gap: "5em",
+                padding: "5em",
               }}
             >
               <Option
