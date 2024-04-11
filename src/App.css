@@ -13,7 +13,7 @@
   text-align: center;
   user-select: none;
 }
-header{
+.head {
   background-color: #333;
   position: relative;
   padding-top: 2em;

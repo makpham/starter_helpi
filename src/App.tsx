@@ -38,7 +38,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <header>
+      <header className="head">
         <Link to="/"><img src={img} className="logo" alt="404"/></Link>
         <h1 className="site-name">Starter Helpi</h1>
         <MenuBar items={menuItems} />
