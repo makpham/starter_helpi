@@ -1,5 +1,6 @@
 {
   "name": "starter_helpi",
+  "homepage": "/starter_helpi/#",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

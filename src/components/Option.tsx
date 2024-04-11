@@ -7,7 +7,7 @@ interface OptionProps {
 
 export function Option(prop: OptionProps) {
   return (
-    <div onClick={prop.onClick} className="container">
+    <div className="container" onClick={prop.onClick}>
       <h1 className="title">{prop.OptionTitle}</h1>
       <p className="description">{prop.OptionDescription}</p>
     </div>

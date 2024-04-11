@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, HashRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
@@ -19,8 +19,8 @@ if (prevKey !== null) {
 function App() {
   const menuItems = [
     { label: "Home", route: "/" },
-    { label: "Detailed Question", route: "detailed-quesetions" },
-    { label: "Basic Question", route: "basic-quesetions" },
+    { label: "Detailed Question", route: "/detailed-quesetions" },
+    { label: "Basic Question", route: "/basic-quesetions" },
   ];
 
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -37,7 +37,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <header>
         <Link to="/"><img src={img} className="logo" alt="404"/></Link>
         <h1 className="site-name">Starter Helpi</h1>
@@ -46,8 +46,8 @@ function App() {
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="detailed-questions" element={<DetailedQuestions />} />
-        <Route path="basic-questions" element={<BasicQuestions />} />
+        <Route path="/detailed-questions" element={<DetailedQuestions />} />
+        <Route path="/basic-questions" element={<BasicQuestions />} />
       </Routes>
       <footer className="App-footer">
         <Form>
@@ -63,7 +63,7 @@ function App() {
           </Button>
         </Form>
       </footer>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
