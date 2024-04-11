@@ -1,0 +1,30 @@
+.container{
+    user-select: none;
+    border: gray;
+    border-width: 1px;
+    border-style: solid;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gray;
+    color: rebeccapurple;
+    display: block;
+    width: auto;
+    height: auto;
+    transition: all .2s ease-in-out;
+    background-color: white;
+    color:black;
+    padding: 3em;
+    text-align: center;
+}
+.container:hover{
+    transform: scale(1.01);
+    cursor: pointer;
+}
+.description{
+    text-align: left;
+    margin: auto;
+    width: 90%;
+    height: auto;
+    word-wrap: break-word;
+}

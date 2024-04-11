@@ -1,6 +1,19 @@
-.App {
-  text-align: center;
+.logo{
+  width: 5em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5em;
+  user-select: none;
+  -webkit-user-drag: none;
 }
+.site-name{
+  display: block;
+  color:gray;
+  text-align: center;
+  user-select: none;
+}
+<<<<<<< HEAD
 
 .App-logo {
   height: 40vmin;
@@ -49,4 +62,10 @@
   to {
     transform: rotate(360deg);
   }
+=======
+header {
+  background-color: #333;
+  position: relative;
+  padding-top: 2em;
+>>>>>>> origin
 }
