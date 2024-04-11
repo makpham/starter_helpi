@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import BasicQuestions from './pages/BasicQuestions';
 import DetailedQuestions from './pages/DetailedQuestions';
 import { Option } from './components/Option';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
@@ -32,22 +33,8 @@ function App() {
     setKey(event.target.value);
   }
 
-  const [page, setPage] = useState('home');
-
-  function renderPage() {
-    switch (page) {
-      case 'home':
-        return <Home />;
-      case 'basic-questions':
-        return <BasicQuestions />;
-      case 'detailed-questions':
-        return <DetailedQuestions />;
-      default:
-        return <Home />;
-    }
-  }
-
   return (
+    <Router>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -67,24 +54,14 @@ function App() {
         </a>
       </header>
 
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/basic-questions" element={<BasicQuestions />} />
+          <Route path="/detailed-questions" element={<DetailedQuestions />} />
+        </Routes>
+
       <body className='App-body'>
-  {page === 'home' && (
-    <div>
-      <h1>Home</h1>
-      <button className="App-button-option" onClick={() => setPage('basic-questions')}>
-        <Option OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='30em'/>
-      </button>
-      <button className="App-button-option" onClick={() => setPage('detailed-questions')}>
-        <Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/>
-      </button>
-    </div>
-  )}
-  {(page === 'basic-questions' || page === 'detailed-questions') && (
-    <div>
-      <button className="App-button-home" onClick={() => setPage('home')}>Home</button>
-    </div>
-  )}
-  {renderPage()}
+
 </body>
       
       <footer className="App-footer">
@@ -96,6 +73,7 @@ function App() {
         </Form>
       </footer>
     </div>
+    </Router>
   );
 }
 
