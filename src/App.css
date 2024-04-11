@@ -38,6 +38,7 @@
 }
 
 .App-button-home {
+  align-items: center;
   width: auto; /* adjust as needed */
   height: auto; /* adjust as needed */
   margin: auto; /* centers the button */
@@ -51,6 +52,9 @@
 
 
 .App-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   max-height: 10%;
   display: flex;
   flex-direction: column;
