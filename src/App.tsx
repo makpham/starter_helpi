@@ -68,15 +68,24 @@ function App() {
       </header>
 
       <body className='App-body'>
-        <div>
-          <button onClick={() => setPage('home')}>Home</button>
-        </div>
-        <div>
-          <button onClick={() => setPage('basic-questions')}><Option OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='30em'/></button>
-          <button onClick={() => setPage('detailed-questions')}><Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/></button>
-        </div>
-      {renderPage()}
-      </body>
+  {page === 'home' && (
+    <div>
+      <h1>Home</h1>
+      <button className="App-button-option" onClick={() => setPage('basic-questions')}>
+        <Option OptionDescription={basic_description} OptionTitle='Basic Questions' OptionHeight='30em'/>
+      </button>
+      <button className="App-button-option" onClick={() => setPage('detailed-questions')}>
+        <Option OptionDescription={detailed_description} OptionTitle='Detailed Questions' OptionHeight='30em'/>
+      </button>
+    </div>
+  )}
+  {(page === 'basic-questions' || page === 'detailed-questions') && (
+    <div>
+      <button className="App-button-home" onClick={() => setPage('home')}>Home</button>
+    </div>
+  )}
+  {renderPage()}
+</body>
       
       <footer className="App-footer">
         <Form>

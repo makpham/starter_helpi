@@ -37,6 +37,18 @@
   }
 }
 
+.App-button-home {
+  width: auto; /* adjust as needed */
+  height: auto; /* adjust as needed */
+  margin: auto; /* centers the button */
+}
+
+.App-button-option {
+  width: 45%; /* adjust as needed */
+  height: auto; /* adjust as needed */
+  margin: auto; /* centers the button */
+}
+
 
 .App-footer {
   max-height: 10%;
