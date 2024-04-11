@@ -71,7 +71,15 @@ function App() {
         {page === "home" && (
           <div>
             <h1>Home</h1>
-            <div style={{display: "flex", height:"100%", alignItems:"stretch", gap:"1em", padding:"1em"}}>
+            <div
+              style={{
+                display: "flex",
+                height: "100%",
+                justifyContent: "-moz-initial",
+                gap: "1em",
+                padding: "1em",
+              }}
+            >
               <Option
                 onClick={() => setPage("basic-questions")}
                 OptionDescription={basic_description}

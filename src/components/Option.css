@@ -8,8 +8,8 @@
     box-shadow: 2px 2px 2px gray;
     color: rebeccapurple;
     display: block;
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
     transition: all .2s ease-in-out;
     background-color: white;
     color:black;
@@ -23,6 +23,6 @@
     text-align: left;
     margin: auto;
     width: 90%;
-    height: 100%;
+    height: auto;
     word-wrap: break-word;
 }
