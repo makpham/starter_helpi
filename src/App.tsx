@@ -5,6 +5,7 @@ import { Button, Form } from "react-bootstrap";
 import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
 import DetailedQuestions from "./pages/DetailedQuestions";
+import { MenuBar } from "./components/Menu";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -15,6 +16,13 @@ if (prevKey !== null) {
 }
 
 function App() {
+
+  const menuItems = [
+    { label: 'Home', route: "/" },
+    { label: 'Detailed Question', route: "detailed-quesetions" },
+    { label: 'Basic Question', route: "basic-quesetions" },
+  ];
+
   const [key, setKey] = useState<string>(keyData); //for api key input
 
   //sets the local storage item to the api key the user inputed
@@ -31,11 +39,7 @@ function App() {
   return (
     <BrowserRouter>
       <header>
-        <div>
-          <a href="/">
-            <button className="App-button-home">Home</button>
-          </a>
-        </div>
+        <MenuBar items={menuItems} />
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
