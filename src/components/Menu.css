@@ -10,6 +10,7 @@
   position: relative;
   top:0;
   width: 100%;
+  user-select: none;
 }
 .menu-link{
     color:white;

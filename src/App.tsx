@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
@@ -39,7 +39,7 @@ function App() {
   return (
     <BrowserRouter>
       <header>
-        <img src={img} className="logo" alt="404"/>
+        <Link to="/"><img src={img} className="logo" alt="404"/></Link>
         <h1 className="site-name">Starter Helpi</h1>
         <MenuBar items={menuItems} />
 
