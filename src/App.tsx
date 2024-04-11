@@ -19,8 +19,8 @@ if (prevKey !== null) {
 function App() {
   const menuItems = [
     { label: "Home", route: "/" },
-    { label: "Detailed Question", route: "/detailed-quesetions" },
-    { label: "Basic Question", route: "/basic-quesetions" },
+    { label: "Detailed Question", route: "detailed-quesetions" },
+    { label: "Basic Question", route: "basic-quesetions" },
   ];
 
   const [key, setKey] = useState<string>(keyData); //for api key input
