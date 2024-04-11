@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import { MenuBar } from "./components/Menu";
+import img from "./CISC275Logo.webp";
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -16,11 +17,10 @@ if (prevKey !== null) {
 }
 
 function App() {
-
   const menuItems = [
-    { label: 'Home', route: "/" },
-    { label: 'Detailed Question', route: "detailed-quesetions" },
-    { label: 'Basic Question', route: "basic-quesetions" },
+    { label: "Home", route: "/" },
+    { label: "Detailed Question", route: "detailed-quesetions" },
+    { label: "Basic Question", route: "basic-quesetions" },
   ];
 
   const [key, setKey] = useState<string>(keyData); //for api key input
@@ -39,7 +39,10 @@ function App() {
   return (
     <BrowserRouter>
       <header>
+        <img src={img} className="logo" alt="404"/>
+        <h1 className="site-name">Starter Helpi</h1>
         <MenuBar items={menuItems} />
+
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
