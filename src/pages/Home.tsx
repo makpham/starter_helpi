@@ -5,7 +5,6 @@ import { Option } from "../components/Option";
 function Home() {
   const navigate = useNavigate();
   const setPage = (path: string) =>{ 
-    console.log("test");
     navigate(path);
   }
   const detailed_description =
@@ -15,8 +14,6 @@ function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
-      
       <div
         style={{
           display: "flex",
