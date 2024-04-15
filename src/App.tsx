@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, HashRouter } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
