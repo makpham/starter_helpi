@@ -44,10 +44,17 @@ function BasicQuestions() {
     }
   };
 
-  const progress = (currentQuestion / (questions.length - 1)) * 100;
+
+  const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '5vh'}}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', marginBottom: '20px'}}>
+        <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', borderRadius: '5px', overflow: 'hidden', width: '80%' }}>
+          <ProgressBar striped animated={progress < 100} now={progress} variant={progress === 100 ? 'success' : 'primary'} style={{ width: '100%' }} />
+        </div>
+        <span style={{ marginLeft: '10px' }}>{progress.toFixed(0)}%</span>
+      </div>
       {questions.map((question, index) => (
         <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center' }}>
           <p style={{ marginBottom: '20px' }}>{question.question}</p>
@@ -57,14 +64,13 @@ function BasicQuestions() {
         </div>
       ))}
       <br></br>
-      <ProgressBar animated now={progress} style={{ width: '20%', marginBottom: '20px' }} />
-      
       {isLastQuestionAnswered && (
         <Button onClick={() => console.log('Get results')} style={{ margin: '10px' }}>Get results</Button>
       )}
       <br></br>
     </div>
   );
+  
 }
 
 export default BasicQuestions;
