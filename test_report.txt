@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (52 ms)
+  ✕ renders learn react link (49 ms)
 
   ● renders learn react link
 
@@ -12,57 +12,20 @@ FAIL src/App.test.tsx
     Ignored nodes: comments, script, style
     [36m<body>[39m
       [36m<div>[39m
-        [36m<header>[39m
-          [36m<a[39m
-            [33mhref[39m=[32m"#/"[39m
-          [36m>[39m
-            [36m<img[39m
-              [33malt[39m=[32m"404"[39m
-              [33mclass[39m=[32m"logo"[39m
-              [33msrc[39m=[32m"CISC275Logo.webp"[39m
-            [36m/>[39m
-          [36m</a>[39m
-          [36m<h1[39m
-            [33mclass[39m=[32m"site-name"[39m
-          [36m>[39m
-            [0mStarter Helpi[0m
-          [36m</h1>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"menu-bar"[39m
-          [36m>[39m
-            [36m<li[39m
-              [33mclass[39m=[32m"menu-item"[39m
+        [36m<div[39m
+          [33mstyle[39m=[32m"background-color: rgb(250, 195, 137);"[39m
+        [36m>[39m
+          [36m<div>[39m
+            [36m<header[39m
+              [33mstyle[39m=[32m"display: flex; justify-content: center; background-color: rgb(250, 195, 137);"[39m
             [36m>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"menu-link"[39m
-                [33mhref[39m=[32m"/"[39m
-              [36m>[39m
-                [0mHome[0m
-              [36m</a>[39m
-            [36m</li>[39m
-            [36m<li[39m
-              [33mclass[39m=[32m"menu-item"[39m
-            [36m>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"menu-link"[39m
-                [33mhref[39m=[32m"#/detailed-questions"[39m
-              [36m>[39m
-                [0mDetailed Question[0m
-              [36m</a>[39m
-            [36m</li>[39m
-            [36m<li[39m
-              [33mclass[39m=[32m"menu-item"[39m
-            [36m>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"menu-link"[39m
-                [33mhref[39m=[32m"#/basic-questions"[39m
-              [36m>[39m
-                [0mBasic Question[0m
-              [36m</a>[39m
-            [36m</li>[39m
+              [36m<img[39m
+                [33malt[39m=[32m"Logo"[39m
+                [33msrc[39m=[32m"imglogo.png"[39m
+                [33mstyle[39m=[32m"height: 30vh;"[39m
+              [36m/>[39m
+            [36m</header>[39m
           [36m</div>[39m
-        [36m</header>[39m
-        [36m<div>[39m
           [36m<div[39m
             [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: -moz-initial; gap: 5em; padding: 5em;"[39m
           [36m>[39m
@@ -145,24 +108,23 @@ FAIL src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   32.65 |       10 |   26.31 |   33.33 |                   
- src                    |   31.81 |    16.66 |      20 |   31.81 |                   
-  App.tsx               |   63.63 |       50 |   33.33 |   63.63 | 16,30-36          
+All files               |   35.84 |    14.28 |   28.57 |   34.61 |                   
+ src                    |   42.85 |       25 |   42.85 |   40.74 |                   
+  App.tsx               |   70.58 |       50 |      60 |   68.75 | 16,33,48-54       
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |     100 |      100 |     100 |     100 |                   
-  Menu.tsx              |     100 |      100 |     100 |     100 |                   
+ src/components         |   33.33 |      100 |   33.33 |   33.33 |                   
+  Menu.tsx              |       0 |      100 |       0 |       0 | 14-17             
   Option.tsx            |     100 |      100 |     100 |     100 |                   
- src/pages              |      25 |        0 |    9.09 |   26.08 |                   
-  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 6-54              
+ src/pages              |   27.27 |        0 |   18.18 |   27.27 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 5-62              
   DetailedQuestions.tsx |       0 |      100 |       0 |       0 | 4                 
-  Home.tsx              |    62.5 |      100 |      25 |    62.5 | 7,26-31           
-  Question.tsx          |      25 |      100 |       0 |   33.33 | 10-14             
+  Home.tsx              |   66.66 |      100 |      40 |   66.66 | 22,44-49          
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.894 s
+Time:        2.954 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
