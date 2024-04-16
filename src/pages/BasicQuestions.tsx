@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import './Question.css'
-import Question from './Question';
+import { ProgressBar, Button } from 'react-bootstrap';
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
-  const questions = [
+
+  const questions=[
     {
       question: "1. What are your top three professional strengths, and how have they influenced your career choices?",
       choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
@@ -36,40 +36,32 @@ function BasicQuestions() {
     },
   ];
 
-  const handleChoiceSelected = (choice: any) => {
-    console.log(`You selected: ${choice}`);
-    // handle the selected choice here
-    if (currentQuestion === questions.length - 1) {
-      setIsLastQuestionAnswered(true);
-    } else {
+  const handleAnswer = () => {
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setIsLastQuestionAnswered(true);
     }
   };
 
-  const handleGetResult = () => {
-    console.log('Get the result');
-    // handle getting the result here
-  };
+  const progress = (currentQuestion / (questions.length - 1)) * 100;
 
   return (
-    <div>
-      <header>
-        <h1>Basic Questions</h1>
-      </header>
-      <body>
-      <div className="question-container">
-  <Question
-    question={questions[currentQuestion].question}
-    choices={questions[currentQuestion].choices}
-    onChoiceSelected={handleChoiceSelected}
-  />
-  <div className="result-button">
-    {isLastQuestionAnswered && (
-      <button onClick={handleGetResult}>Get Result</button>
-    )}
-  </div>
-</div>
-      </body>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {questions.map((question, index) => (
+        <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center' }}>
+          <p>{question.question}</p>
+          {question.choices.map((choice, i) => (
+            <Button key={i} onClick={handleAnswer} style={{ margin: '5px' }}>{choice}</Button>
+          ))}
+        </div>
+      ))}
+      <br></br>
+      <ProgressBar animated now={progress} style={{ width: '20%' }} />
+      {isLastQuestionAnswered && (
+        <Button onClick={() => console.log('Get results')} style={{ margin: '10px' }}>Get results</Button>
+      )}
+      <br></br>
     </div>
   );
 }

@@ -1,0 +1,31 @@
+.bq-body {
+  align-items: center;
+}
+
+.container {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 80%; /* Adjust width as needed */
+  margin: 0 auto; /* Center the progress bar */
+}
+
+.progress {
+  background-color: #007bff; /* Color of the progress bar */
+}
+
+.question-container {
+  display: none;
+  text-align: center; /* Center align text */
+}
+
+.question-container.active {
+  display: block;
+}

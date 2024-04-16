@@ -22,6 +22,7 @@
     color: white;
     padding: 1em;
     text-decoration: none;
+    align-items: center;
 }
 .menu-item .menu-link:hover{
     background-color: gray;

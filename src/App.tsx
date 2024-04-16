@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Routes, Route, Link, HashRouter } from "react-router-dom";
+import { Routes, Route, Link, HashRouter, useLocation } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import Home from "./pages/Home";
 import BasicQuestions from "./pages/BasicQuestions";
@@ -16,12 +16,30 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
-function App() {
+function Header() {
+  const location = useLocation();
   const menuItems = [
     { label: "Home", route: "/" },
-    { label: "Detailed Question", route: "#/detailed-questions" },
-    { label: "Basic Question", route: "#/basic-questions" },
+    { label: "Detailed Question", route: "/detailed-questions" },
+    { label: "Basic Question", route: "/basic-questions" },
   ];
+
+  const filteredMenuItems = menuItems.filter(item => item.route !== location.pathname);
+
+  if (location.pathname === '/') {
+    return null;
+  }
+
+  return (
+    <header>
+      <Link to="/"><img src={img} className="logo" alt="404"/></Link>
+      <h1 className="site-name">Starter Helpi</h1>
+      <MenuBar items={filteredMenuItems} />
+    </header>
+  );
+}
+
+function App() {
 
   const [key, setKey] = useState<string>(keyData); //for api key input
 
@@ -36,14 +54,11 @@ function App() {
     setKey(event.target.value);
   }
 
+
   return (
     <HashRouter>
-      <header>
-        <Link to="/"><img src={img} className="logo" alt="404"/></Link>
-        <h1 className="site-name">Starter Helpi</h1>
-        <MenuBar items={menuItems} />
+      <Header />
 
-      </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detailed-questions" element={<DetailedQuestions />} />
