@@ -48,15 +48,23 @@ function BasicQuestions() {
   const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '5vh'}}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '20%', marginBottom: '20px'}}>
-        <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', borderRadius: '5px', overflow: 'hidden', width: '80%' }}>
-          <ProgressBar striped animated={progress < 100} now={progress} variant={progress === 100 ? 'success' : 'primary'} style={{ width: '100%' }} />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '5vh', position: 'relative'}}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', width: '80%', margin: '0 auto'}}>
+        <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', borderRadius: '5px', overflow: 'hidden', flex: 1 }}>
+            <ProgressBar striped animated={progress < 100} now={progress} variant={progress === 100 ? 'success' : 'primary'} style={{ width: '100%' }} />
+          </div>
+          <span style={{ marginLeft: '10px' }}>{progress.toFixed(0)}%</span>
+          {isLastQuestionAnswered && (
+            <div style={{ marginLeft: '10px'}}>
+              <Button onClick={() => console.log('Get results')} style={{ whiteSpace: 'nowrap' }}>Get results</Button>
+            </div>
+          )}
         </div>
-        <span style={{ marginLeft: '10px' }}>{progress.toFixed(0)}%</span>
       </div>
+      <br></br>
       {questions.map((question, index) => (
-        <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center' }}>
+        <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center'}}>
           <p style={{ marginBottom: '20px' }}>{question.question}</p>
           {question.choices.map((choice, i) => (
             <Button key={i} onClick={handleAnswer} style={{margin: '5px' }}>{choice}</Button>
@@ -64,13 +72,10 @@ function BasicQuestions() {
         </div>
       ))}
       <br></br>
-      {isLastQuestionAnswered && (
-        <Button onClick={() => console.log('Get results')} style={{ margin: '10px' }}>Get results</Button>
-      )}
-      <br></br>
     </div>
   );
-  
+
 }
+
 
 export default BasicQuestions;
