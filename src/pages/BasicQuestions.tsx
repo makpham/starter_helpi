@@ -47,17 +47,18 @@ function BasicQuestions() {
   const progress = (currentQuestion / (questions.length - 1)) * 100;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '5vh'}}>
       {questions.map((question, index) => (
         <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center' }}>
-          <p>{question.question}</p>
+          <p style={{ marginBottom: '20px' }}>{question.question}</p>
           {question.choices.map((choice, i) => (
-            <Button key={i} onClick={handleAnswer} style={{ margin: '5px' }}>{choice}</Button>
+            <Button key={i} onClick={handleAnswer} style={{margin: '5px' }}>{choice}</Button>
           ))}
         </div>
       ))}
       <br></br>
-      <ProgressBar animated now={progress} style={{ width: '20%' }} />
+      <ProgressBar animated now={progress} style={{ width: '20%', marginBottom: '20px' }} />
+      
       {isLastQuestionAnswered && (
         <Button onClick={() => console.log('Get results')} style={{ margin: '10px' }}>Get results</Button>
       )}

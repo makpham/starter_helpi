@@ -40,7 +40,6 @@ function Header() {
 }
 
 function App() {
-
   const [key, setKey] = useState<string>(keyData); //for api key input
 
   //sets the local storage item to the api key the user inputed
@@ -54,7 +53,6 @@ function App() {
     setKey(event.target.value);
   }
 
-
   return (
     <HashRouter>
       <Header />
@@ -64,6 +62,8 @@ function App() {
         <Route path="/detailed-questions" element={<DetailedQuestions />} />
         <Route path="/basic-questions" element={<BasicQuestions />} />
       </Routes>
+
+      {/* API Key */}
       <footer className="App-footer">
         <Form>
           <Form.Label>API Key:</Form.Label>
@@ -78,6 +78,7 @@ function App() {
           </Button>
         </Form>
       </footer>
+      
     </HashRouter>
   );
 }
