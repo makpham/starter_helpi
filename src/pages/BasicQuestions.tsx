@@ -74,7 +74,6 @@ function BasicQuestions() {
       <br></br>
     </div>
   );
-
 }
 
 
