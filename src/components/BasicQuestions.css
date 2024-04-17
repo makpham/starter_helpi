@@ -24,7 +24,6 @@
 .question-container {
   display: none;
   text-align: center; /* Center align text */
-  padding-bottom: 30px;
 }
 
 .question-container.active {
