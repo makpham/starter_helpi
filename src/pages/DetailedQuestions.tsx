@@ -69,7 +69,7 @@ function DetailedQuestions() {
       <br />
       {currentQuestion === questions.length && (
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <p>Thank you for your responses, click the "Get Results" button to get your outcome.
+          <p>Thank you for your responses, click the "Get Results" button to get your outcome
             <br /> <b> OR </b> <br /> Click previous to change a response.</p>
           <Button onClick={handlePrevious} style={{margin: '5px'}}>Previous</Button>
           <Button onClick={() => console.log('Get results')} style={{ whiteSpace: 'nowrap', margin: '5px' }}>Get results</Button>
