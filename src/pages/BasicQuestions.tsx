@@ -37,9 +37,10 @@ function BasicQuestions() {
   ];
 
   const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
+    if (isLastQuestionAnswered) {
       setIsLastQuestionAnswered(false);
+    } else if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
     }
   };
 

@@ -35,8 +35,7 @@ function Home() {
         style={{
           display: "flex",
           height: "100%",
-          justifyContent: "initial",
-          textIndent: "2em",
+          justifyContent: "-moz-initial",
           gap: "3em",
           padding: "2em",
         }}
