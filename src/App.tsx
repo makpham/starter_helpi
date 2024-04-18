@@ -32,8 +32,10 @@ function Header() {
 
   return (
     <header>
-      <Link to="/"><img src={img} className="logo" alt="404"/></Link>
-      <h1 className="site-name">Starter Helpi</h1>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent:'center'}}>
+        <Link to="/"><img src={img} className="logo" alt="404"/></Link>
+        <h1 className="site-name">Starter Helpi</h1>
+      </div>
       <MenuBar items={filteredMenuItems} />
     </header>
   );
