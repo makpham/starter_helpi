@@ -36,6 +36,13 @@ function BasicQuestions() {
     },
   ];
 
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+      setIsLastQuestionAnswered(false);
+    }
+  };
+
   const handleAnswer = () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
@@ -67,15 +74,21 @@ function BasicQuestions() {
       {questions.map((question, index) => (
         <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center'}}>
           <p style={{ marginBottom: '20px' }}>{question.question}</p>
-          {question.choices.map((choice, i) => (
-            <Button key={i} onClick={handleAnswer} style={{margin: '5px' }}>{choice}</Button>
-          ))}
+          <div>
+            {question.choices.map((choice, i) => (
+              <Button key={i} onClick={handleAnswer} style={{margin: '5px' }}>{choice}</Button>
+            ))}
+          </div>
+          {index !== 0 && (
+            <div style={{marginTop: '20px'}}>
+              <Button onClick={handlePrevious}>Previous</Button>
+            </div>
+          )}
         </div>
       ))}
       <br></br>
     </div>
   );
 }
-
 
 export default BasicQuestions;
