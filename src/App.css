@@ -21,18 +21,13 @@ header {
 }
 
 footer {
-  position: relative;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  align-self: flex-start;
+  align-self: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Add a shadow */
+  width: 100%;
 }
 
 .App-footer Form {
