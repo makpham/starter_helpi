@@ -7,19 +7,20 @@ function BasicQuestions() {
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const openai = new OpenAI({
-    apiKey: localStorage.getItem("MYKEY") as string | undefined,
-    dangerouslyAllowBrowser: true,
-  });
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true
+  }
+  );
   let answer = [];
   let gpt_answer = [
     {
-      fields: [
+      "fields": [
         {
-          name: "sample name",
-          percenage: 0,
+          "name": "sample name",
+          "percentage": 0
         },
-      ],
-    },
+      ]
+    }
   ];
   const questions = [
     {
@@ -71,6 +72,7 @@ function BasicQuestions() {
     if (currentQuestion < questions.length - 1) {
       const question_answered = questions[currentQuestion]["question"];
       const answer = questions[currentQuestion]["choices"][choice_index];
+      console.log()
       try {
         const response = await openai.chat.completions.create({
           model: "gpt-3.5-turbo",
@@ -78,7 +80,7 @@ function BasicQuestions() {
             {
               role: "system",
               content:
-                "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential jobs list in JSON format, update that JSON object with at least 5 new and or updated jobs that best matches the answer to the question, give only the json object in string format nothing else",
+                "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update that JSON object with at least 5 new and or updated jobs that best matches the answer to the question, return purely the JSON object string remove markdowns, make sure the percentages add up to exactly 100. JSON is in the form {fields: [name: name, percentage_match: percentage]}",
             },
             {
               role: "user",
@@ -89,6 +91,7 @@ function BasicQuestions() {
           temperature: 0.7,
           n: 1,
         });
+        console.log(response.choices[0].message.content);
         gpt_answer.push(JSON.parse(response.choices[0].message.content || ""));
         setGPTAnswer(currentGPTAnswer + 1);
       } catch (error) {
