@@ -166,7 +166,7 @@ const handleAnswer = async (choice_index: number) => {
 
   try {
     const gpt_call = await call_gpt(question_answered, answer);
-    const parsedGptCall = JSON.parse(gpt_call || "{}"); // Parse safely
+    const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling 
     setGptAnswer([...gpt_answer, parsedGptCall]);
     setGPTAnswer(currentGPTAnswer + 1);
     if (currentQuestion < questions.length - 1) {
@@ -176,7 +176,7 @@ const handleAnswer = async (choice_index: number) => {
     }
   } catch (error) {
     console.error("Error handling the GPT call:", error);
-    // Kept For now
+    // Will fix this later but the loop is to ensure that the returned is actually formattable JSON
   }
 };
 
