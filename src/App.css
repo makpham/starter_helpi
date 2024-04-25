@@ -17,14 +17,14 @@
 
 .site-name{
   display: block;
-  color:gray;
+  color: blueviolet;
   text-align: center;
   user-select: none;
 }
 header {
-  background-color: #FFC38A;
+  background-color: skyblue;
   position: relative;
-  padding-top: 1em;
+  padding-top: 2em;
   justify-content: center;
 }
 

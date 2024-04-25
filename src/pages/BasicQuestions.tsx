@@ -233,7 +233,7 @@ function BasicQuestions() {
               margin: "0 auto",
               border: "5px solid #FFA254",
               borderRadius: "10px",
-              backgroundColor: "#C3EEDF",
+              backgroundColor: "#62A0D1",
             }}
           >
             <br />
@@ -245,6 +245,8 @@ function BasicQuestions() {
                   display: index === currentQuestion ? "block" : "none",
                   textAlign: "center",
                   width: "85%",
+                  color: "white",
+                  fontWeight: "bold"
                 }}
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>

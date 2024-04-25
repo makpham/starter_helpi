@@ -20,6 +20,7 @@
 .menu-item .menu-link{
     display: block;
     color: white;
+    font-weight: bold;
     padding: 1em;
     text-decoration: none;
     align-items: center;
