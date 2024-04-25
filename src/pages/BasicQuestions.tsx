@@ -172,7 +172,7 @@ function BasicQuestions() {
 
   return (
     <div style={{ alignItems: "center" }}>
-      <div style={{ backgroundColor: "#FFC38A" }}>
+      <div style={{ backgroundColor: "#FFBB70" }}>
         <br />
         <br />
         <div
