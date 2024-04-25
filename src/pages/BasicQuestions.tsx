@@ -299,12 +299,12 @@ function BasicQuestions() {
                           test: number
                         ) => (
                           <ProgressBar
-                            // striped
-                            // variant="success"
-                            // now={job_name.percentage_match}
-                            // label={job_name.name}
-                            // key={test}
-                            // max={maxPercentage} // will implement this later
+                            striped
+                            variant="success"
+                            now={job_name.percentage_match}
+                            label={job_name.name}
+                            key={test}
+                            max={maxPercentage} // will implement this later
                           />
                         )
                       )}
