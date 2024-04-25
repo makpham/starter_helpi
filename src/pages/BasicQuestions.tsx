@@ -6,22 +6,21 @@ function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
+  const [gpt_answer, setGptAnswer] = useState([
+    {
+      fields: [
+        {
+          name: "sample name",
+          percentage: 0,
+        },
+      ],
+    }
+  ])
   const openai = new OpenAI({
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-    dangerouslyAllowBrowser: true
-  }
-  );
+    dangerouslyAllowBrowser: true,
+  });
   let answer = [];
-  let gpt_answer = [
-    {
-      "fields": [
-        {
-          "name": "sample name",
-          "percentage": 0
-        },
-      ]
-    }
-  ];
   const questions = [
     {
       question:
@@ -63,8 +62,38 @@ function BasicQuestions() {
     if (isLastQuestionAnswered) {
       setIsLastQuestionAnswered(false);
     } else if (currentQuestion > 0) {
-      if(currentGPTAnswer > 0) setGPTAnswer(currentGPTAnswer-1);
+      if (currentGPTAnswer > 0) setGPTAnswer(currentGPTAnswer - 1);
       setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+  const call_gpt = async (question: string, choice: string) => {
+    try {
+      const response = await openai.chat.completions.create({
+        model: "gpt-4",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+          },
+          {
+            role: "user",
+            content:
+              "Question: " +
+              question +
+              " | Answer: " +
+              choice +
+              " | current values: " +
+              gpt_answer[currentGPTAnswer],
+          },
+        ],
+        temperature: 0.7,
+        n: 1,
+      });
+      console.log(response.choices[0].message.content);
+      return response.choices[0].message.content;
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
@@ -72,32 +101,19 @@ function BasicQuestions() {
     if (currentQuestion < questions.length - 1) {
       const question_answered = questions[currentQuestion]["question"];
       const answer = questions[currentQuestion]["choices"][choice_index];
-      console.log()
-      try {
-        const response = await openai.chat.completions.create({
-          model: "gpt-3.5-turbo",
-          messages: [
-            {
-              role: "system",
-              content:
-                "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update that JSON object with at least 5 new and or updated jobs that best matches the answer to the question, return purely the JSON object string remove markdowns, make sure the percentages add up to exactly 100. JSON is in the form {fields: [name: name, percentage_match: percentage]}",
-            },
-            {
-              role: "user",
-              content:
-                "Answer: " + question_answered + " | Answer: " + answer + " | current values: " + gpt_answer[currentGPTAnswer],
-            },
-          ],
-          temperature: 0.7,
-          n: 1,
-        });
-        console.log(response.choices[0].message.content);
-        gpt_answer.push(JSON.parse(response.choices[0].message.content || ""));
-        setGPTAnswer(currentGPTAnswer + 1);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      while (true) {
+        try {
+          const gpt_call = await call_gpt(question_answered, answer);
+          setGptAnswer([...gpt_answer, JSON.parse(gpt_call || "")])
+          setCurrentQuestion(currentQuestion + 1);
+          setGPTAnswer(currentGPTAnswer + 1);
+          console.log(gpt_answer)
+          console.log(currentGPTAnswer)
+          break;
+        } catch (error) {
+          continue;
+        }
       }
-      setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsLastQuestionAnswered(true);
     }
@@ -191,14 +207,17 @@ function BasicQuestions() {
           )}
         </div>
       ))}
-      {gpt_answer.map((question: object, index: number) => (
+      {gpt_answer.map((answer: object, index: number) => (
         <div
           key={index}
           style={{
             display: index === currentGPTAnswer ? "block" : "none",
             textAlign: "center",
           }}
-        >{JSON.stringify(question)}</div>))}
+        >
+          {JSON.stringify(answer)}
+        </div>
+      ))}
       <br></br>
     </div>
   );
