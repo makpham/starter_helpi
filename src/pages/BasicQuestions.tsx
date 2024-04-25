@@ -61,7 +61,10 @@ function BasicQuestions() {
     if (isLastQuestionAnswered) {
       setIsLastQuestionAnswered(false);
     } else if (currentQuestion > 0) {
-      if (currentGPTAnswer > 0) setGPTAnswer(currentGPTAnswer - 1);
+      if (currentGPTAnswer > 0) {
+        setGptAnswer([...gpt_answer.slice(0,gpt_answer.length-1)])
+        setGPTAnswer(currentGPTAnswer - 1);
+      }
       setCurrentQuestion(currentQuestion - 1);
     }
   };
@@ -106,8 +109,7 @@ function BasicQuestions() {
           setGptAnswer([...gpt_answer, JSON.parse(gpt_call || "")])
           setCurrentQuestion(currentQuestion + 1);
           setGPTAnswer(currentGPTAnswer + 1);
-          console.log(gpt_answer)
-          console.log(currentGPTAnswer)
+          console.log(gpt_call)
           break;
         } catch (error) {
           continue;
