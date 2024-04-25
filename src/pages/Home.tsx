@@ -1,16 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { Option } from "../components/Option";
+import "./Home.css"
 import img from "./imglogo.png";
 
 function Header() {
   return (
-    <header style={{ 
-      display: 'flex', 
-      justifyContent: 'center',
-      padding: 'none', 
-      backgroundColor: '#fac389', 
-    }}>
-      <img src={img} alt="Logo" style={{ height: '30vh' }} />
+    <header className="header">
+      <img src={img} alt="logo" />
+      <h1>Starter Helpi</h1>
     </header>
   );
 }
@@ -31,28 +28,35 @@ function Home() {
       <div>
         <Header />
       </div>
-      <div
-        style={{
-          display: "flex",
-          height: "100%",
-          justifyContent: "-moz-initial",
-          gap: "3em",
-          padding: "2em",
-        }}
-      >
-        <Option
-          onClick={() => setPage("basic-questions")}
-          OptionDescription={basic_description}
-          OptionTitle="Basic Questions"
-          style={{ flex: 1 }}
-        />
-        <Option
-          onClick={() => setPage("detailed-questions")}
-          OptionDescription={detailed_description}
-          OptionTitle="Detailed Questions"
-          style={{ flex: 1 }}
+      <div style={{ backgroundColor: "#fac389" }}>
+    <div className="grid-container">
+      <div className="grid-item">
+        <h2>Find Your Future</h2>
+      </div>
+      <div className="grid-item">
+        <div style={{ display: "flex", height: "100%", justifyContent: "initial", textIndent: "2em", gap: "3em", padding: "2em" }}>
+          <Option
+            onClick={() => setPage("basic-questions")}
+            OptionDescription={basic_description}
+            OptionTitle="Basic Questions"
+            style={{ flex: 1 }}
         />
       </div>
+      </div>
+      <div className="grid-item">
+        <div style={{ display: "flex", height: "100%", justifyContent: "initial", textIndent: "2em", gap: "3em", padding: "2em" }}>
+          <Option
+            onClick={() => setPage("detailed-questions")}
+            OptionDescription={detailed_description}
+            OptionTitle="Detailed Questions"
+            style={{ flex: 1 }}
+        />
+      </div>
+      </div>
+      <div className="grid-item">Content 4</div>
+    </div>
+  </div>
+
     </div>
   );
 }
