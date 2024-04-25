@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { ProgressBar, Button } from "react-bootstrap";
+import { useState } from "react";
+import { ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import './BasicQuestions.css';
 
