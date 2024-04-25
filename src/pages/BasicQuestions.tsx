@@ -20,7 +20,6 @@ function BasicQuestions() {
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
-  let answer = [];
   const questions = [
     {
       question:
