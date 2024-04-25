@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Option.css";
-import OpenAI from 'openai';
 
 interface OptionProps {
   OptionTitle: string;
