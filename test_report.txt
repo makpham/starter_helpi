@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (50 ms)
+  ✕ renders learn react link (53 ms)
 
   ● renders learn react link
 
@@ -17,47 +17,81 @@ FAIL src/App.test.tsx
         [36m>[39m
           [36m<div>[39m
             [36m<header[39m
-              [33mstyle[39m=[32m"display: flex; justify-content: center; background-color: rgb(250, 195, 137);"[39m
+              [33mclass[39m=[32m"header"[39m
             [36m>[39m
               [36m<img[39m
-                [33malt[39m=[32m"Logo"[39m
+                [33malt[39m=[32m"logo"[39m
                 [33msrc[39m=[32m"imglogo.png"[39m
-                [33mstyle[39m=[32m"height: 30vh;"[39m
               [36m/>[39m
+              [36m<h1>[39m
+                [0mStarter Helpi[0m
+              [36m</h1>[39m
             [36m</header>[39m
           [36m</div>[39m
           [36m<div[39m
-            [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: -moz-initial; gap: 3em; padding: 2em;"[39m
+            [33mstyle[39m=[32m"background-color: rgb(250, 195, 137);"[39m
           [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
-              [33mstyle[39m=[32m"flex: 1;"[39m
+              [33mclass[39m=[32m"grid-container"[39m
             [36m>[39m
-              [36m<h1[39m
-                [33mclass[39m=[32m"title"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
-                [0mBasic Questions[0m
-              [36m</h1>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"description"[39m
+                [36m<h2>[39m
+                  [0mFind Your Future[0m
+                [36m</h2>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
-                [0mAre you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.[0m
-              [36m</p>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
-              [33mstyle[39m=[32m"flex: 1;"[39m
-            [36m>[39m
-              [36m<h1[39m
-                [33mclass[39m=[32m"title"[39m
+                [36m<div[39m
+                  [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: initial; text-indent: 2em; gap: 3em; padding: 2em;"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"container"[39m
+                    [33mstyle[39m=[32m"flex: 1;"[39m
+                  [36m>[39m
+                    [36m<h1[39m
+                      [33mclass[39m=[32m"title"[39m
+                    [36m>[39m
+                      [0mBasic Questions[0m
+                    [36m</h1>[39m
+                    [36m<p[39m
+                      [33mclass[39m=[32m"description"[39m
+                    [36m>[39m
+                      [0mAre you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
-                [0mDetailed Questions[0m
-              [36m</h1>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"description"[39m
+                [36m<div[39m
+                  [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: initial; text-indent: 2em; gap: 3em; padding: 2em;"[39m
+                [36m>[39m
+                  [36m<div[39m
+                    [33mclass[39m=[32m"container"[39m
+                    [33mstyle[39m=[32m"flex: 1;"[39m
+                  [36m>[39m
+                    [36m<h1[39m
+                      [33mclass[39m=[32m"title"[39m
+                    [36m>[39m
+                      [0mDetailed Questions[0m
+                    [36m</h1>[39m
+                    [36m<p[39m
+                      [33mclass[39m=[32m"description"[39m
+                    [36m>[39m
+                      [0mAre you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.[0m
+                    [36m</p>[39m
+                  [36m</div>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
-                [0mAre you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.[0m
-              [36m</p>[39m
+                [0mContent 4[0m
+              [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
         [36m</div>[39m
@@ -121,10 +155,10 @@ All files               |   17.75 |     3.57 |   20.68 |   16.98 |
  src/pages              |    7.89 |        0 |   10.52 |    7.89 |                   
   BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 6-212             
   DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 6-97              
-  Home.tsx              |   66.66 |      100 |      40 |   66.66 | 21,44-50          
+  Home.tsx              |   66.66 |      100 |      40 |   66.66 | 18,39-49          
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.705 s
+Time:        2.81 s
 Ran all test suites.
