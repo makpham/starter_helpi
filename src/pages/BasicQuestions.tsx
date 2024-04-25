@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { ProgressBar, Button } from "react-bootstrap";
 import OpenAI from "openai";
-import './BasicQuestions.css'; 
+import './BasicQuestions.css';
+
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -86,9 +87,11 @@ function BasicQuestions() {
       ],
     },
   ];
-  
+ 
+
 
   const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
+
 
   const handlePrevious = () => {
     //Mayybe delete lines 95 and 96 for a fix - will ask teammate
@@ -155,9 +158,11 @@ function BasicQuestions() {
   };
 */
 
+
 const handleAnswer = async (choice_index: number) => {
   const question_answered = questions[currentQuestion]["question"];
   const answer = questions[currentQuestion]["choices"][choice_index];
+
 
   try {
     const gpt_call = await call_gpt(question_answered, answer);
@@ -174,6 +179,7 @@ const handleAnswer = async (choice_index: number) => {
     // Kept For now
   }
 };
+
 
 return (
   <body style={{ alignItems: 'center' }}>
@@ -239,6 +245,8 @@ return (
   </body>
 );
 }
+
+
 
 
 /*
