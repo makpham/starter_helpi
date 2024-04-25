@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControl } from "react-bootstrap";
+import { FormControl, ProgressBar } from "react-bootstrap";
 import "./DetailedQuestions.css";
 import OpenAI from "openai";
 
@@ -8,12 +8,13 @@ function DetailedQuestions() {
   const [answers, setAnswers] = useState(Array(7).fill(""));
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  //const [maxPercentage, setMaxPercentage] = useState(100);
   const [gpt_answer, setGptAnswer] = useState([
     {
-      fields: [
+      jobs: [
         {
           name: "sample name",
-          percentage: 0,
+          percentage_match: 0,
         },
       ],
     },
@@ -244,7 +245,13 @@ function DetailedQuestions() {
                 <br />
               </div>
             ))}
-            {gpt_answer.map((answer: object, index: number) => (
+            {gpt_answer.map(
+                  (
+                    answer: {
+                      jobs: { name: string; percentage_match: number }[];
+                    },
+                    index: number
+                  ) => (
               <div
                 key={index}
                 style={{
@@ -252,7 +259,21 @@ function DetailedQuestions() {
                   textAlign: "center",
                 }}
               >
-                {JSON.stringify(answer)}
+                {answer.jobs.map(
+                        (
+                          job_name: { name: string; percentage_match: number },
+                          test: number
+                        ) => (
+                          <ProgressBar
+                            striped
+                            variant="success"
+                            now={job_name.percentage_match}
+                            label={job_name.name}
+                            key={test}
+                            //max={maxPercentage} // will implement this later
+                          />
+                        )
+                      )}
               </div>
             ))}
           </div>

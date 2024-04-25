@@ -304,7 +304,7 @@ function BasicQuestions() {
                             now={job_name.percentage_match}
                             label={job_name.name}
                             key={test}
-                            max={maxPercentage} // will implement this later
+                            //max={maxPercentage} // will implement this later
                           />
                         )
                       )}
