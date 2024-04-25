@@ -9,6 +9,30 @@
   }
 
   .button-div {
+    background-color: #7a9cc6; 
+    color: white; 
+    margin-bottom: 20px; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .button-div:hover {
+    background-color: #658cb3; 
+  }
+  
+  .button-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+/*
+  .button-div {
     margin: 5px;
     padding: 5px;
     cursor: pointer;
@@ -21,7 +45,7 @@
   .button-div:hover {
     background-color: #7D4CC5 !important;
   }
-
+*/
   .progress-bar-container {
     width: 100%;
     position: relative;

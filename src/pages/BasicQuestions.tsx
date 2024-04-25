@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ProgressBar, Button } from "react-bootstrap";
 import OpenAI from "openai";
+import './BasicQuestions.css'; 
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,44 +23,75 @@ function BasicQuestions() {
   });
   const questions = [
     {
-      question:
-        "1. What are your top three professional strengths, and how have they influenced your career choices?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "1. What best describes your approach to problem-solving at work?",
+      choices: [
+        "I analyze the problem and consider multiple solutions.",
+        "I rely on proven methods and consult with colleagues.",
+        "I prefer a creative approach to find innovative solutions.",
+        "I tackle problems as they arise without prior planning."
+      ],
     },
     {
-      question:
-        "2. Describe a time when you overcame a significant challenge at work. What did you learn from that experience?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "2. How do you handle stress in the workplace?",
+      choices: [
+        "I prioritize my tasks and take breaks when necessary.",
+        "I seek support from my peers or supervisors.",
+        "I maintain a calm perspective and focus on solutions.",
+        "I usually feel overwhelmed and struggle to cope."
+      ],
     },
     {
-      question:
-        "3. How do you prioritize your tasks and manage time when facing tight deadlines?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "3. Which work setting do you prefer?",
+      choices: [
+        "A quiet, independent office environment.",
+        "A dynamic, team-oriented workspace.",
+        "A flexible and remote work setting.",
+        "A structured and highly organized office."
+      ],
     },
     {
-      question:
-        "4. Other than financial incentives, what motivates you to perform well in your job?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "4. What motivates you to achieve your best work?",
+      choices: [
+        "Achieving personal goals and self-improvement.",
+        "Receiving recognition and rewards for my efforts.",
+        "Contributing to team success and collaborative achievements.",
+        "Meeting deadlines and efficiency metrics."
+      ],
     },
     {
-      question:
-        "5. Can you give an example of how you have continued to learn and grow professionally in the past year?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "5. How do you prioritize your tasks?",
+      choices: [
+        "I handle tasks as they come, without specific prioritization.",
+        "I plan my tasks based on deadlines.",
+        "I prioritize tasks based on their importance and urgency.",
+        "I delegate tasks to manage my workload effectively."
+      ],
     },
     {
-      question:
-        "6. How do you balance teamwork with individual responsibility in a work environment?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "6. How do you prefer to receive feedback?",
+      choices: [
+        "In formal reviews with documentation.",
+        "Through informal daily or weekly updates.",
+        "Via peer feedback and team discussions.",
+        "I prefer not to receive feedback frequently."
+      ],
     },
     {
-      question: "7. What type of work environment do you succeed in, and why?",
-      choices: ["Choice 1", "Choice 2", "Choice 3", "Choice 4"],
+      question: "7. What type of leadership style do you thrive under?",
+      choices: [
+        "Directive leadership with clear instructions.",
+        "Supportive leadership that fosters personal growth.",
+        "Autonomous leadership that trusts in my decision-making.",
+        "Collaborative leadership with shared responsibilities."
+      ],
     },
   ];
+  
 
   const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
 
   const handlePrevious = () => {
+    //Mayybe delete lines 95 and 96 for a fix - will ask teammate
     if (isLastQuestionAnswered) {
       setIsLastQuestionAnswered(false);
     } else if (currentQuestion > 0) {
@@ -100,7 +132,7 @@ function BasicQuestions() {
       console.error("Error fetching data:", error);
     }
   };
-
+/*
   const handleAnswer = async (choice_index: number) => {
     if (currentQuestion < questions.length - 1) {
       const question_answered = questions[currentQuestion]["question"];
@@ -121,7 +153,95 @@ function BasicQuestions() {
       setIsLastQuestionAnswered(true);
     }
   };
+*/
 
+const handleAnswer = async (choice_index: number) => {
+  const question_answered = questions[currentQuestion]["question"];
+  const answer = questions[currentQuestion]["choices"][choice_index];
+
+  try {
+    const gpt_call = await call_gpt(question_answered, answer);
+    const parsedGptCall = JSON.parse(gpt_call || "{}"); // Parse safely
+    setGptAnswer([...gpt_answer, parsedGptCall]);
+    setGPTAnswer(currentGPTAnswer + 1);
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setIsLastQuestionAnswered(true);
+    }
+  } catch (error) {
+    console.error("Error handling the GPT call:", error);
+    // Kept For now
+  }
+};
+
+return (
+  <body style={{ alignItems: 'center' }}>
+    <div style={{ backgroundColor: '#FFC38A' }}>
+      <br /><br />
+      <div style={{
+        animationName: 'bounce',
+        animationDuration: '2s'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', width: '80%', margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+            <div className="progress-bar-container">
+              <ProgressBar now={progress} striped variant="info" style={{ flex: 1, borderRadius: '5px', overflow: 'hidden' }}>
+                <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
+                <div className="progress-bar-circle" style={{ left: `calc(${progress}% - 15px)` }}>
+                  <div className="icon-check">
+                    {isLastQuestionAnswered && currentQuestion === questions.length - 1 ? '100%' : `${progress.toFixed(0)}%`}
+                  </div>
+                </div>
+              </ProgressBar>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <div style={{ width: '80%', margin: '0 auto', border: '5px solid #FFA254', borderRadius: '10px', backgroundColor: '#C3EEDF' }}>
+          <br /><br />
+          {questions.map((question, index) => (
+            <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center', width: '85%' }}>
+              <p style={{ marginBottom: '20px' }}>{question.question}</p>
+              <br /><br />
+              <center className="button-row">
+                {question.choices.map((choice, i) => (
+                  <div key={i} onClick={() => handleAnswer(i)} className="button-div">
+                    {choice}
+                  </div>
+                ))}
+              </center>
+              <br /><br />
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                {index !== 0 && (
+                  <div onClick={handlePrevious} className="button-div" style={{ backgroundColor: '#DEBFFD', marginRight: '20px' }}>Previous</div>
+                )}
+              </div>
+              <br /><br />
+              {gpt_answer.map((answer: object, index: number) => (
+              <div
+                key={index}
+                style={{
+                  display: index === currentGPTAnswer ? "block" : "none",
+                  textAlign: "center",
+                }}
+              >
+                {JSON.stringify(answer)}
+              </div>
+            ))}
+            <br></br>
+            </div>
+          ))}
+          <br /><br /><br /><br /><br />
+        </div>
+      </div>
+    </div>
+  </body>
+);
+}
+
+
+/*
   return (
     <div
       style={{ display: "flex", flexDirection: "column", position: "relative" }}
@@ -221,5 +341,5 @@ function BasicQuestions() {
     </div>
   );
 }
-
+*/
 export default BasicQuestions;
