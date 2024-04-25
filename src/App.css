@@ -1,12 +1,20 @@
 .logo{
-  width: 5em;
+  width: 7em;
   display: block;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 7px;
   border-radius: 5em;
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding-left: 10%;
+}
+
 .site-name{
   display: block;
   color:gray;
@@ -14,13 +22,14 @@
   user-select: none;
 }
 header {
-  background-color: #333;
+  background-color: #FFC38A;
   position: relative;
-  padding-top: 2em;
+  padding-top: 1em;
   justify-content: center;
 }
 
 footer {
+  background-color: #FFC38A;
   display: flex;
   justify-content: center;
   align-items: center;
