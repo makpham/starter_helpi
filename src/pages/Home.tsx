@@ -28,7 +28,6 @@ function Home() {
       <div>
         <Header />
       </div>
-
       <div style={{ backgroundColor: "#fac389" }}>
     <div className="grid-container">
       <div className="grid-item">
