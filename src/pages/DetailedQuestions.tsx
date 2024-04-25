@@ -120,6 +120,10 @@ function DetailedQuestions() {
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      if (currentGPTAnswer > 0) {
+        setGptAnswer([...gpt_answer.slice(0,gpt_answer.length-1)])
+        setGPTAnswer(currentGPTAnswer - 1);
+      }
     }
   };
 
