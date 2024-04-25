@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
+import './BasicQuestions.css'
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -36,10 +37,10 @@ function BasicQuestions() {
     },
   ];
 
+  const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
+
   const handlePrevious = () => {
-    if (isLastQuestionAnswered) {
-      setIsLastQuestionAnswered(false);
-    } else if (currentQuestion > 0) {
+    if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
   };
@@ -52,9 +53,65 @@ function BasicQuestions() {
     }
   };
 
-  const progress = ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) * 100;
-
   return (
+    <body style={{ alignItems: 'center' }}>
+      <div style={{ backgroundColor: '#FFC38A' }}>
+        <br />
+        <br />
+        <div style={{
+          animationName: 'bounce',
+          animationDuration: '2s'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', width: '80%', margin: '0 auto' }}>
+            <div className="progress-bar-container">
+              <div className="progress-bar">
+                <div className="progress-bar-fill" style={{ width: `${progress}%` }}></div>
+              </div>
+              <div className="progress-bar-circle" style={{ left: `calc(${progress}% - 15px)` }}>
+                <div className="icon-check">
+                  {isLastQuestionAnswered ? '100%' : `${progress.toFixed(0)}%`}
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div style={{ width: '80%', margin: '0 auto', border: '5px solid #FFA254', borderRadius: '10px', backgroundColor: '#C3EEDF' }}>
+            <br />
+            <br />
+            {questions.map((question, index) => (
+              <div key={index} style={{ display: index === currentQuestion ? 'block' : 'none', textAlign: 'center', width: '85%' }}>
+                <p style={{ marginBottom: '20px' }}>{question.question}</p>
+                <br />
+                <br />
+                <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  {question.choices.map((choice, i) => (
+                    <div key={i} onClick={() => handleAnswer()} className="button-div" style={{ backgroundColor: '#DEBFFD', margin: '5px' }}>{choice}</div>
+                  ))}
+                </div>
+                {index !== 0 && (
+                  <div onClick={handlePrevious} className="button-div" style={{ backgroundColor: '#DEBFFD', marginTop: '20px' }}>Previous</div>
+                )}
+                <br />
+                <br />
+              </div>
+            ))}
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+    </body>
+  );
+}
+
+
+/*
+  return (
+    
     <div style={{ display: 'flex', flexDirection: 'column', position: 'relative'}}>
       <h1>Basic Questions</h1>
       <br />
@@ -91,5 +148,5 @@ function BasicQuestions() {
     </div>
   );
 }
-
+*/
 export default BasicQuestions;
