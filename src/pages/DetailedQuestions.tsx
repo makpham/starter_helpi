@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FormControl, ProgressBar } from "react-bootstrap";
 import "./DetailedQuestions.css";
+import Header from "../components/Header"
+import Footer from "../components/Footer";
 import OpenAI from "openai";
 
 function DetailedQuestions() {
@@ -138,6 +140,8 @@ function DetailedQuestions() {
   };
 
   return (
+    <div>
+      <Header />
     <div style={{ alignItems: "center" }}>
       <div style={{ backgroundColor: "#FFC38A" }}>
         <br />
@@ -284,6 +288,8 @@ function DetailedQuestions() {
           <br />
         </div>
       </div>
+    </div>
+      <Footer />
     </div>
   );
 }

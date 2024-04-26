@@ -1,16 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Option } from "../components/Option";
 import "./Home.css"
-import img from "./imglogo.png";
-
-function Header() {
-  return (
-    <header className="header">
-      <img src={img} alt="logo" />
-      <h1>Starter Helpi</h1>
-    </header>
-  );
-}
+import Header from "../components/Header"
+import Footer from "../components/Footer";
 
 function Home() {
   const navigate = useNavigate();
@@ -56,7 +48,7 @@ function Home() {
       <div className="grid-item">Content 4</div>
     </div>
   </div>
-
+  <Footer />
     </div>
   );
 }
