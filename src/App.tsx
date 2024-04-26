@@ -14,7 +14,6 @@ function App() {
         <Route path="/detailed-questions" element={<DetailedQuestions />} />
         <Route path="/basic-questions" element={<BasicQuestions />} />
       </Routes>
-      
     </HashRouter>
   );
 }
