@@ -1,16 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { Option } from "../components/Option";
 import "./Home.css"
-import img from "./imglogo.png";
-
-function Header() {
-  return (
-    <header className="header">
-      <img src={img} alt="logo" />
-      <h1>Starter Helpi</h1>
-    </header>
-  );
-}
+import Header from "../components/Header"
+import Footer from "../components/Footer";
 
 function Home() {
   const navigate = useNavigate();
@@ -24,39 +16,39 @@ function Home() {
     "Are you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.";
 
   return (
-    <div style={{ backgroundColor: "#fac389" }}>
+    <div className="bg-color">
       <div>
         <Header />
       </div>
-      <div style={{ backgroundColor: "#fac389" }}>
-    <div className="grid-container">
-      <div className="grid-item">
-        <h2>Find Your Future</h2>
+      <div className="bg-color">
+        <div className="grid-container">
+          <div className="grid-item">
+            <h2>Find Your Future</h2>
+          </div>
+          <div className="grid-item">
+            <div className="flex-container">
+              <Option
+                onClick={() => setPage("basic-questions")}
+                OptionDescription={basic_description}
+                OptionTitle="Basic Questions"
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+          <div className="grid-item">
+            <div className="flex-container">
+              <Option
+                onClick={() => setPage("detailed-questions")}
+                OptionDescription={detailed_description}
+                OptionTitle="Detailed Questions"
+                style={{ flex: 1 }}
+              />
+            </div>
+          </div>
+          <div className="grid-item">Content 4</div>
+        </div>
       </div>
-      <div className="grid-item">
-        <div style={{ display: "flex", height: "100%", justifyContent: "initial", textIndent: "2em", gap: "3em", padding: "2em" }}>
-          <Option
-            onClick={() => setPage("basic-questions")}
-            OptionDescription={basic_description}
-            OptionTitle="Basic Questions"
-            style={{ flex: 1 }}
-        />
-      </div>
-      </div>
-      <div className="grid-item">
-        <div style={{ display: "flex", height: "100%", justifyContent: "initial", textIndent: "2em", gap: "3em", padding: "2em" }}>
-          <Option
-            onClick={() => setPage("detailed-questions")}
-            OptionDescription={detailed_description}
-            OptionTitle="Detailed Questions"
-            style={{ flex: 1 }}
-        />
-      </div>
-      </div>
-      <div className="grid-item">Content 4</div>
-    </div>
-  </div>
-
+      <Footer />
     </div>
   );
 }

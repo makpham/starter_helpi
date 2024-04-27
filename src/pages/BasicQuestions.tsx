@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { ProgressBar } from "react-bootstrap";
+import { Button, ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import "./BasicQuestions.css";
+import Header from "../components/Header"
+import Footer from "../components/Footer";
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -171,50 +173,31 @@ function BasicQuestions() {
   };
 
   return (
-    <div style={{ alignItems: "center" }}>
-      <div style={{ backgroundColor: "#FFC38A" }}>
+  <div>
+    <Header />
+    <div className="bq-body">
+      <div>
         <br />
         <br />
-        <div
-          style={{
-            animationName: "bounce",
-            animationDuration: "2s",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "20px",
-              width: "80%",
-              margin: "0 auto",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                width: "100%",
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="progress-bar-container">
+        <div>
+          <div className="bq-flex-center">
+            <div className="bq-space-between">
+              <div className="bq-progress-bar-container">
                 <ProgressBar
                   now={progress}
                   striped
                   variant="info"
-                  style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
+                  className="progress-bar"
                 >
                   <div
-                    className="progress-bar-fill"
+                    className="bq-progress-bar-fill"
                     style={{ width: `${progress}%` }}
                   ></div>
                   <div
-                    className="progress-bar-circle"
+                    className="bq-progress-bar-circle"
                     style={{ left: `calc(${progress}% - 15px)` }}
                   >
-                    <div className="icon-check">
+                    <div className="bq-icon-check">
                       {isLastQuestionAnswered &&
                       currentQuestion === questions.length - 1
                         ? "100%"
@@ -227,35 +210,25 @@ function BasicQuestions() {
           </div>
           <br />
           <br />
-          <div
-            style={{
-              width: "80%",
-              margin: "0 auto",
-              border: "5px solid #FFA254",
-              borderRadius: "10px",
-              backgroundColor: "#C3EEDF",
-            }}
-          >
+          <div className="bq-container">
             <br />
             <br />
             {questions.map((question, index) => (
               <div
                 key={index}
-                style={{
-                  display: index === currentQuestion ? "block" : "none",
-                  textAlign: "center",
-                  width: "85%",
-                }}
+                className={`bq-question-container ${
+                  index === currentQuestion ? "active" : ""
+                }`}
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>
                 <br />
                 <br />
-                <center className="button-row">
+                <center className="bq-button-row">
                   {question.choices.map((choice, i) => (
                     <div
                       key={i}
                       onClick={() => handleAnswer(i)}
-                      className="button-div"
+                      className="bq-button-div"
                     >
                       {choice}
                     </div>
@@ -267,11 +240,7 @@ function BasicQuestions() {
                   {index !== 0 && (
                     <div
                       onClick={handlePrevious}
-                      className="button-div"
-                      style={{
-                        backgroundColor: "#DEBFFD",
-                        marginRight: "20px",
-                      }}
+                      className="bq-button-div previous"
                     >
                       Previous
                     </div>
@@ -308,7 +277,6 @@ function BasicQuestions() {
                           />
                         )
                       )}
-
                     </div>
                   )
                 )}
@@ -324,108 +292,10 @@ function BasicQuestions() {
         </div>
       </div>
     </div>
+    <Footer />
+  </div> 
   );
+
 }
 
-/*
-  return (
-    <div
-      style={{ display: "flex", flexDirection: "column", position: "relative" }}
-    >
-      <h1>Basic Questions</h1>
-      <br />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "20px",
-          width: "80%",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-            justifyContent: "space-between",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              border: "1px solid black",
-              borderRadius: "5px",
-              overflow: "hidden",
-              flex: 1,
-            }}
-          >
-            <ProgressBar
-              striped
-              animated={progress < 100}
-              now={progress}
-              variant={progress === 100 ? "success" : "primary"}
-              style={{ width: "100%" }}
-            />
-          </div>
-          <span style={{ marginLeft: "10px" }}>{progress.toFixed(0)}%</span>
-          {isLastQuestionAnswered && (
-            <div style={{ marginLeft: "10px" }}>
-              <Button
-                onClick={() => console.log("Get results")}
-                style={{ whiteSpace: "nowrap" }}
-              >
-                Get results
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
-      <br></br>
-      {questions.map((question, index) => (
-        <div
-          key={index}
-          style={{
-            display: index === currentQuestion ? "block" : "none",
-            textAlign: "center",
-          }}
-        >
-          <p style={{ marginBottom: "20px" }}>{question.question}</p>
-          <div>
-            {question.choices.map((choice, i) => (
-              <Button
-                key={i}
-                onClick={() => handleAnswer(i)}
-                style={{ margin: "5px" }}
-                value-={choice}
-              >
-                {choice}
-              </Button>
-            ))}
-          </div>
-          {index !== 0 && (
-            <div style={{ marginTop: "20px" }}>
-              <Button onClick={handlePrevious}>Previous</Button>
-            </div>
-          )}
-        </div>
-      ))}
-      {gpt_answer.map((answer: object, index: number) => (
-        <div
-          key={index}
-          style={{
-            display: index === currentGPTAnswer ? "block" : "none",
-            textAlign: "center",
-          }}
-        >
-          {JSON.stringify(answer)}
-        </div>
-      ))}
-      <br></br>
-    </div>
-  );
-}
-*/
 export default BasicQuestions;
