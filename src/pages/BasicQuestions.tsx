@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import "./BasicQuestions.css";
@@ -8,6 +8,13 @@ function BasicQuestions() {
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [maxPercentage, setMaxPercentage] = useState(100);
+
+  // Add a new state variable for the loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Add a new state variable for the blur state
+  const [isBlurred, setIsBlurred] = useState(false);
+
   const [gpt_answer, setGptAnswer] = useState([
     {
       jobs: [
@@ -18,10 +25,12 @@ function BasicQuestions() {
       ],
     },
   ]);
+
   const openai = new OpenAI({
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
+
   const questions = [
     {
       question:
@@ -153,6 +162,11 @@ function BasicQuestions() {
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
+    // Set loading state to true when user selects an answer
+    setIsLoading(true);
+    // Set blur state to true when update starts
+    setIsBlurred(true);
+
     try {
       const gpt_call = await call_gpt(question_answered, answer);
       const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling
@@ -164,9 +178,22 @@ function BasicQuestions() {
       } else {
         setIsLastQuestionAnswered(true);
       }
+
+      // Set loading state to false after response is processed
+      setIsLoading(false);
+
+      // Set blur state to false after update is processed
+      setIsBlurred(false);
+
     } catch (error) {
       console.error("Error handling the GPT call:", error);
       // Will fix this later but the loop is to ensure that the returned is actually formattable JSON
+
+      // Set loading state to false in case of error
+      setIsLoading(false);
+
+      // Set blur state to false in case of error
+      setIsBlurred(false);
     }
   };
 
@@ -281,40 +308,79 @@ function BasicQuestions() {
                 </div>
                 <br />
                 <br />
-                {gpt_answer.map(
-                  (
-                    answer: {
-                      jobs: { name: string; percentage_match: number }[];
-                    },
-                    index: number
-                  ) => (
+              <div style={{ position: 'relative' }}>
+                {isLoading && (
+                  <div style={{
+                    position: 'relative',
+                    // top: 20,
+                    top: (currentQuestion >= 2) ? 20 : 0,
+                    zIndex: 2,
+                    color: "black",
+                  }}
+                  className={isLoading ? "fade-in" : "fade-out"}
+                  >
                     <div
-                      key={index}
+                      className={`blur-effect`}
                       style={{
-                        display: index === currentGPTAnswer ? "block" : "none",
-                        textAlign: "center",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
                       }}
                     >
-                      {answer.jobs.map(
-                        (
-                          job_name: { name: string; percentage_match: number },
-                          test: number
-                        ) => (
-                          <ProgressBar
-                            striped
-                            variant="success"
-                            now={job_name.percentage_match}
-                            label={job_name.name}
-                            key={test}
-                            //max={maxPercentage} // will implement this later
-                          />
-                        )
-                      )}
-
+                      Realtime results loading...
                     </div>
-                  )
-                )}
-                <br></br>
+                  </div>
+                  )}
+                  {gpt_answer.map(
+                    (
+                      answer: {
+                        jobs: { name: string; percentage_match: number }[];
+                      },
+                      index: number
+                    ) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: index === currentGPTAnswer ? "block" : "none",
+                          textAlign: "center",
+                        }}
+                      >
+                        {answer.jobs.map(
+                          (
+                            job_name: { name: string; percentage_match: number },
+                            test: number
+                          ) => (
+                            <div style={{ position: "relative" }}>
+                              <ProgressBar
+                                striped
+                                variant="success"
+                                now={job_name.percentage_match}
+                                label={job_name.name}
+                                key={test}
+                                //max={maxPercentage} // will implement this later
+                              />
+                              <div
+                                className={`blur-effect`}
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  left: 0,
+                                  width: "100%",
+                                  height: "100%",
+                                  animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
+                                }}
+                              ></div>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )
+                  )}
+                </div>
+              <br></br>
               </div>
             ))}
             <br />

@@ -69,6 +69,42 @@
   transition: left 0.5s ease-in-out;
 }
 
+@keyframes blur-in {
+  0% {
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    backdrop-filter: blur(5px);
+  }
+}
+
+@keyframes blur-out {
+  0% {
+    backdrop-filter: blur(5px);
+  }
+  100% {
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.fade-in {
+  animation: fadeIn .75s forwards;
+}
+
+.fade-out {
+  animation: fadeOut .75s forwards;
+}
+
 .icon-check {
   color: #7D4CC5;
   font-size: 10px; /* adjust as needed */
