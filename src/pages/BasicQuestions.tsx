@@ -272,6 +272,7 @@ function BasicQuestions() {
                   display: index === currentQuestion ? "block" : "none",
                   textAlign: "center",
                   width: "85%",
+                  margin: "0 auto",
                   color: "white",
                   fontWeight: "bold"
                 }}
