@@ -279,19 +279,18 @@ function BasicQuestions() {
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>
                 <br />
-                <br />
-                <center className="button-row">
+                <center className="button-row" style={{border: "2px solid white", padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                   {question.choices.map((choice, i) => (
                     <div
                       key={i}
                       onClick={() => handleAnswer(i)}
                       className="button-div"
+                      style={{flex: '0 0 48%'}}
                     >
                       {choice}
                     </div>
                   ))}
                 </center>
-                <br />
                 <br />
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   {index !== 0 && (
@@ -299,21 +298,19 @@ function BasicQuestions() {
                       onClick={handlePrevious}
                       className="button-div"
                       style={{
-                        backgroundColor: "#DEBFFD",
-                        marginRight: "20px",
+                        backgroundColor: "antiquewhite",
                       }}
                     >
                       Previous
                     </div>
                   )}
                 </div>
-                <br />
+
                 <br />
               <div style={{ position: 'relative' }}>
                 {isLoading && (
                   <div style={{
                     position: 'relative',
-                    // top: 20,
                     top: (currentQuestion >= 2) ? 20 : 0,
                     zIndex: 2,
                     color: "black",
@@ -381,11 +378,8 @@ function BasicQuestions() {
                     )
                   )}
                 </div>
-              <br></br>
               </div>
             ))}
-            <br />
-            <br />
             <br />
             <br />
             <br />

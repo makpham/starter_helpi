@@ -78,6 +78,9 @@ function App() {
             Submit
           </Button>
         </Form>
+        <br />
+        <br />
+        <br />
       </footer>
       
     </HashRouter>
