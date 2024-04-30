@@ -23,7 +23,7 @@
   .options-container {
     display: flex;
     justify-content: space-around;
-    align-items: start;
+    align-items: flex-start;
     width: 80%;
     max-width: 960px;
     margin: 20px 0;
