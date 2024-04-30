@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import { MenuBar } from "../components/Menu";
-import img from "../imgs/CISC275Logo.webp";
+import img from "../imgs/newdog.webp";
 
 
 const Header = () => {
