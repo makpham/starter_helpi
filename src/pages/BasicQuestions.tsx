@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import "./BasicQuestions.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -199,6 +201,7 @@ function BasicQuestions() {
 
   return (
     <div style={{ alignItems: "center" }}>
+      <Header />
       <div style={{ backgroundColor: "#FFBB70" }}>
         <br />
         <br />
@@ -384,8 +387,11 @@ function BasicQuestions() {
             <br />
             <br />
           </div>
+          <br />
+          <br />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
