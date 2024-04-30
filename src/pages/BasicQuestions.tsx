@@ -314,7 +314,7 @@ function BasicQuestions() {
                 {isLoading && (
                   <div style={{
                     position: 'relative',
-                    top: (currentQuestion >= 2) ? 20 : 0,
+                    top: (currentQuestion >= 1) ? 20 : 0,
                     zIndex: 2,
                     color: "black",
                   }}
