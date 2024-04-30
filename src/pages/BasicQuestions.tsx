@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import "./BasicQuestions.css";
-import Header from "../components/Header"
-import Footer from "../components/Footer";
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [maxPercentage, setMaxPercentage] = useState(100);
+
+  // Add a new state variable for the loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Add a new state variable for the blur state
+  const [isBlurred, setIsBlurred] = useState(false);
+
   const [gpt_answer, setGptAnswer] = useState([
     {
       jobs: [
@@ -20,10 +25,12 @@ function BasicQuestions() {
       ],
     },
   ]);
+
   const openai = new OpenAI({
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
+
   const questions = [
     {
       question:
@@ -155,6 +162,11 @@ function BasicQuestions() {
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
+    // Set loading state to true when user selects an answer
+    setIsLoading(true);
+    // Set blur state to true when update starts
+    setIsBlurred(true);
+
     try {
       const gpt_call = await call_gpt(question_answered, answer);
       const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling
@@ -166,38 +178,70 @@ function BasicQuestions() {
       } else {
         setIsLastQuestionAnswered(true);
       }
+
+      // Set loading state to false after response is processed
+      setIsLoading(false);
+
+      // Set blur state to false after update is processed
+      setIsBlurred(false);
+
     } catch (error) {
       console.error("Error handling the GPT call:", error);
       // Will fix this later but the loop is to ensure that the returned is actually formattable JSON
+
+      // Set loading state to false in case of error
+      setIsLoading(false);
+
+      // Set blur state to false in case of error
+      setIsBlurred(false);
     }
   };
 
   return (
-  <div>
-    <Header />
-    <div className="bq-body">
-      <div>
+    <div style={{ alignItems: "center" }}>
+      <div style={{ backgroundColor: "#FFBB70" }}>
         <br />
         <br />
-        <div>
-          <div className="bq-flex-center">
-            <div className="bq-space-between">
-              <div className="bq-progress-bar-container">
+        <div
+          style={{
+            animationName: "bounce",
+            animationDuration: "2s",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginBottom: "20px",
+              width: "80%",
+              margin: "0 auto",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <div className="progress-bar-container">
                 <ProgressBar
                   now={progress}
                   striped
                   variant="info"
-                  className="progress-bar"
+                  style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
                 >
                   <div
-                    className="bq-progress-bar-fill"
+                    className="progress-bar-fill"
                     style={{ width: `${progress}%` }}
                   ></div>
                   <div
-                    className="bq-progress-bar-circle"
+                    className="progress-bar-circle"
                     style={{ left: `calc(${progress}% - 15px)` }}
                   >
-                    <div className="bq-icon-check">
+                    <div className="icon-check">
                       {isLastQuestionAnswered &&
                       currentQuestion === questions.length - 1
                         ? "100%"
@@ -210,81 +254,132 @@ function BasicQuestions() {
           </div>
           <br />
           <br />
-          <div className="bq-container">
+          <div
+            style={{
+              width: "80%",
+              margin: "0 auto",
+              border: "5px solid #FFA254",
+              borderRadius: "10px",
+              backgroundColor: "#62A0D1"
+            }}
+          >
             <br />
             <br />
             {questions.map((question, index) => (
               <div
                 key={index}
-                className={`bq-question-container ${
-                  index === currentQuestion ? "active" : ""
-                }`}
+                style={{
+                  display: index === currentQuestion ? "block" : "none",
+                  textAlign: "center",
+                  width: "85%",
+                  margin: "0 auto",
+                  color: "white",
+                  fontWeight: "bold"
+                }}
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>
                 <br />
-                <br />
-                <center className="bq-button-row">
+                <center className="button-row" style={{border: "2px solid white", padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                   {question.choices.map((choice, i) => (
                     <div
                       key={i}
                       onClick={() => handleAnswer(i)}
-                      className="bq-button-div"
+                      className="button-div"
+                      style={{flex: '0 0 48%'}}
                     >
                       {choice}
                     </div>
                   ))}
                 </center>
                 <br />
-                <br />
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   {index !== 0 && (
                     <div
                       onClick={handlePrevious}
-                      className="bq-button-div previous"
+                      className="button-div"
+                      style={{
+                        backgroundColor: "antiquewhite",
+                      }}
                     >
                       Previous
                     </div>
                   )}
                 </div>
+
                 <br />
-                <br />
-                {gpt_answer.map(
-                  (
-                    answer: {
-                      jobs: { name: string; percentage_match: number }[];
-                    },
-                    index: number
-                  ) => (
+              <div style={{ position: 'relative' }}>
+                {isLoading && (
+                  <div style={{
+                    position: 'relative',
+                    top: (currentQuestion >= 2) ? 20 : 0,
+                    zIndex: 2,
+                    color: "black",
+                  }}
+                  className={isLoading ? "fade-in" : "fade-out"}
+                  >
                     <div
-                      key={index}
+                      className={`blur-effect`}
                       style={{
-                        display: index === currentGPTAnswer ? "block" : "none",
-                        textAlign: "center",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
                       }}
                     >
-                      {answer.jobs.map(
-                        (
-                          job_name: { name: string; percentage_match: number },
-                          test: number
-                        ) => (
-                          <ProgressBar
-                            striped
-                            variant="success"
-                            now={job_name.percentage_match}
-                            label={job_name.name}
-                            key={test}
-                            //max={maxPercentage} // will implement this later
-                          />
-                        )
-                      )}
+                      Realtime results loading...
                     </div>
-                  )
-                )}
-                <br></br>
+                  </div>
+                  )}
+                  {gpt_answer.map(
+                    (
+                      answer: {
+                        jobs: { name: string; percentage_match: number }[];
+                      },
+                      index: number
+                    ) => (
+                      <div
+                        key={index}
+                        style={{
+                          display: index === currentGPTAnswer ? "block" : "none",
+                          textAlign: "center",
+                        }}
+                      >
+                        {answer.jobs.map(
+                          (
+                            job_name: { name: string; percentage_match: number },
+                            test: number
+                          ) => (
+                            <div style={{ position: "relative" }}>
+                              <ProgressBar
+                                striped
+                                variant="success"
+                                now={job_name.percentage_match}
+                                label={job_name.name}
+                                key={test}
+                                //max={maxPercentage} // will implement this later
+                              />
+                              <div
+                                className={`blur-effect`}
+                                style={{
+                                  position: "absolute",
+                                  top: 0,
+                                  left: 0,
+                                  width: "100%",
+                                  height: "100%",
+                                  animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
+                                }}
+                              ></div>
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             ))}
-            <br />
-            <br />
             <br />
             <br />
             <br />
@@ -292,10 +387,7 @@ function BasicQuestions() {
         </div>
       </div>
     </div>
-    <Footer />
-  </div> 
   );
-
 }
 
 export default BasicQuestions;
