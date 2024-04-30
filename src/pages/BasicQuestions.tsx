@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ProgressBar } from "react-bootstrap";
+import { ProgressBar } from "react-bootstrap";
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header"
