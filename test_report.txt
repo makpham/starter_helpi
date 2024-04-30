@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (61 ms)
+  ✕ renders learn react link (59 ms)
 
   ● renders learn react link
 
@@ -13,7 +13,7 @@ FAIL src/App.test.tsx
     [36m<body>[39m
       [36m<div>[39m
         [36m<div[39m
-          [33mstyle[39m=[32m"background-color: rgb(250, 195, 137);"[39m
+          [33mclass[39m=[32m"bg-color"[39m
         [36m>[39m
           [36m<div>[39m
             [36m<header[39m
@@ -21,7 +21,7 @@ FAIL src/App.test.tsx
             [36m>[39m
               [36m<img[39m
                 [33malt[39m=[32m"logo"[39m
-                [33msrc[39m=[32m"imglogo.png"[39m
+                [33msrc[39m=[32m"CISC275Logo.webp"[39m
               [36m/>[39m
               [36m<h1>[39m
                 [0mStarter Helpi[0m
@@ -29,7 +29,7 @@ FAIL src/App.test.tsx
             [36m</header>[39m
           [36m</div>[39m
           [36m<div[39m
-            [33mstyle[39m=[32m"background-color: rgb(250, 195, 137);"[39m
+            [33mclass[39m=[32m"bg-color"[39m
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m"grid-container"[39m
@@ -45,7 +45,7 @@ FAIL src/App.test.tsx
                 [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: initial; text-indent: 2em; gap: 3em; padding: 2em;"[39m
+                  [33mclass[39m=[32m"flex-container"[39m
                 [36m>[39m
                   [36m<div[39m
                     [33mclass[39m=[32m"container"[39m
@@ -68,7 +68,7 @@ FAIL src/App.test.tsx
                 [33mclass[39m=[32m"grid-item"[39m
               [36m>[39m
                 [36m<div[39m
-                  [33mstyle[39m=[32m"display: flex; height: 100%; justify-content: initial; text-indent: 2em; gap: 3em; padding: 2em;"[39m
+                  [33mclass[39m=[32m"flex-container"[39m
                 [36m>[39m
                   [36m<div[39m
                     [33mclass[39m=[32m"container"[39m
@@ -94,32 +94,32 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
-        [36m</div>[39m
-        [36m<footer[39m
-          [33mclass[39m=[32m"App-footer"[39m
-        [36m>[39m
-          [36m<form[39m
-            [33mclass[39m=[32m""[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"App-footer"[39m
           [36m>[39m
-            [36m<label[39m
-              [33mclass[39m=[32m"form-label"[39m
+            [36m<form[39m
+              [33mclass[39m=[32m""[39m
             [36m>[39m
-              [0mAPI Key:[0m
-            [36m</label>[39m
-            [36m<input[39m
-              [33mclass[39m=[32m"form-control"[39m
-              [33mplaceholder[39m=[32m"Insert API Key Here"[39m
-              [33mtype[39m=[32m"password"[39m
-            [36m/>[39m
-            [36m<br />[39m
-            [36m<button[39m
-              [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
-              [33mtype[39m=[32m"button"[39m
-            [36m>[39m
-              [0mSubmit[0m
-            [36m</button>[39m
-          [36m</form>[39m
-        [36m</footer>[39m
+              [36m<label[39m
+                [33mclass[39m=[32m"form-label"[39m
+              [36m>[39m
+                [0mAPI Key:[0m
+              [36m</label>[39m
+              [36m<input[39m
+                [33mclass[39m=[32m"form-control"[39m
+                [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                [33mtype[39m=[32m"password"[39m
+              [36m/>[39m
+              [36m<br />[39m
+              [36m<button[39m
+                [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
+                [33mtype[39m=[32m"button"[39m
+              [36m>[39m
+                [0mSubmit[0m
+              [36m</button>[39m
+            [36m</form>[39m
+          [36m</footer>[39m
+        [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
 
@@ -144,21 +144,23 @@ FAIL src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   13.76 |     3.03 |   17.64 |   13.23 |                   
- src                    |   42.85 |       25 |   42.85 |   40.74 |                   
-  App.tsx               |   70.58 |       50 |      60 |   68.75 | 16,33,49-55       
+All files               |      15 |     3.03 |   17.64 |   14.49 |                   
+ src                    |    8.33 |        0 |   33.33 |    8.33 |                   
+  App.tsx               |     100 |      100 |     100 |     100 |                   
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |   33.33 |      100 |   33.33 |   33.33 |                   
+ src/components         |   68.18 |       50 |      50 |   66.66 |                   
+  Footer.tsx            |   63.63 |       50 |   33.33 |   63.63 | 8,15-20           
+  Header.tsx            |    87.5 |       50 |     100 |   85.71 | 27                
   Menu.tsx              |       0 |      100 |       0 |       0 | 14-17             
   Option.tsx            |     100 |      100 |     100 |     100 |                   
- src/pages              |     5.6 |        0 |    8.33 |    5.66 |                   
-  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 7-301             
-  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 7-267             
-  Home.tsx              |   66.66 |      100 |      40 |   66.66 | 18,39-49          
+ src/pages              |    4.71 |        0 |    4.34 |    4.76 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 9-270             
+  DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 9-271             
+  Home.tsx              |    62.5 |      100 |      25 |    62.5 | 10,31-41          
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.881 s
+Time:        2.59 s
 Ran all test suites.
