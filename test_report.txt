@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (51 ms)
+  ✕ renders learn react link (54 ms)
 
   ● renders learn react link
 
@@ -41,41 +41,46 @@ FAIL src/App.test.tsx
             [36m<br />[39m
           [36m</header>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"options-container"[39m
-            [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
+            [33mclass[39m=[32m"options-wrapper"[39m
+            [33mstyle[39m=[32m"display: flex; justify-content: space-around;"[39m
           [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
+              [33mclass[39m=[32m"options-container"[39m
+              [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
             [36m>[39m
-              [36m<h1[39m
-                [33mclass[39m=[32m"title"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
-                [0mDetailed Questions[0m
-              [36m</h1>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"description"[39m
-              [36m>[39m
-                [0mAre you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.[0m
-              [36m</p>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"title"[39m
+                [36m>[39m
+                  [0mDetailed Questions[0m
+                [36m</h1>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"description"[39m
+                [36m>[39m
+                  [0mAre you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.[0m
+                [36m</p>[39m
+              [36m</div>[39m
             [36m</div>[39m
-          [36m</div>[39m
-          [36m<div[39m
-            [33mclass[39m=[32m"options-container"[39m
-            [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
-          [36m>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"container"[39m
+              [33mclass[39m=[32m"options-container"[39m
+              [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
             [36m>[39m
-              [36m<h1[39m
-                [33mclass[39m=[32m"title"[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"container"[39m
               [36m>[39m
-                [0mBasic Questions[0m
-              [36m</h1>[39m
-              [36m<p[39m
-                [33mclass[39m=[32m"description"[39m
-              [36m>[39m
-                [0mAre you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.[0m
-              [36m</p>[39m
+                [36m<h1[39m
+                  [33mclass[39m=[32m"title"[39m
+                [36m>[39m
+                  [0mBasic Questions[0m
+                [36m</h1>[39m
+                [36m<p[39m
+                  [33mclass[39m=[32m"description"[39m
+                [36m>[39m
+                  [0mAre you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.[0m
+                [36m</p>[39m
+              [36m</div>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<footer[39m
@@ -129,7 +134,7 @@ FAIL src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   14.49 |     3.03 |   17.64 |   13.97 |                   
+All files               |   13.69 |     2.63 |   17.64 |   13.19 |                   
  src                    |    8.33 |        0 |   33.33 |    8.33 |                   
   App.tsx               |     100 |      100 |     100 |     100 |                   
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
@@ -139,13 +144,13 @@ All files               |   14.49 |     3.03 |   17.64 |   13.97 |
   Header.tsx            |     100 |       50 |     100 |     100 | 25                
   Menu.tsx              |       0 |      100 |       0 |       0 | 14-17             
   Option.tsx            |     100 |      100 |     100 |     100 |                   
- src/pages              |    4.71 |        0 |    4.34 |    4.76 |                   
-  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 9-270             
+ src/pages              |    4.38 |        0 |    4.34 |    4.42 |                   
+  BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 9-357             
   DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 9-271             
-  Home.tsx              |    62.5 |      100 |      25 |    62.5 | 12,23-30          
+  Home.tsx              |    62.5 |      100 |      25 |    62.5 | 12,24-31          
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.619 s
+Time:        2.866 s
 Ran all test suites.
