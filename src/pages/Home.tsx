@@ -18,19 +18,21 @@ function Home() {
   return (
     <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})` }}>
       <Header />
-      <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
-        <Option
-          onClick={() => setPage("detailed-questions")}
-          OptionDescription={detailed_description}
-          OptionTitle="Detailed Questions"
-        />
-      </div>
-      <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
-      <Option
-          onClick={() => setPage("basic-questions")}
-          OptionDescription={basic_description}
-          OptionTitle="Basic Questions"
-        />
+      <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+          <Option
+            onClick={() => setPage("detailed-questions")}
+            OptionDescription={detailed_description}
+            OptionTitle="Detailed Questions"
+          />
+        </div>
+        <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
+          <Option
+            onClick={() => setPage("basic-questions")}
+            OptionDescription={basic_description}
+            OptionTitle="Basic Questions"
+          />
+        </div>
       </div>
       <Footer />
     </div>

@@ -1,52 +1,59 @@
-@keyframes bq-bounce {
+@keyframes bounce {
   0% { transform: scale(0); opacity: 0; }
   20% { transform: scale(1); opacity: 1; }
+}  
+
+.custom-progress-bar .progress-bar {
+  background-color: #DEBFFD !important;
+  border-color: #7D4CC5 !important;
 }
 
-.bq-body {
-  align-items: center;
-}
-
-.bq-body > div {
-  background-color: #FFC38A;
-}
-
-.bq-body > div > div {
-  animation-name: bq-bounce;
-  animation-duration: 2s;
-}
-
-.bq-flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.button-div {
+  background-color: antiquewhite;
+  color: black;
+  font-weight: bold;
   margin-bottom: 20px;
-  width: 80%;
-  margin: 0 auto;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.bq-space-between {
+.button-div:hover {
+  background-color: #658cb3;
+  color: whitesmoke;
+}
+
+.button-row {
   display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.bq-progress-bar-container {
-  margin: auto;
+.progress-bar-container {
   width: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
-.bq-progress-bar-fill {
+.progress-bar {
+  width: 100%;
+  height: 20px; /* adjust as needed */
+  background-color: #f3f3f3;
+  border-color: #6845BF;
+}
+
+.progress-bar-fill {
   height: 100%;
-  background-color: #7D4CC5;
+  background-color: #7AA2E3;
   transition: width 0.5s ease-in-out;
 }
 
-.bq-progress-bar-circle {
+.progress-bar-circle {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -57,63 +64,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #6845BF;
+  border: 3px solid #6845BF;
   box-sizing: border-box;
   transition: left 0.5s ease-in-out;
 }
 
-.bq-icon-check {
+@keyframes blur-in {
+  0% {
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    backdrop-filter: blur(5px);
+  }
+}
+
+@keyframes blur-out {
+  0% {
+    backdrop-filter: blur(5px);
+  }
+  100% {
+    backdrop-filter: blur(0px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.fade-in {
+  animation: fadeIn .75s forwards;
+}
+
+.fade-out {
+  animation: fadeOut .75s forwards;
+}
+
+.icon-check {
   color: #7D4CC5;
-  font-size: 10px;
-}
-
-.bq-container {
-  margin: auto;
-  padding: 0;
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 5px solid #FFA254;
-  border-radius: 10px;
-  background-color: #C3EEDF;
-}
-
-.bq-question-container {
-  display: none;
-  text-align: center;
-  width: 100%;
-}
-
-.bq-question-container.active {
-  display: block;
-}
-
-.bq-button-row {
-  display: flex;
-  width: 50%;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: auto;
-}
-
-.bq-button-div {
-  background-color: #7a9cc6;
-  color: white;
-  margin-bottom: 20px;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.bq-button-div:hover {
-  background-color: #658cb3;
-}
-
-.bq-button-div.previous {
-  background-color: #DEBFFD;
+  font-size: 10px; /* adjust as needed */
 }
