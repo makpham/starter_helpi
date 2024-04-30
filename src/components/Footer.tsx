@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className="App-footer">
       <Form>
-        <Form.Label>API Key:</Form.Label>
+        <Form.Label style={{ color: 'white' }}>API Key:</Form.Label>
         <Form.Control
           type="password"
           placeholder="Insert API Key Here"
