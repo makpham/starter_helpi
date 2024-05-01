@@ -53,7 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #6845BF;
+    border: 2px solid #0c416a;
     box-sizing: border-box;
     transition: left 0.5s ease-in-out;
   }
