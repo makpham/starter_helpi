@@ -203,7 +203,6 @@ function BasicQuestions() {
   return (
     <div style={{ alignItems: "center" }}>
       <Header />
-      {/* <div style={{ backgroundColor: "#FFBB70" }}> */}
       <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
         <br />
         <br />

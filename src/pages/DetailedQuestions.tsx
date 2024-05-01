@@ -4,6 +4,7 @@ import "./DetailedQuestions.css";
 import Header from "../components/Header"
 import Footer from "../components/Footer";
 import OpenAI from "openai";
+import backgroundImg from "../imgs/background.jpg";
 
 function DetailedQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -143,7 +144,7 @@ function DetailedQuestions() {
     <div>
       <Header />
     <div style={{ alignItems: "center" }}>
-      <div style={{ backgroundColor: "#FFC38A" }}>
+      <div style={{ backgroundImage: `url(${backgroundImg})`}}>
         <br />
         <br />
         <div
@@ -197,9 +198,9 @@ function DetailedQuestions() {
             style={{
               width: "80%",
               margin: "0 auto",
-              border: "5px solid #FFA254",
+              border: "5px solid #333",
               borderRadius: "10px",
-              backgroundColor: "#C3EEDF",
+              backgroundColor: "#0c416a",
             }}
           >
             <br />
@@ -211,6 +212,9 @@ function DetailedQuestions() {
                   display: index === currentQuestion ? "block" : "none",
                   textAlign: "center",
                   width: "85%",
+                  margin: "0 auto",
+                  color: "white",
+                  fontWeight: "bold"
                 }}
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>
@@ -230,14 +234,14 @@ function DetailedQuestions() {
                   <div
                     onClick={handlePrevious}
                     className="button-div"
-                    style={{ backgroundColor: "#DEBFFD" }}
+                    style={{ backgroundColor: "antiquewhite" }}
                   >
                     Previous
                   </div>
                   <div
                     onClick={handleNext}
                     className="button-div"
-                    style={{ backgroundColor: "#DEBFFD" }}
+                    style={{ backgroundColor: "antiquewhite" }}
                   >
                     {currentQuestion === questions.length - 1 &&
                     isLastQuestionAnswered
