@@ -263,7 +263,7 @@ function BasicQuestions() {
               margin: "0 auto",
               border: "5px solid #FFA254",
               borderRadius: "10px",
-              backgroundColor: "#62A0D1"
+              backgroundColor: "#0c416a"
             }}
           >
             <br />
