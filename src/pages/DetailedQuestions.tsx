@@ -11,7 +11,6 @@ function DetailedQuestions() {
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   //const [maxPercentage, setMaxPercentage] = useState(100);
-  const [validKey, setValidKey] = useState(false);
   const [gpt_answer, setGptAnswer] = useState([
     {
       jobs: [
