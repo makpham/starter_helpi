@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FormControl, ProgressBar } from "react-bootstrap";
 import "./DetailedQuestions.css";
-import Header from "../components/Header"
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
 import backgroundImg from "../imgs/background.jpg";
@@ -22,10 +22,14 @@ function DetailedQuestions() {
       ],
     },
   ]);
+  const openai = new OpenAI({
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true,
+  });
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
@@ -46,18 +50,12 @@ function DetailedQuestions() {
         temperature: 0.7,
         n: 1,
       });
-      console.log(response.choices[0].message.content);
       return response.choices[0].message.content;
     } catch (error) {
-      console.error("Error fetching data:", error);
+      return "{\"error\": \"Invalid key\"}"
     }
   };
-
-  const openai = new OpenAI({
-    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-    dangerouslyAllowBrowser: true,
-  });
-
+  
   const questions = [
     {
       question:
@@ -99,19 +97,31 @@ function DetailedQuestions() {
         alert("Please answer the question before moving on.");
         return;
       }
-      try{
-        const gpt_call = await call_gpt(questions[currentQuestion]["question"], answers[currentQuestion]);
-        const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling 
-        setGptAnswer([...gpt_answer, parsedGptCall]);
-        setGPTAnswer(currentGPTAnswer + 1);
-        const newAnswers = [...answers];
-        newAnswers[currentQuestion] = answers[currentQuestion];
-        setAnswers(newAnswers);
-        console.log("test");
-        setCurrentQuestion(currentQuestion + 1);
-      }
-      catch(error){
-        console.log(error);
+      let gpt_call = await call_gpt(
+        questions[currentQuestion]["question"],
+        answers[currentQuestion]
+      );
+      if(gpt_call !== null){
+        let parsedGptCall
+        try{
+          parsedGptCall = JSON.parse(gpt_call);
+        }catch(error){
+          console.log("JSON error from gpt");
+          handleNext();
+          return;
+        }
+        if(parsedGptCall["error"] === "Invalid key"){
+          alert("please eneter valid key")
+          return;
+        }else{
+          setGptAnswer([...gpt_answer, parsedGptCall]); 
+          setGPTAnswer(currentGPTAnswer + 1);
+          const newAnswers = [...answers];
+          newAnswers[currentQuestion] = answers[currentQuestion];
+          setAnswers(newAnswers);
+          console.log("test");
+          setCurrentQuestion(currentQuestion + 1);
+        }
       }
     } else if (
       currentQuestion === questions.length - 1 &&
@@ -125,7 +135,7 @@ function DetailedQuestions() {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
       if (currentGPTAnswer > 0) {
-        setGptAnswer([...gpt_answer.slice(0,gpt_answer.length-1)])
+        setGptAnswer([...gpt_answer.slice(0, gpt_answer.length - 1)]);
         setGPTAnswer(currentGPTAnswer - 1);
       }
     }
@@ -155,38 +165,45 @@ function DetailedQuestions() {
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "20px",
-              width: "80%",
-              margin: "0 auto",
+              animationName: "bounce",
+              animationDuration: "2s",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                width: "100%",
-                justifyContent: "space-between",
+                justifyContent: "center",
+                marginBottom: "20px",
+                width: "80%",
+                margin: "0 auto",
               }}
             >
-              <div className="progress-bar-container">
-                <div className="progress-bar">
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div className="progress-bar-container">
+                  <div className="progress-bar">
+                    <div
+                      className="progress-bar-fill"
+                      style={{ width: `${progress}%` }}
+                    ></div>
+                  </div>
                   <div
-                    className="progress-bar-fill"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
-                <div
-                  className="progress-bar-circle"
-                  style={{ left: `calc(${progress}% - 15px)` }}
-                >
-                  <div className="icon-check">
-                    {isLastQuestionAnswered &&
-                    currentQuestion === questions.length - 1
-                      ? "100%"
-                      : `${progress.toFixed(0)}%`}
+                    className="progress-bar-circle"
+                    style={{ left: `calc(${progress}% - 15px)` }}
+                  >
+                    <div className="icon-check">
+                      {isLastQuestionAnswered &&
+                      currentQuestion === questions.length - 1
+                        ? "100%"
+                        : `${progress.toFixed(0)}%`}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -237,62 +254,108 @@ function DetailedQuestions() {
                     style={{ backgroundColor: "antiquewhite" }}
                   >
                     Previous
+            <br />
+            <br></br>
+            <div
+              style={{
+                width: "80%",
+                margin: "0 auto",
+                border: "5px solid #FFA254",
+                borderRadius: "10px",
+                backgroundColor: "#C3EEDF",
+              }}
+            >
+              <br />
+              <br />
+              {questions.map((question, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: index === currentQuestion ? "block" : "none",
+                    textAlign: "center",
+                    width: "85%",
+                  }}
+                >
+                  <p style={{ marginBottom: "20px" }}>{question.question}</p>
+                  <br />
+                  <br />
+                  <center>
+                    <FormControl
+                      as="textarea"
+                      value={answers[index]}
+                      onChange={handleAnswerChange}
+                      style={{ marginBottom: "20px", maxWidth: "75%" }}
+                    />
+                    <br />
+                    <br />
+                  </center>
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <div
+                      onClick={handlePrevious}
+                      className="button-div"
+                      style={{ backgroundColor: "#DEBFFD" }}
+                    >
+                      Previous
+                    </div>
+                    <div
+                      onClick={handleNext}
+                      className="button-div"
+                      style={{ backgroundColor: "#DEBFFD" }}
+                    >
+                      {currentQuestion === questions.length - 1 &&
+                      isLastQuestionAnswered
+                        ? "Get Results"
+                        : "Next"}
+                    </div>
                   </div>
+                  <br />
+                  <br />
+                </div>
+              ))}
+              {gpt_answer.map(
+                (
+                  answer: {
+                    jobs: { name: string; percentage_match: number }[];
+                  },
+                  index: number
+                ) => (
                   <div
                     onClick={handleNext}
                     className="button-div"
                     style={{ backgroundColor: "antiquewhite" }}
+                    key={index}
+                    style={{
+                      display: index === currentGPTAnswer ? "block" : "none",
+                      textAlign: "center",
+                    }}
                   >
-                    {currentQuestion === questions.length - 1 &&
-                    isLastQuestionAnswered
-                      ? "Get Results"
-                      : "Next"}
+                    {answer.jobs.map(
+                      (
+                        job_name: { name: string; percentage_match: number },
+                        test: number
+                      ) => (
+                        <ProgressBar
+                          striped
+                          variant="success"
+                          now={job_name.percentage_match}
+                          label={job_name.name}
+                          key={test}
+                          //max={maxPercentage} // will implement this later
+                        />
+                      )
+                    )}
                   </div>
-                </div>
-                <br />
-                <br />
-              </div>
-            ))}
-            {gpt_answer.map(
-                  (
-                    answer: {
-                      jobs: { name: string; percentage_match: number }[];
-                    },
-                    index: number
-                  ) => (
-              <div
-                key={index}
-                style={{
-                  display: index === currentGPTAnswer ? "block" : "none",
-                  textAlign: "center",
-                }}
-              >
-                {answer.jobs.map(
-                        (
-                          job_name: { name: string; percentage_match: number },
-                          test: number
-                        ) => (
-                          <ProgressBar
-                            striped
-                            variant="success"
-                            now={job_name.percentage_match}
-                            label={job_name.name}
-                            key={test}
-                            //max={maxPercentage} // will implement this later
-                          />
-                        )
-                      )}
-              </div>
-            ))}
+                )
+              )}
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </div>
       </div>
-    </div>
       <Footer />
     </div>
   );

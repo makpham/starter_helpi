@@ -134,7 +134,7 @@ function BasicQuestions() {
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
@@ -157,7 +157,7 @@ function BasicQuestions() {
       });
       return response.choices[0].message.content;
     } catch (error) {
-      console.error("Error fetching data:", error);
+      return "{\"error\": \"Invalid key\"}"
     }
   };
 
@@ -170,34 +170,38 @@ function BasicQuestions() {
     // Set blur state to true when update starts
     setIsBlurred(true);
 
-    try {
-      const gpt_call = await call_gpt(question_answered, answer);
-      const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling
+
+    let gpt_call = await call_gpt(question_answered, answer);
+
+    if(gpt_call !== null){
+      let parsedGptCall
+      try{
+        parsedGptCall = JSON.parse(gpt_call);
+      }catch(error){
+        console.log("JSON error from gpt");
+        handleAnswer(choice_index);
+        return;
+      }
+      if(parsedGptCall["error"] === "Invalid key"){
+        alert("please eneter valid key")
+        return;
+      }else{
       setGptAnswer([...gpt_answer, parsedGptCall]);
       setGPTAnswer(currentGPTAnswer + 1);
       setMaxPercentage(findMax(gpt_answer[currentGPTAnswer]));
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        setIsLastQuestionAnswered(true);
       }
-
-      // Set loading state to false after response is processed
-      setIsLoading(false);
-
-      // Set blur state to false after update is processed
-      setIsBlurred(false);
-
-    } catch (error) {
-      console.error("Error handling the GPT call:", error);
-      // Will fix this later but the loop is to ensure that the returned is actually formattable JSON
-
-      // Set loading state to false in case of error
-      setIsLoading(false);
-
-      // Set blur state to false in case of error
-      setIsBlurred(false);
     }
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setIsLastQuestionAnswered(true);
+    }
+    // Set loading state to false after response is processed
+    setIsLoading(false);
+
+    // Set blur state to false after update is processed
+    setIsBlurred(false);
+
   };
 
   return (
