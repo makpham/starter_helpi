@@ -4,7 +4,6 @@ import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import backgroundImg from "../imgs/background.jpg";
 
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -207,7 +206,7 @@ function BasicQuestions() {
   return (
     <div style={{ alignItems: "center" }}>
       <Header />
-      <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
+      <div style={{ backgroundColor: "#FFBB70" }}>
         <br />
         <br />
         <div
@@ -239,7 +238,7 @@ function BasicQuestions() {
                   now={progress}
                   striped
                   variant="info"
-                  style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
+                  style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
                 >
                   <div
                     className="progress-bar-fill"
@@ -266,9 +265,9 @@ function BasicQuestions() {
             style={{
               width: "80%",
               margin: "0 auto",
-              border: "5px solid #333",
+              border: "5px solid #FFA254",
               borderRadius: "10px",
-              backgroundColor: "#0c416a"
+              backgroundColor: "#62A0D1"
             }}
           >
             <br />
@@ -319,7 +318,7 @@ function BasicQuestions() {
                 {isLoading && (
                   <div style={{
                     position: 'relative',
-                    top: (currentQuestion >= 1) ? 20 : 0,
+                    top: (currentQuestion >= 2) ? 20 : 0,
                     zIndex: 2,
                     color: "black",
                   }}
