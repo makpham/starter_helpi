@@ -18,7 +18,6 @@ function Home() {
   return (
     <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})` }}>
       <Header />
-      <br />
       <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around' }}>
         <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
           <Option
@@ -35,7 +34,6 @@ function Home() {
           />
         </div>
       </div>
-      <br />
       <Footer />
     </div>
   );
