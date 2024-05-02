@@ -4,6 +4,7 @@ import "./DetailedQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
+import backgroundImg from "../imgs/background.jpg";
 
 function DetailedQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -152,10 +153,16 @@ function DetailedQuestions() {
   return (
     <div>
       <Header />
-      <div style={{ alignItems: "center" }}>
-        <div style={{ backgroundColor: "#FFC38A" }}>
-          <br />
-          <br />
+    <div style={{ alignItems: "center" }}>
+      <div style={{ backgroundImage: `url(${backgroundImg})`}}>
+        <br />
+        <br />
+        <div
+          style={{
+            animationName: "bounce",
+            animationDuration: "2s",
+          }}
+        >
           <div
             style={{
               animationName: "bounce",
@@ -201,6 +208,52 @@ function DetailedQuestions() {
                 </div>
               </div>
             </div>
+          </div>
+          <br />
+          <br></br>
+          <div
+            style={{
+              width: "80%",
+              margin: "0 auto",
+              border: "5px solid #333",
+              borderRadius: "10px",
+              backgroundColor: "#0c416a",
+            }}
+          >
+            <br />
+            <br />
+            {questions.map((question, index) => (
+              <div
+                key={index}
+                style={{
+                  display: index === currentQuestion ? "block" : "none",
+                  textAlign: "center",
+                  width: "85%",
+                  margin: "0 auto",
+                  color: "white",
+                  fontWeight: "bold"
+                }}
+              >
+                <p style={{ marginBottom: "20px" }}>{question.question}</p>
+                <br />
+                <br />
+                <center>
+                  <FormControl
+                    as="textarea"
+                    value={answers[index]}
+                    onChange={handleAnswerChange}
+                    style={{ marginBottom: "20px", maxWidth: "75%" }}
+                  />
+                  <br />
+                  <br />
+                </center>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <div
+                    onClick={handlePrevious}
+                    className="button-div"
+                    style={{ backgroundColor: "antiquewhite" }}
+                  >
+                    Previous
             <br />
             <br></br>
             <div
@@ -267,6 +320,9 @@ function DetailedQuestions() {
                   index: number
                 ) => (
                   <div
+                    onClick={handleNext}
+                    className="button-div"
+                    style={{ backgroundColor: "antiquewhite" }}
                     key={index}
                     style={{
                       display: index === currentGPTAnswer ? "block" : "none",
