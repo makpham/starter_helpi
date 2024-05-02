@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import backgroundImg from "../imgs/background.jpg";
 
+// update
+
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
