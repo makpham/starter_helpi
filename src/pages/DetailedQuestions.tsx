@@ -171,18 +171,18 @@ function DetailedQuestions() {
                 justifyContent: "space-between",
               }}
             >
-              <div className="progress-bar-container">
-                <div className="progress-bar">
+              <div className="progress-bar-container-detailed">
+                <div className="progress-bar-detailed" style={{flex: 1, borderRadius: "10px", border: '3px solid black' }}>
                   <div
-                    className="progress-bar-fill"
+                    className="progress-bar-fill-detailed"
                     style={{ width: `${progress}%` }}
                   ></div>
                 </div>
                 <div
-                  className="progress-bar-circle"
+                  className="progress-bar-circle-detailed"
                   style={{ left: `calc(${progress}% - 15px)` }}
                 >
-                  <div className="icon-check">
+                  <div className="icon-check-detailed">
                     {isLastQuestionAnswered &&
                     currentQuestion === questions.length - 1
                       ? "100%"

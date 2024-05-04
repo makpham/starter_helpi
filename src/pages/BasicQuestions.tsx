@@ -232,7 +232,7 @@ function BasicQuestions() {
                 justifyContent: "space-between",
               }}
             >
-              <div className="progress-bar-container">
+              <div className="progress-bar-container-basic">
                 <ProgressBar
                   now={progress}
                   striped
@@ -240,14 +240,14 @@ function BasicQuestions() {
                   style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
                 >
                   <div
-                    className="progress-bar-fill"
+                    className="progress-bar-fill-basic"
                     style={{ width: `${progress}%` }}
                   ></div>
                   <div
-                    className="progress-bar-circle"
+                    className="progress-bar-circle-basic"
                     style={{ left: `calc(${progress}% - 15px)` }}
                   >
-                    <div className="icon-check">
+                    <div className="icon-check-basic">
                       {isLastQuestionAnswered &&
                       currentQuestion === questions.length - 1
                         ? "100%"

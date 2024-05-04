@@ -3,9 +3,9 @@
     20% { transform: scale(1); opacity: 1; }
   }  
 
-.custom-progress-bar .progress-bar {
+.custom-progress-bar .progress-bar-detailed {
   background-color: #DEBFFD !important;
-  border-color: #7D4CC5 !important;
+  border-color: #0c416a !important;
 }
 
 .button-div {
@@ -22,27 +22,27 @@
   background-color: #7D4CC5 !important;
 }
 
-.progress-bar-container {
+.progress-bar-container-detailed {
   width: 100%;
   position: relative;
   display: flex;
   justify-content: flex-end;
 }
 
-.progress-bar {
+.progress-bar-detailed {
   width: 100%;
   height: 20px; /* adjust as needed */
   background-color: #f3f3f3;
-  border-color: #6845BF;
+  border-color: #0c416a;
 }
 
-.progress-bar-fill {
+.progress-bar-fill-detailed {
   height: 100%;
-  background-color: #7D4CC5;
+  background-color: #7AA2E3;
   transition: width 0.5s ease-in-out;
 }
 
-.progress-bar-circle {
+.progress-bar-circle-detailed {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -53,12 +53,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #0c416a;
+  border: 3px solid #0c416a;
   box-sizing: border-box;
   transition: left 0.5s ease-in-out;
 }
 
-.icon-check {
-  color: #7D4CC5;
+.icon-check-detailed {
+  color: #0c416a;
   font-size: 10px; 
 }
