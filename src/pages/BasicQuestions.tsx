@@ -222,6 +222,8 @@ function BasicQuestions() {
               marginBottom: "20px",
               width: "80%",
               margin: "0 auto",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             <div
@@ -266,7 +268,9 @@ function BasicQuestions() {
               margin: "0 auto",
               border: "5px solid #333",
               borderRadius: "10px",
-              backgroundColor: "#0c416a"
+              backgroundColor: "#0c416a",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             <br />

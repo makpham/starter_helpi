@@ -161,6 +161,8 @@ function DetailedQuestions() {
               marginBottom: "20px",
               width: "80%",
               margin: "0 auto",
+              marginLeft: "auto",
+              marginRight: "auto",
             }}
           >
             <div
@@ -172,12 +174,16 @@ function DetailedQuestions() {
               }}
             >
               <div className="progress-bar-container-detailed">
-                <div className="progress-bar-detailed" style={{flex: 1, borderRadius: "10px", border: '3px solid black' }}>
-                  <div
-                    className="progress-bar-fill-detailed"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
+              <ProgressBar
+                  now={progress}
+                  striped
+                  variant="info"
+                  style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
+                >
+                <div
+                  className="progress-bar-fill-detailed"
+                  style={{ width: `${progress}%` }}
+                ></div>
                 <div
                   className="progress-bar-circle-detailed"
                   style={{ left: `calc(${progress}% - 15px)` }}
@@ -189,6 +195,7 @@ function DetailedQuestions() {
                       : `${progress.toFixed(0)}%`}
                   </div>
                 </div>
+                </ProgressBar>
               </div>
             </div>
           </div>
