@@ -164,6 +164,11 @@ function BasicQuestions() {
   };
 
   const handleAnswer = async (choice_index: number) => {
+      // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
