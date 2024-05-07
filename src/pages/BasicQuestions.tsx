@@ -207,6 +207,19 @@ function BasicQuestions() {
     }
   };
 
+  /* TASKS: 
+    -center all the components 
+
+    -fix the progress bar circle, make it fully displayed or get
+    rid of it and have another icon make it look better
+    
+    -add some nice background affects
+
+    -get rid of uncessary divs, put some of them together
+
+    -also add padding/margin not brs
+    ----------------------------------------------------*/
+
   return (
     <div style={{ alignItems: "center" }}>
       <Header />
@@ -294,7 +307,7 @@ function BasicQuestions() {
               >
                 <p style={{ marginBottom: "20px" }}>{question.question}</p>
                 <br />
-                <center className="button-row" style={{border: "2px solid white", padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                <center className="button-row" style={{padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                   {question.choices.map((choice, i) => (
                     <div
                       key={i}
