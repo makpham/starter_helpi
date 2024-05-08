@@ -5,6 +5,7 @@ import "./DetailedQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
+import backgroundImg from "../imgs/background.jpg";
 
 function DetailedQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -155,154 +156,146 @@ function DetailedQuestions() {
   return (
     <div>
       <Header />
-      <div style={{ alignItems: "center" }}>
-        <div style={{ backgroundColor: "#FFC38A" }}>
-          <br />
-          <br />
+    <div style={{ alignItems: "center" }}>
+      <div style={{ backgroundImage: `url(${backgroundImg})`}}>
+        <div
+          style={{
+            animationName: "bounce",
+            animationDuration: "2s",
+            padding: "2em 0 6em",
+          }}
+        >
           <div
             style={{
-              animationName: "bounce",
-              animationDuration: "2s",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              margin: "0 auto 20px",
+              width: "80%",
             }}
           >
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "20px",
-                width: "80%",
-                margin: "0 auto",
+                width: "100%",
+                justifyContent: "space-between",
               }}
             >
+              <div className="progress-bar-container-detailed">
+              <ProgressBar
+                  now={progress}
+                  striped
+                  variant="info"
+                  style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
+                >
+                <div
+                  className="progress-bar-fill-detailed"
+                  style={{ width: `${progress}%` }}
+                ></div>
+                <div
+                  className="progress-bar-circle-detailed"
+                  style={{ left: `calc(${progress}% - 15px)` }}
+                >
+                  <div className="icon-check-detailed">
+                    {isLastQuestionAnswered &&
+                    currentQuestion === questions.length - 1
+                      ? "100%"
+                      : `${progress.toFixed(0)}%`}
+                  </div>
+                </div>
+                </ProgressBar>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              width: "80%",
+              margin: "0 auto",
+              border: "5px solid #333",
+              borderRadius: "10px",
+              backgroundColor: "#0c416a",
+              paddingTop: "1em"
+            }}
+          >
+            {questions.map((question, index) => (
               <div
+                key={index}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  width: "100%",
-                  justifyContent: "space-between",
+                  display: index === currentQuestion ? "block" : "none",
+                  textAlign: "center",
+                  width: "85%",
+                  margin: "0 auto",
+                  color: "white",
+                  fontWeight: "bold",
+                  paddingTop: "2em",
                 }}
               >
-                <div className="progress-bar-container">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-bar-fill"
-                      style={{ width: `${progress}%` }}
-                    ></div>
+                <p style={{ marginBottom: "20px", paddingBottom: "2em" }}>{question.question}</p>
+                <center>
+                  <FormControl
+                    as="textarea"
+                    value={answers[index]}
+                    onChange={handleAnswerChange}
+                    style={{ marginBottom: "20px", maxWidth: "75%", paddingBottom: "2em" }}
+                  />
+                </center>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "2em" }}>
+                  <div
+                    onClick={handlePrevious}
+                    className="button-div"
+                    style={{ backgroundColor: "antiquewhite" }}
+                  >
+                    Previous
                   </div>
                   <div
-                    className="progress-bar-circle"
-                    style={{ left: `calc(${progress}% - 15px)` }}
+                    onClick={handleNext}
+                    className="button-div"
+                    style={{ backgroundColor: "antiquewhite" }}
                   >
-                    <div className="icon-check">
-                      {isLastQuestionAnswered &&
-                      currentQuestion === questions.length - 1
-                        ? "100%"
-                        : `${progress.toFixed(0)}%`}
-                    </div>
+                    {currentQuestion === questions.length - 1 &&
+                    isLastQuestionAnswered
+                      ? "Get Results"
+                      : "Next"}
                   </div>
                 </div>
               </div>
-            </div>
-            <br />
-            <br></br>
-            <div
-              style={{
-                width: "80%",
-                margin: "0 auto",
-                border: "5px solid #FFA254",
-                borderRadius: "10px",
-                backgroundColor: "#C3EEDF",
-              }}
-            >
-              <br />
-              <br />
-              {questions.map((question, index) => (
-                <div
-                  key={index}
-                  style={{
-                    display: index === currentQuestion ? "block" : "none",
-                    textAlign: "center",
-                    width: "85%",
-                  }}
-                >
-                  <p style={{ marginBottom: "20px" }}>{question.question}</p>
-                  <br />
-                  <br />
-                  <center>
-                    <FormControl
-                      as="textarea"
-                      value={answers[index]}
-                      onChange={handleAnswerChange}
-                      style={{ marginBottom: "20px", maxWidth: "75%" }}
-                    />
-                    <br />
-                    <br />
-                  </center>
-                  <div style={{ display: "flex", justifyContent: "center" }}>
-                    <div
-                      onClick={handlePrevious}
-                      className="button-div"
-                      style={{ backgroundColor: "#DEBFFD" }}
-                    >
-                      Previous
-                    </div>
-                    <div
-                      onClick={handleNext}
-                      className="button-div"
-                      style={{ backgroundColor: "#DEBFFD" }}
-                    >
-                      {currentQuestion === questions.length - 1 &&
-                      isLastQuestionAnswered
-                        ? "Get Results"
-                        : "Next"}
-                    </div>
-                  </div>
-                  <br />
-                  <br />
-                </div>
-              ))}
-              {gpt_answer.map(
-                (
-                  answer: {
-                    jobs: { name: string; percentage_match: number }[];
-                  },
-                  index: number
-                ) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: index === currentGPTAnswer ? "block" : "none",
-                      textAlign: "center",
-                    }}
-                  >
-                    {answer.jobs.map(
-                      (
-                        job_name: { name: string; percentage_match: number },
-                        test: number
-                      ) => (
-                        <ProgressBar
-                          striped
-                          variant="success"
-                          now={job_name.percentage_match}
-                          label={job_name.name}
-                          key={test}
-                          //max={maxPercentage} // will implement this later
-                        />
-                      )
-                    )}
-                  </div>
-                )
-              )}
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            ))}
+            {gpt_answer.map(
+                  (
+                    answer: {
+                      jobs: { name: string; percentage_match: number }[];
+                    },
+                    index: number
+                  ) => (
+              <div
+                key={index}
+                style={{
+                  display: index === currentGPTAnswer ? "block" : "none",
+                  textAlign: "center",
+                }}
+              >
+                {answer.jobs.map(
+                        (
+                          job_name: { name: string; percentage_match: number },
+                          test: number
+                        ) => (
+                          <ProgressBar
+                            striped
+                            variant="success"
+                            now={job_name.percentage_match}
+                            label={job_name.name}
+                            key={test}
+                            //max={maxPercentage} // will implement this later
+                          />
+                        )
+                      )}
+              </div>
+            ))}
           </div>
         </div>
       </div>
+    </div>
       <Footer />
     </div>
   );

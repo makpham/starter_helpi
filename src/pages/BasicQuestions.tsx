@@ -6,6 +6,7 @@ import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import backgroundImg from "../imgs/background.jpg";
 
 
 function BasicQuestions() {
@@ -149,7 +150,7 @@ function BasicQuestions() {
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4-turbo",
         messages: [
           {
             role: "system",
@@ -177,6 +178,17 @@ function BasicQuestions() {
   };
 
   const handleAnswer = async (choice_index: number) => {
+
+    // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
+      // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
@@ -230,6 +242,14 @@ function BasicQuestions() {
     }
   };
 
+  /* TASKS: 
+    -also add padding/margin not brs
+    ----------------------------------------------------*/
+
+  /* TASKS: 
+    -also add padding/margin not brs
+    ----------------------------------------------------*/
+
   return (
 
 /* TASKS: 
@@ -247,13 +267,14 @@ function BasicQuestions() {
 
     <div style={{ alignItems: "center" }}>
       <Header />
-      <div style={{ backgroundColor: "#FFBB70" }}>
-        <br />
-        <br />
+      <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
+        
+        
         <div
           style={{
             animationName: "bounce",
             animationDuration: "2s",
+            padding: "2.5em 0",
           }}
         >
           <div
@@ -261,9 +282,11 @@ function BasicQuestions() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
               width: "80%",
-              margin: "0 auto",
+              margin: "0 auto 2em",
+              marginLeft: "auto",
+              marginRight: "auto",
+              
             }}
           >
             <div
@@ -274,7 +297,7 @@ function BasicQuestions() {
                 justifyContent: "space-between",
               }}
             >
-              <div className="progress-bar-container">
+              <div className="progress-bar-container-basic">
                 <ProgressBar
                   now={progress}
                   striped
@@ -282,14 +305,14 @@ function BasicQuestions() {
                   style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
                 >
                   <div
-                    className="progress-bar-fill"
+                    className="progress-bar-fill-basic"
                     style={{ width: `${progress}%` }}
                   ></div>
                   <div
-                    className="progress-bar-circle"
+                    className="progress-bar-circle-basic"
                     style={{ left: `calc(${progress}% - 15px)` }}
                   >
-                    <div className="icon-check">
+                    <div className="icon-check-basic">
                       {isLastQuestionAnswered &&
                       currentQuestion === questions.length - 1
                         ? "100%"
@@ -300,19 +323,18 @@ function BasicQuestions() {
               </div>
             </div>
           </div>
-          <br />
-          <br />
+
+
           <div
             style={{
               width: "80%",
-              margin: "0 auto",
-              border: "5px solid #FFA254",
-              borderRadius: "10px",
-              backgroundColor: "#62A0D1"
+              margin: "0 auto 2em",
+              border: "5px solid #333",
+              borderRadius: "20px",
+              backgroundColor: "#0c416a",
+              paddingBottom: "5em",
             }}
           >
-            <br />
-            <br />
             {questions.map((question, index) => (
               <div
                 key={index}
@@ -325,9 +347,8 @@ function BasicQuestions() {
                   fontWeight: "bold"
                 }}
               >
-                <p style={{ marginBottom: "20px" }}>{question.question}</p>
-                <br />
-                <center className="button-row" style={{border: "2px solid white", padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                <p style={{margin: "20px", paddingBottom: "1em"}}>{question.question}</p>
+                <center className="button-row" style={{padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                   {question.choices.map((choice, i) => (
                     <div
                       key={i}
@@ -339,8 +360,7 @@ function BasicQuestions() {
                     </div>
                   ))}
                 </center>
-                <br />
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", padding: "1em"}}>
                   {index !== 0 && (
                     <div
                       onClick={handlePrevious}
@@ -354,8 +374,6 @@ function BasicQuestions() {
                   )}
                   {isLastQuestionAnswered && <button onClick={handleGetResults}>Get Results</button>}
                 </div>
-
-                <br />
               <div style={{ position: 'relative' }}>
                 {isLoading && (
                   <div style={{
@@ -419,12 +437,9 @@ function BasicQuestions() {
                 </div>
               </div>
             ))}
-            <br />
-            <br />
-            <br />
           </div>
-          <br />
-          <br />
+
+
         </div>
       </div>
       <Footer />
