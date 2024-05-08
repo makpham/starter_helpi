@@ -208,15 +208,6 @@ function BasicQuestions() {
   };
 
   /* TASKS: 
-    -center all the components 
-
-    -fix the progress bar circle, make it fully displayed or get
-    rid of it and have another icon make it look better
-    
-    -add some nice background affects
-
-    -get rid of uncessary divs, put some of them together
-
     -also add padding/margin not brs
     ----------------------------------------------------*/
 

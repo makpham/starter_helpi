@@ -61,7 +61,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: #0c416a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,6 +107,7 @@
 }
 
 .icon-check-basic {
-  color: #0c416a;
+  color: white;
   font-size: 10px; /* adjust as needed */
+  font-weight: bold;
 }
