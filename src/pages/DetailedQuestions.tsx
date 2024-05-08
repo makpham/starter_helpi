@@ -145,12 +145,11 @@ function DetailedQuestions() {
       <Header />
     <div style={{ alignItems: "center" }}>
       <div style={{ backgroundImage: `url(${backgroundImg})`}}>
-        <br />
-        <br />
         <div
           style={{
             animationName: "bounce",
             animationDuration: "2s",
+            padding: "2em 0 6em",
           }}
         >
           <div
@@ -158,11 +157,8 @@ function DetailedQuestions() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              margin: "0 auto 20px",
               width: "80%",
-              margin: "0 auto",
-              marginLeft: "auto",
-              marginRight: "auto",
             }}
           >
             <div
@@ -199,8 +195,6 @@ function DetailedQuestions() {
               </div>
             </div>
           </div>
-          <br />
-          <br></br>
           <div
             style={{
               width: "80%",
@@ -208,10 +202,9 @@ function DetailedQuestions() {
               border: "5px solid #333",
               borderRadius: "10px",
               backgroundColor: "#0c416a",
+              paddingTop: "1em"
             }}
           >
-            <br />
-            <br />
             {questions.map((question, index) => (
               <div
                 key={index}
@@ -221,23 +214,20 @@ function DetailedQuestions() {
                   width: "85%",
                   margin: "0 auto",
                   color: "white",
-                  fontWeight: "bold"
+                  fontWeight: "bold",
+                  paddingTop: "2em",
                 }}
               >
-                <p style={{ marginBottom: "20px" }}>{question.question}</p>
-                <br />
-                <br />
+                <p style={{ marginBottom: "20px", paddingBottom: "2em" }}>{question.question}</p>
                 <center>
                   <FormControl
                     as="textarea"
                     value={answers[index]}
                     onChange={handleAnswerChange}
-                    style={{ marginBottom: "20px", maxWidth: "75%" }}
+                    style={{ marginBottom: "20px", maxWidth: "75%", paddingBottom: "2em" }}
                   />
-                  <br />
-                  <br />
                 </center>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "2em" }}>
                   <div
                     onClick={handlePrevious}
                     className="button-div"
@@ -256,8 +246,6 @@ function DetailedQuestions() {
                       : "Next"}
                   </div>
                 </div>
-                <br />
-                <br />
               </div>
             ))}
             {gpt_answer.map(
@@ -292,11 +280,6 @@ function DetailedQuestions() {
               </div>
             ))}
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </div>
       </div>
     </div>
