@@ -1,7 +1,27 @@
 @keyframes bounce {
   0% { transform: scale(0); opacity: 0; }
   20% { transform: scale(1); opacity: 1; }
-}  
+}
+
+@keyframes blur-in {
+  0% { backdrop-filter: blur(0px); }
+  100% { backdrop-filter: blur(5px); }
+}
+
+@keyframes blur-out {
+  0% { backdrop-filter: blur(5px); }
+  100% { backdrop-filter: blur(0px); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
 
 .custom-progress-bar .progress-bar {
   background-color: #DEBFFD !important;
@@ -38,11 +58,14 @@
   position: relative;
   display: flex;
   justify-content: flex-end;
+  flex: 1;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .progress-bar {
   width: 100%;
-  height: 20px; /* adjust as needed */
+  height: 20px;
   background-color: #f3f3f3;
   border-color: #6845BF;
 }
@@ -69,34 +92,6 @@
   transition: left 0.5s ease-in-out;
 }
 
-@keyframes blur-in {
-  0% {
-    backdrop-filter: blur(0px);
-  }
-  100% {
-    backdrop-filter: blur(5px);
-  }
-}
-
-@keyframes blur-out {
-  0% {
-    backdrop-filter: blur(5px);
-  }
-  100% {
-    backdrop-filter: blur(0px);
-  }
-}
-
-@keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-}
-
-@keyframes fadeOut {
-  0% {opacity: 1;}
-  100% {opacity: 0;}
-}
-
 .fade-in {
   animation: fadeIn .75s forwards;
 }
@@ -107,5 +102,34 @@
 
 .icon-check {
   color: #7D4CC5;
-  font-size: 10px; /* adjust as needed */
+  font-size: 10px;
+}
+
+.center-align {
+  align-items: center;
+}
+
+.bg-color {
+  background-color: #FFBB70;
+}
+
+.bounce-animation {
+  animation-name: bounce;
+  animation-duration: 2s;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.flex-space-between {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
 }

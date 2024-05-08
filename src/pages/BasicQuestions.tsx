@@ -1,12 +1,45 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
+import ResultsPage from "./ResultsPage";
+// update
 
 function BasicQuestions() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
+  const [maxPercentage, setMaxPercentage] = useState(100);
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
+
+  // Add a new state variable for the loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Add a new state variable for the blur state
+  const [isBlurred, setIsBlurred] = useState(false);
+
+  const [gpt_answer, setGptAnswer] = useState([
+    {
+      jobs: [
+        {
+          name: "sample name",
+          percentage_match: 0,
+        },
+      ],
+    },
+  ]);
+
+  const openai = new OpenAI({
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true,
+  });
+  
   const questions = [
     {
       question:
@@ -208,85 +241,59 @@ function BasicQuestions() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsLastQuestionAnswered(true);
+      
     }
     // Set loading state to false after response is processed
     setIsLoading(false);
 
     // Set blur state to false after update is processed
-    setIsBlurred(false);
-
+    setIsBlurred(false)
+    
   };
+  const finalAnswer = isLastQuestionAnswered ? (
+    <button onClick={() => setPage("results-page")}>Get Results</button>
+  ) : null;
+
+  
 
   return (
 
-/* TASKS: 
-    -center all the components 
+/* TASKS:
+    -find out where the progress bar went and put it back
 
-    -fix the progress bar circle, make it fully displayed or get
-    rid of it and have another icon make it look better
-    
-    -add some nice background affects
+    -fix the routing to results-page, as of not its basic-question/results
 
-    -get rid of uncessary divs, put some of them together
+    -center everything
 
-    -also add padding/margin not brs
-    ----------------------------------------------------*/
+    -add some nice effects
 
-    <div style={{ alignItems: "center" }}>
-      <Header />
-      <div style={{ backgroundColor: "#FFBB70" }}>
-        <br />
-        <br />
-        <div
-          style={{
-            animationName: "bounce",
-            animationDuration: "2s",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "20px",
-              width: "80%",
-              margin: "0 auto",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                width: "100%",
-                justifyContent: "space-between",
-              }}
-            >
-              <div className="progress-bar-container">
-                <ProgressBar
-                  now={progress}
-                  striped
-                  variant="info"
-                  style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
-                >
-                  <div
-                    className="progress-bar-fill"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                  <div
-                    className="progress-bar-circle"
-                    style={{ left: `calc(${progress}% - 15px)` }}
-                  >
-                    <div className="icon-check">
-                      {isLastQuestionAnswered &&
-                      currentQuestion === questions.length - 1
-                        ? "100%"
-                        : `${progress.toFixed(0)}%`}
+    -change the get result button so it matches the other button
+  */
+
+    <div className="center-align">
+    <Header />
+    <div className="bg-color">
+      <br />
+      <br />
+      <div className="bounce-animation">
+        <div className="flex-center">
+          <div className="flex-space-between">
+            <div className="progress-bar-container">
+              <ProgressBar now={progress} striped variant="info">
+                <div className="progress-bar-fill"></div>
+                <div className="progress-bar-circle">
+                  <div className="icon-check">
+                    {isLastQuestionAnswered &&
+                    currentQuestion === questions.length - 1
+                      ? "100%"
+                      : `${progress.toFixed(0)}%`}
                     </div>
                   </div>
-                </ProgressBar>
-              </div>
+                </div>
+              </ProgressBar>
             </div>
           </div>
+        </div>
           <br />
           <br />
           <div
@@ -339,6 +346,8 @@ function BasicQuestions() {
                       Previous
                     </div>
                   )}
+
+                  {finalAnswer}
                 </div>
 
                 <br />
@@ -360,7 +369,7 @@ function BasicQuestions() {
                         left: 0,
                         width: "100%",
                         height: "100%",
-                        animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
+                        animation: isBlurred ? "blur-in .3s forwards" : "blur-out .3s forwards",
                       }}
                     >
                       Realtime results loading...
@@ -393,7 +402,7 @@ function BasicQuestions() {
                                   left: 0,
                                   width: "100%",
                                   height: "100%",
-                                  animation: isBlurred ? "blur-in .75s forwards" : "blur-out .75s forwards",
+                                  animation: isBlurred ? "blur-in .3s forwards" : "blur-out .3s forwards",
                                 }}
                               ></div>
                             </div>
