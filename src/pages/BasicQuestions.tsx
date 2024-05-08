@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
@@ -78,7 +80,7 @@ function BasicQuestions() {
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [maxPercentage, setMaxPercentage] = useState(100);
-
+  const navigate = useNavigate();
   // Add a new state variable for the loading state
   const [isLoading, setIsLoading] = useState(false);
   
@@ -217,6 +219,17 @@ function BasicQuestions() {
 
   };
 
+  const handleGetResults = () => {
+    if (isLastQuestionAnswered) {
+      // Calculate the result of the quiz here
+  
+      // Navigate to the results page
+      navigate(`/results/`);
+    } else {
+      alert("Please answer the last question before getting results.");
+    }
+  };
+
   return (
 
 /* TASKS: 
@@ -339,6 +352,7 @@ function BasicQuestions() {
                       Previous
                     </div>
                   )}
+                  {isLastQuestionAnswered && <button onClick={handleGetResults}>Get Results</button>}
                 </div>
 
                 <br />
