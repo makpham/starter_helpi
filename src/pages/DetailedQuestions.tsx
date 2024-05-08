@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FormControl, ProgressBar } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
 import "./DetailedQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,11 +11,6 @@ function DetailedQuestions() {
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
   //const [maxPercentage, setMaxPercentage] = useState(100);
-  const navigate = useNavigate();
-  const setPage = (path: string) => {
-    navigate(path);
-  };
-
   const [gpt_answer, setGptAnswer] = useState([
     {
       jobs: [
@@ -257,7 +251,7 @@ function DetailedQuestions() {
                     >
                       {currentQuestion === questions.length - 1 &&
                       isLastQuestionAnswered
-                        ? <button onClick={() => setPage("results-page")}>Get Results</button>
+                        ? "Get Results"
                         : "Next"}
                     </div>
                   </div>
