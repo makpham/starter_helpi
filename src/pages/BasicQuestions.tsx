@@ -227,6 +227,7 @@ function BasicQuestions() {
 
     -add some nice effects
 
+    -change the get result button so it matches the other button
   */
 
     <div className="center-align">
