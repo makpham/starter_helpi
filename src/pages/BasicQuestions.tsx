@@ -1,39 +1,15 @@
 import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import backgroundImg from "../imgs/background.jpg";
 
+
 function BasicQuestions() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [currentGPTAnswer, setGPTAnswer] = useState(0);
-  const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
-  const [maxPercentage, setMaxPercentage] = useState(100);
-
-  // Add a new state variable for the loading state
-  const [isLoading, setIsLoading] = useState(false);
-  
-  // Add a new state variable for the blur state
-  const [isBlurred, setIsBlurred] = useState(false);
-
-  const [gpt_answer, setGptAnswer] = useState([
-    {
-      jobs: [
-        {
-          name: "sample name",
-          percentage_match: 0,
-        },
-      ],
-    },
-  ]);
-
-  const openai = new OpenAI({
-    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-    dangerouslyAllowBrowser: true,
-  });
-
   const questions = [
     {
       question:
@@ -101,15 +77,55 @@ function BasicQuestions() {
     },
   ];
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
+  const [maxPercentage, setMaxPercentage] = useState(100);
+  const navigate = useNavigate();
+  // Add a new state variable for the loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Add a new state variable for the blur state
+  const [isBlurred, setIsBlurred] = useState(false);
+
+  interface Trait {
+    name: string;
+    percentage_match: number;
+  }
+  
+  interface GptAnswer {
+    traits: Trait[];
+  }
+
+  const initialTraits = [
+    { name: "action oriented", percentage_match: 0 },
+    { name: "teamwork", percentage_match: 0 },
+    { name: "influence", percentage_match: 0 },
+    { name: "problem solving", percentage_match: 0 },
+    { name: "innovation", percentage_match: 0 },
+  ];
+  
+  const [gpt_answer, setGptAnswer] = useState<GptAnswer[]>([
+    {
+      traits: initialTraits,
+    },
+  ]);
+
+  const openai = new OpenAI({
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true,
+  });
+
   const findMax = (x: {
-    jobs: { name: string; percentage_match: number }[];
+    traits: { name: string; percentage_match: number }[];
   }) => {
     let max: number = 0;
-    x.jobs.forEach( (element:{ name: string; percentage_match: number }) => {
+    x.traits.forEach( (element:{ name: string; percentage_match: number }) => {
       if (element.percentage_match > max) max = element.percentage_match;
     })
     return max;
   };
+
   const progress =
     ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) *
     100;
@@ -139,7 +155,7 @@ function BasicQuestions() {
           {
             role: "system",
             content:
-              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+            "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential traits list in JSON format, update the JSON so that it has exactly 5 traits, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100 and the traits are kept the same after each question is answered. JSON is in the format {traits: [name: name, percentage_match: percentage]} with the traits remaining as 'attention to detail' 'goal oriented' 'innovative' 'teamwork' 'problem solving'",
           },
           {
             role: "user",
@@ -157,11 +173,17 @@ function BasicQuestions() {
       });
       return response.choices[0].message.content;
     } catch (error) {
-      console.error("Error fetching data:", error);
+      return "{\"error\": \"Invalid key\"}"
     }
   };
 
   const handleAnswer = async (choice_index: number) => {
+
+    // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
       // If the last question has already been answered, return immediately
     if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
       return;
@@ -175,33 +197,48 @@ function BasicQuestions() {
     // Set blur state to true when update starts
     setIsBlurred(true);
 
-    try {
-      const gpt_call = await call_gpt(question_answered, answer);
-      const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling
+
+    let gpt_call = await call_gpt(question_answered, answer);
+
+    if(gpt_call !== null){
+      let parsedGptCall
+      try{
+        parsedGptCall = JSON.parse(gpt_call);
+      }catch(error){
+        console.log("JSON error from gpt");
+        handleAnswer(choice_index);
+        return;
+      }
+      if(parsedGptCall["error"] === "Invalid key"){
+        alert("please eneter valid key")
+        return;
+      }else{
       setGptAnswer([...gpt_answer, parsedGptCall]);
       setGPTAnswer(currentGPTAnswer + 1);
       setMaxPercentage(findMax(gpt_answer[currentGPTAnswer]));
-      if (currentQuestion < questions.length - 1) {
-        setCurrentQuestion(currentQuestion + 1);
-      } else {
-        setIsLastQuestionAnswered(true);
       }
+    }
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setIsLastQuestionAnswered(true);
+    }
+    // Set loading state to false after response is processed
+    setIsLoading(false);
 
-      // Set loading state to false after response is processed
-      setIsLoading(false);
+    // Set blur state to false after update is processed
+    setIsBlurred(false);
 
-      // Set blur state to false after update is processed
-      setIsBlurred(false);
+  };
 
-    } catch (error) {
-      console.error("Error handling the GPT call:", error);
-      // Will fix this later but the loop is to ensure that the returned is actually formattable JSON
-
-      // Set loading state to false in case of error
-      setIsLoading(false);
-
-      // Set blur state to false in case of error
-      setIsBlurred(false);
+  const handleGetResults = () => {
+    if (isLastQuestionAnswered) {
+      // Calculate the result of the quiz here
+  
+      // Navigate to the results page
+      navigate(`/results/`);
+    } else {
+      alert("Please answer the last question before getting results.");
     }
   };
 
@@ -209,7 +246,25 @@ function BasicQuestions() {
     -also add padding/margin not brs
     ----------------------------------------------------*/
 
+  /* TASKS: 
+    -also add padding/margin not brs
+    ----------------------------------------------------*/
+
   return (
+
+/* TASKS: 
+    -center all the components 
+
+    -fix the progress bar circle, make it fully displayed or get
+    rid of it and have another icon make it look better
+    
+    -add some nice background affects
+
+    -get rid of uncessary divs, put some of them together
+
+    -also add padding/margin not brs
+    ----------------------------------------------------*/
+
     <div style={{ alignItems: "center" }}>
       <Header />
       <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
@@ -247,7 +302,7 @@ function BasicQuestions() {
                   now={progress}
                   striped
                   variant="info"
-                  style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
+                  style={{ flex: 1, borderRadius: "5px", overflow: "hidden" }}
                 >
                   <div
                     className="progress-bar-fill-basic"
@@ -317,12 +372,13 @@ function BasicQuestions() {
                       Previous
                     </div>
                   )}
+                  {isLastQuestionAnswered && <button onClick={handleGetResults}>Get Results</button>}
                 </div>
               <div style={{ position: 'relative' }}>
                 {isLoading && (
                   <div style={{
                     position: 'relative',
-                    top: (currentQuestion >= 1) ? 20 : 0,
+                    top: (currentQuestion >= 2) ? 20 : 0,
                     zIndex: 2,
                     color: "black",
                   }}
@@ -343,32 +399,22 @@ function BasicQuestions() {
                     </div>
                   </div>
                   )}
-                  {gpt_answer.map(
-                    (
-                      answer: {
-                        jobs: { name: string; percentage_match: number }[];
-                      },
-                      index: number
-                    ) => (
-                      <div
-                        key={index}
-                        style={{
-                          display: index === currentGPTAnswer ? "block" : "none",
-                          textAlign: "center",
-                        }}
-                      >
-                        {answer.jobs.map(
-                          (
-                            job_name: { name: string; percentage_match: number },
-                            test: number
-                          ) => (
-                            <div style={{ position: "relative" }}>
-                              <ProgressBar
-                                striped
-                                variant="success"
-                                now={job_name.percentage_match}
-                                label={job_name.name}
-                                key={test}
+                  {gpt_answer.map((answer: GptAnswer, index: number) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: index === currentGPTAnswer ? "block" : "none",
+                        textAlign: "center",
+                      }}
+                    >
+                      {answer.traits.map((trait: Trait, test: number) => (
+                        <div style={{ position: "relative" }}>
+                          <ProgressBar
+                            striped
+                            variant="success"
+                            now={trait.percentage_match}
+                            label={trait.name}
+                            key={test}
                                 //max={maxPercentage} // will implement this later
                               />
                               <div
