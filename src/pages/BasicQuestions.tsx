@@ -6,8 +6,6 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import backgroundImg from "../imgs/background.jpg";
 
-// update
-
 function BasicQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
@@ -215,6 +213,8 @@ function BasicQuestions() {
     <div style={{ alignItems: "center" }}>
       <Header />
       <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
+        
+        
         <div
           style={{
             animationName: "bounce",
@@ -228,9 +228,10 @@ function BasicQuestions() {
               alignItems: "center",
               justifyContent: "center",
               width: "80%",
-              margin: "0 auto 20px",
+              margin: "0 auto 2em",
               marginLeft: "auto",
               marginRight: "auto",
+              
             }}
           >
             <div
@@ -267,8 +268,8 @@ function BasicQuestions() {
               </div>
             </div>
           </div>
-          <br />
-          <br />
+
+
           <div
             style={{
               width: "80%",
@@ -276,6 +277,7 @@ function BasicQuestions() {
               border: "5px solid #333",
               borderRadius: "20px",
               backgroundColor: "#0c416a",
+              paddingBottom: "5em",
             }}
           >
             {questions.map((question, index) => (
@@ -389,10 +391,9 @@ function BasicQuestions() {
                 </div>
               </div>
             ))}
-            <br />
-            <br />
-            <br />
           </div>
+
+
         </div>
       </div>
       <Footer />
