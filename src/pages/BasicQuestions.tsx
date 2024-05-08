@@ -39,7 +39,7 @@ function BasicQuestions() {
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
-
+  
   const questions = [
     {
       question:
@@ -107,15 +107,55 @@ function BasicQuestions() {
     },
   ];
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
+  const [maxPercentage, setMaxPercentage] = useState(100);
+
+  // Add a new state variable for the loading state
+  const [isLoading, setIsLoading] = useState(false);
+  
+  // Add a new state variable for the blur state
+  const [isBlurred, setIsBlurred] = useState(false);
+
+  interface Trait {
+    name: string;
+    percentage_match: number;
+  }
+  
+  interface GptAnswer {
+    traits: Trait[];
+  }
+
+  const initialTraits = [
+    { name: "action oriented", percentage_match: 0 },
+    { name: "teamwork", percentage_match: 0 },
+    { name: "influence", percentage_match: 0 },
+    { name: "problem solving", percentage_match: 0 },
+    { name: "innovation", percentage_match: 0 },
+  ];
+  
+  const [gpt_answer, setGptAnswer] = useState<GptAnswer[]>([
+    {
+      traits: initialTraits,
+    },
+  ]);
+
+  const openai = new OpenAI({
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true,
+  });
+
   const findMax = (x: {
-    jobs: { name: string; percentage_match: number }[];
+    traits: { name: string; percentage_match: number }[];
   }) => {
     let max: number = 0;
-    x.jobs.forEach( (element:{ name: string; percentage_match: number }) => {
+    x.traits.forEach( (element:{ name: string; percentage_match: number }) => {
       if (element.percentage_match > max) max = element.percentage_match;
     })
     return max;
   };
+
   const progress =
     ((currentQuestion + (isLastQuestionAnswered ? 1 : 0)) / questions.length) *
     100;
@@ -145,7 +185,7 @@ function BasicQuestions() {
           {
             role: "system",
             content:
-              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+            "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential traits list in JSON format, update the JSON so that it has exactly 5 traits, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100 and the traits are kept the same after each question is answered. JSON is in the format {traits: [name: name, percentage_match: percentage]} with the traits remaining as 'attention to detail' 'goal oriented' 'innovative' 'teamwork' 'problem solving'",
           },
           {
             role: "user",
@@ -247,6 +287,7 @@ function BasicQuestions() {
                     currentQuestion === questions.length - 1
                       ? "100%"
                       : `${progress.toFixed(0)}%`}
+                    </div>
                   </div>
                 </div>
               </ProgressBar>
@@ -335,32 +376,22 @@ function BasicQuestions() {
                     </div>
                   </div>
                   )}
-                  {gpt_answer.map(
-                    (
-                      answer: {
-                        jobs: { name: string; percentage_match: number }[];
-                      },
-                      index: number
-                    ) => (
-                      <div
-                        key={index}
-                        style={{
-                          display: index === currentGPTAnswer ? "block" : "none",
-                          textAlign: "center",
-                        }}
-                      >
-                        {answer.jobs.map(
-                          (
-                            job_name: { name: string; percentage_match: number },
-                            test: number
-                          ) => (
-                            <div style={{ position: "relative" }}>
-                              <ProgressBar
-                                striped
-                                variant="success"
-                                now={job_name.percentage_match}
-                                label={job_name.name}
-                                key={test}
+                  {gpt_answer.map((answer: GptAnswer, index: number) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: index === currentGPTAnswer ? "block" : "none",
+                        textAlign: "center",
+                      }}
+                    >
+                      {answer.traits.map((trait: Trait, test: number) => (
+                        <div style={{ position: "relative" }}>
+                          <ProgressBar
+                            striped
+                            variant="success"
+                            now={trait.percentage_match}
+                            label={trait.name}
+                            key={test}
                                 //max={maxPercentage} // will implement this later
                               />
                               <div
