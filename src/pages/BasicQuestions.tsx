@@ -215,12 +215,11 @@ function BasicQuestions() {
     <div style={{ alignItems: "center" }}>
       <Header />
       <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
-        <br />
-        <br />
         <div
           style={{
             animationName: "bounce",
             animationDuration: "2s",
+            padding: "2.5em 0",
           }}
         >
           <div
@@ -228,9 +227,8 @@ function BasicQuestions() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
               width: "80%",
-              margin: "0 auto",
+              margin: "0 auto 20px",
               marginLeft: "auto",
               marginRight: "auto",
             }}
@@ -274,16 +272,12 @@ function BasicQuestions() {
           <div
             style={{
               width: "80%",
-              margin: "0 auto",
+              margin: "0 auto 2em",
               border: "5px solid #333",
-              borderRadius: "10px",
+              borderRadius: "20px",
               backgroundColor: "#0c416a",
-              marginLeft: "auto",
-              marginRight: "auto",
             }}
           >
-            <br />
-            <br />
             {questions.map((question, index) => (
               <div
                 key={index}
@@ -296,8 +290,7 @@ function BasicQuestions() {
                   fontWeight: "bold"
                 }}
               >
-                <p style={{ marginBottom: "20px" }}>{question.question}</p>
-                <br />
+                <p style={{margin: "20px", paddingBottom: "1em"}}>{question.question}</p>
                 <center className="button-row" style={{padding: "10px", display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                   {question.choices.map((choice, i) => (
                     <div
@@ -310,8 +303,7 @@ function BasicQuestions() {
                     </div>
                   ))}
                 </center>
-                <br />
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", padding: "1em"}}>
                   {index !== 0 && (
                     <div
                       onClick={handlePrevious}
@@ -324,8 +316,6 @@ function BasicQuestions() {
                     </div>
                   )}
                 </div>
-
-                <br />
               <div style={{ position: 'relative' }}>
                 {isLoading && (
                   <div style={{
@@ -403,8 +393,6 @@ function BasicQuestions() {
             <br />
             <br />
           </div>
-          <br />
-          <br />
         </div>
       </div>
       <Footer />
