@@ -238,6 +238,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                     as="textarea"
                     value={answers[index]}
                     onChange={handleAnswerChange}
+                    placeholder="Type your response here..."
                     style={{ marginBottom: "20px", maxWidth: "75%", paddingBottom: "2em" }}
                   />
                 </center>
