@@ -3,6 +3,8 @@ import { OpenAI } from 'openai';
 import "./ResultsPage.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import result from "../imgs/result.png";
+import officebg from "../imgs/officebg.png";
 
 function ResultsPage({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const openai = new OpenAI({
@@ -89,11 +91,14 @@ const fetchSynopsis = async () => {
 
 fetchSynopsis();
 }, []);
+
+
   
   return (
     <div>
       <Header />
-      <div className="results-container">
+      <div className="results-container" style={{ backgroundImage: `url(${officebg})` }}>
+        <img src={result} alt="result" className="my-image" />
         <div className="results-card">
           <h1 className="results-title">Your Quiz Result</h1>
           <h2 className="results-subtitle">Job Roles:</h2>
