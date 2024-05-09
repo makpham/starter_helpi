@@ -358,7 +358,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
                       onClick={handlePrevious}
                       className="button-div"
                       style={{
-                        backgroundColor: "antiquewhite",
+                        backgroundColor: "white",
                       }}
                     >
                       Previous

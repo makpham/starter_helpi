@@ -246,14 +246,14 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                   <div
                     onClick={handlePrevious}
                     className="button-div"
-                    style={{ backgroundColor: "antiquewhite" }}
+                    style={{ backgroundColor: "white" }}
                   >
                     Previous
                   </div>
                   <div
                     onClick={handleNext}
                     className="button-div"
-                    style={{ backgroundColor: "antiquewhite" }}
+                    style={{ backgroundColor: "white" }}
                   >
                     {currentQuestion === questions.length - 1 &&
                     isLastQuestionAnswered
