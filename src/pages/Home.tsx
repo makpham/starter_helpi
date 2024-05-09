@@ -18,7 +18,8 @@ function Home() {
   return (
     <div>
     <Header />
-    <button onClick={() => setPage("results")}>Go to Results</button>
+    {/* Dont need this, just for testing */}
+    {/* {/* <button onClick={() => setPage("results")}>Go to Results</button> */} 
     <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})`}}>
       <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around'}}>
         <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
