@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import './Footer.css';
 
 const saveKeyData = "MYKEY";
 let keyData = "";

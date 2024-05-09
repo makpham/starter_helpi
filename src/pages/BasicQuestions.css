@@ -3,6 +3,11 @@
   20% { transform: scale(1); opacity: 1; }
 }  
 
+.mainpage {
+  height: "70vh";
+  min-height: calc(100vh - header - footer);
+}
+
 .custom-progress-bar-basic .progress-bar-basic {
   background-color: #DEBFFD !important;
   border-color: #7D4CC5 !important;

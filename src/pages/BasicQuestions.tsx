@@ -259,7 +259,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
 
     <div style={{ alignItems: "center" }}>
       <Header />
-      <div style={{ backgroundImage: `url(${backgroundImg})`}}>  
+      <div className = "mainpage" style={{backgroundImage: `url(${backgroundImg})`, height: "70vh"}}>  
         
         
         <div

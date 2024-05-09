@@ -158,7 +158,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     <div>
       <Header />
     <div style={{ alignItems: "center" }}>
-      <div style={{ backgroundImage: `url(${backgroundImg})`}}>
+      <div className="detailedpage" style={{ backgroundImage: `url(${backgroundImg})`, height: "70vh"}}>
         <div
           style={{
             animationName: "bounce",

@@ -16,8 +16,9 @@ function Home() {
   const basic_description = "Are you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.";
 
   return (
+    <div>
+    <Header />
     <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})` }}>
-      <Header />
       <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around' }}>
         <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
           <Option
@@ -35,7 +36,8 @@ function Home() {
         </div>
       </div>
       <button onClick={() => setPage("results")}>Go to Results</button>
-      <Footer />
+    </div>
+    <Footer />
     </div>
   );
 }
