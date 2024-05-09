@@ -242,10 +242,6 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     -also add padding/margin not brs
     ----------------------------------------------------*/
 
-  /* TASKS: 
-    -also add padding/margin not brs
-    ----------------------------------------------------*/
-
   return (
 
 /* TASKS: 
