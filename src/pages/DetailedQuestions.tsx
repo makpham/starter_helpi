@@ -7,11 +7,11 @@ import Footer from "../components/Footer";
 import OpenAI from "openai";
 import backgroundImg from "../imgs/background.jpg";
 
-function DetailedQuestions() {
+function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState(Array(7).fill(""));
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [answers, setAnswers] = useState(Array(7).fill(""));
   const navigate = useNavigate();
   //const [maxPercentage, setMaxPercentage] = useState(100);
   const [gpt_answer, setGptAnswer] = useState([
@@ -28,6 +28,7 @@ function DetailedQuestions() {
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
+
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
@@ -36,7 +37,7 @@ function DetailedQuestions() {
           {
             role: "system",
             content:
-              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields of 'goal oriented' 'attention to detail' teamwork' 'innovative' 'problem solving', return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
           },
           {
             role: "user",
@@ -103,6 +104,7 @@ function DetailedQuestions() {
         questions[currentQuestion]["question"],
         answers[currentQuestion]
       );
+      setResults(gpt_call !== null ? gpt_call : "");
       if(gpt_call !== null){
         let parsedGptCall
         try{
@@ -129,7 +131,6 @@ function DetailedQuestions() {
       currentQuestion === questions.length - 1 &&
       isLastQuestionAnswered
     ) {
-
     navigate(`/results/`);
     }
   };

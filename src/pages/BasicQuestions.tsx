@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
@@ -9,7 +8,7 @@ import Footer from "../components/Footer";
 import backgroundImg from "../imgs/background.jpg";
 
 
-function BasicQuestions() {
+function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const questions = [
     {
       question:
@@ -82,10 +81,9 @@ function BasicQuestions() {
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [maxPercentage, setMaxPercentage] = useState(100);
   const navigate = useNavigate();
-  // Add a new state variable for the loading state
+
   const [isLoading, setIsLoading] = useState(false);
   
-  // Add a new state variable for the blur state
   const [isBlurred, setIsBlurred] = useState(false);
 
   interface Trait {
@@ -192,9 +190,7 @@ function BasicQuestions() {
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
-    // Set loading state to true when user selects an answer
     setIsLoading(true);
-    // Set blur state to true when update starts
     setIsBlurred(true);
 
 
