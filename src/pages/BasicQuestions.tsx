@@ -81,10 +81,9 @@ function BasicQuestions() {
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [maxPercentage, setMaxPercentage] = useState(100);
   const navigate = useNavigate();
-  // Add a new state variable for the loading state
+
   const [isLoading, setIsLoading] = useState(false);
   
-  // Add a new state variable for the blur state
   const [isBlurred, setIsBlurred] = useState(false);
 
   interface Trait {
@@ -177,12 +176,21 @@ function BasicQuestions() {
   };
 
   const handleAnswer = async (choice_index: number) => {
+
+    // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
+      // If the last question has already been answered, return immediately
+    if (isLastQuestionAnswered && currentQuestion === questions.length - 1) {
+      return;
+    }
+
     const question_answered = questions[currentQuestion]["question"];
     const answer = questions[currentQuestion]["choices"][choice_index];
 
-    // Set loading state to true when user selects an answer
     setIsLoading(true);
-    // Set blur state to true when update starts
     setIsBlurred(true);
 
 

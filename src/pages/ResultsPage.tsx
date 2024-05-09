@@ -1,14 +1,10 @@
 import React from 'react';
 
-interface ResultsPageProps {
-  result: string;
-}
-
-const ResultsPage: React.FC<ResultsPageProps> = ({ result }) => {
+function ResultsPage({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   return (
     <div>
       <h1>Your Quiz Result</h1>
-      <p>You are a {result}!</p>
+      <p>You are a {results}!</p>
     </div>
   );
 };

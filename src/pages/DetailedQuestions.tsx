@@ -5,12 +5,14 @@ import "./DetailedQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
+import backgroundImg from "../imgs/background.jpg";
+import { resolve } from "path";
 
-function DetailedQuestions() {
+function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState(Array(7).fill(""));
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [answers, setAnswers] = useState(Array(7).fill(""));
   const navigate = useNavigate();
   //const [maxPercentage, setMaxPercentage] = useState(100);
   const [gpt_answer, setGptAnswer] = useState([
@@ -102,6 +104,7 @@ function DetailedQuestions() {
         questions[currentQuestion]["question"],
         answers[currentQuestion]
       );
+      setResults(gpt_call !== null ? gpt_call : "");
       if(gpt_call !== null){
         let parsedGptCall
         try{
@@ -128,7 +131,6 @@ function DetailedQuestions() {
       currentQuestion === questions.length - 1 &&
       isLastQuestionAnswered
     ) {
-
     navigate(`/results/`);
     }
   };
