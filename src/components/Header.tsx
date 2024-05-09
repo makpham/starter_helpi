@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 import { MenuBar } from "../components/Menu";
-import img from "../imgs/newdog.webp";
+import img from "../imgs/logo.png";
 
 const Header = () => {
   const location = useLocation();
@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="header">
       <br />
-      <div className="logo-container">
+      <div className="header-content">
         <Link to="/"><img src={img} className="logo" alt="Career Navigator logo"/></Link>
         <h1 className="site-name">Career Navigator</h1>
       </div>

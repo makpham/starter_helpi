@@ -7,7 +7,7 @@
     width: 100%;
   }
   
-  .logo-container {
+  .header-content {
     display: flex;
     align-items: center;
   }
@@ -16,13 +16,13 @@
     width: 60px;
     height: auto;
     position: relative;
-    right: 99%;
+    right: 119%;
   }
   
   .site-name {
     margin-left: 10px;
     color: #FFFFFF;
     position: relative;
-    right: 82%;
+    right: 77%;
   }
   
