@@ -34,6 +34,7 @@ function Home() {
           />
         </div>
       </div>
+      <button onClick={() => setPage("results")}>Go to Results</button>
       <Footer />
     </div>
   );

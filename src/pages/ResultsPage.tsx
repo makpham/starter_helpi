@@ -50,7 +50,7 @@ useEffect(() => {
   };
 
   fetchJobs();
-}, );
+}, []);
 
 const call_gpt_synopsis = async (results: string[]) => {
   try {
@@ -90,7 +90,7 @@ const fetchSynopsis = async () => {
 };
 
 fetchSynopsis();
-}, );
+}, []);
 
 
   
