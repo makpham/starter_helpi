@@ -18,9 +18,9 @@ function Home() {
   return (
     <div>
     <Header />
-    <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})`}}>
     <button onClick={() => setPage("results")}>Go to Results</button>
-      <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <div className="main-container" style={{ backgroundImage: `url(${backgroundImg})`}}>
+      <div className="options-wrapper" style={{ display: 'flex', justifyContent: 'space-around'}}>
         <div className="options-container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
           <Option
             onClick={() => setPage("detailed-questions")}
