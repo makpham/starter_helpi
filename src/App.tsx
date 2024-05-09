@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detailed-questions" element={<DetailedQuestions results={results} setResults={setResults}/>} />
-        <Route path="/basic-questions" element={<BasicQuestions />} />
+        <Route path="/basic-questions" element={<BasicQuestions results={results} setResults={setResults}/>} />
         <Route path="/results" element={<ResultsPage results={results} setResults={setResults} />} />
       </Routes>
     </HashRouter>

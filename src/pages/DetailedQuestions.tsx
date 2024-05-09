@@ -5,8 +5,6 @@ import "./DetailedQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
-import backgroundImg from "../imgs/background.jpg";
-import { resolve } from "path";
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -29,6 +27,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
     dangerouslyAllowBrowser: true,
   });
+
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
@@ -37,7 +36,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
           {
             role: "system",
             content:
-              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields of 'goal oriented' 'attention to detail' teamwork' 'innovative' 'problem solving', return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
           },
           {
             role: "user",

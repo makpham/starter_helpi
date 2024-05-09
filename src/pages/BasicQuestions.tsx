@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
-
 import OpenAI from "openai";
 import "./BasicQuestions.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 
-function BasicQuestions() {
+function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const questions = [
     {
       question:
