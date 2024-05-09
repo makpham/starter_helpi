@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (57 ms)
+  ✕ renders learn react link (56 ms)
 
   ● renders learn react link
 
@@ -14,14 +14,14 @@ FAIL src/App.test.tsx
       [36m<div>[39m
         [36m<div[39m
           [33mclass[39m=[32m"main-container"[39m
-          [33mstyle[39m=[32m"background-image: url(background.jpg);"[39m
+          [33mstyle[39m=[32m"background-image: url(homebg.png);"[39m
         [36m>[39m
           [36m<header[39m
             [33mclass[39m=[32m"header"[39m
           [36m>[39m
             [36m<br />[39m
             [36m<div[39m
-              [33mclass[39m=[32m"logo-container"[39m
+              [33mclass[39m=[32m"header-content"[39m
             [36m>[39m
               [36m<a[39m
                 [33mhref[39m=[32m"#/"[39m
@@ -29,7 +29,7 @@ FAIL src/App.test.tsx
                 [36m<img[39m
                   [33malt[39m=[32m"Career Navigator logo"[39m
                   [33mclass[39m=[32m"logo"[39m
-                  [33msrc[39m=[32m"newdog.webp"[39m
+                  [33msrc[39m=[32m"logo.png"[39m
                 [36m/>[39m
               [36m</a>[39m
               [36m<h1[39m
@@ -153,5 +153,5 @@ All files               |   12.42 |     2.17 |   16.66 |   11.97 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.954 s
+Time:        2.776 s
 Ran all test suites.
