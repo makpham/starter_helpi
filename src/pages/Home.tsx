@@ -4,7 +4,7 @@ import { Option } from "../components/Option";
 import "./Home.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import backgroundImg from "../imgs/background.jpg";
+import backgroundImg from "../imgs/homebg.png";
 
 function Home() {
   const navigate = useNavigate();
