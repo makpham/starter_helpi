@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import "./Choices.css";
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
