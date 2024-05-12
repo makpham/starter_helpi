@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "./Home.css";
 // import sideImg from "../imgs/home-side-img.png"
 import { Button, Form } from 'react-bootstrap';
@@ -8,10 +8,10 @@ import OpenAI from 'openai';
 
 
 function Home() {
-  // const navigate = useNavigate();
-  // const setPage = (path: string) => {
-  //   navigate(path);
-  // };
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
   const saveKeyData = "MYKEY";
   const keyState = "VALIDKEY";
   let keyData = "";
@@ -28,7 +28,7 @@ function Home() {
     return false;
   }
 
-  async function test_gpt(){
+  async function call_gpt(){
     try {
       const openai = new OpenAI({
         apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
@@ -56,12 +56,11 @@ function Home() {
       return "{\"error\": \"Invalid key\"}"
     }
   }
-
-  async function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    //check if key is valid
-    const valid_key = await test_gpt();
+  async function validateKey(){
+    const valid_key = await call_gpt();
+    console.log("test");
     if(valid_key !== null){
+      //make sure key is valid before moving on
       try{
         if (JSON.parse(valid_key)['error'] !== null){
           localStorage.setItem(keyState, JSON.stringify(false));
@@ -72,7 +71,15 @@ function Home() {
         localStorage.setItem(keyState, JSON.stringify(true));
       }
     }
-    window.location.reload();
+  }
+
+  async function handleSubmit() {
+    localStorage.setItem(saveKeyData, JSON.stringify(key));
+    await validateKey();
+    if(getKeyState()){
+      setPage("detailed-questions");
+    }
+    // window.location.reload();
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
