@@ -39,7 +39,7 @@ function Home() {
         <h1 id='landing-title'>
           Hello Future <Typewriter
           options={{
-            strings: ['Manager', 'Software Developer', 'Nurse', "Doctor", "Firefighter"],
+            strings: ['Manager', 'Software Developer', 'Nurse', "Doctor", "Firefighter", "Accountants", "Actuaries", "Artist", "Pilot"],
             autoStart: true,
             loop: true,
           }}
