@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { FormControl, ProgressBar } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 import "./DetailedQuestions.css";
-import Header from "../components/Header"
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import OpenAI from "openai";
+import backgroundImg from "../imgs/background.jpg";
 
-function DetailedQuestions() {
+function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState(Array(7).fill(""));
   const [isLastQuestionAnswered, setIsLastQuestionAnswered] = useState(false);
   const [currentGPTAnswer, setGPTAnswer] = useState(0);
+  const [answers, setAnswers] = useState(Array(7).fill(""));
+  const navigate = useNavigate();
   //const [maxPercentage, setMaxPercentage] = useState(100);
   const [gpt_answer, setGptAnswer] = useState([
     {
@@ -21,15 +24,20 @@ function DetailedQuestions() {
       ],
     },
   ]);
+  const openai = new OpenAI({
+    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+    dangerouslyAllowBrowser: true,
+  });
+
   const call_gpt = async (question: string, choice: string) => {
     try {
       const response = await openai.chat.completions.create({
-        model: "gpt-4",
+        model: "gpt-4-turbo",
         messages: [
           {
             role: "system",
             content:
-              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields, return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
+              "You are a job discovery assistant, you are given a question and an answer as well as the format and current values of the potential fields list in JSON format, update the JSON so that it has exactly 5 fields of 'goal oriented' 'attention to detail' teamwork' 'innovative' 'problem solving', return purely the JSON object string remove markdowns and any comments the user only wants the JSON string, make sure the percentages add up to exactly 100. JSON is in the format {jobs: [name: name, percentage_match: percentage]}",
           },
           {
             role: "user",
@@ -45,18 +53,12 @@ function DetailedQuestions() {
         temperature: 0.7,
         n: 1,
       });
-      console.log(response.choices[0].message.content);
       return response.choices[0].message.content;
     } catch (error) {
-      console.error("Error fetching data:", error);
+      return "{\"error\": \"Invalid key\"}"
     }
   };
-
-  const openai = new OpenAI({
-    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-    dangerouslyAllowBrowser: true,
-  });
-
+  
   const questions = [
     {
       question:
@@ -98,25 +100,38 @@ function DetailedQuestions() {
         alert("Please answer the question before moving on.");
         return;
       }
-      try{
-        const gpt_call = await call_gpt(questions[currentQuestion]["question"], answers[currentQuestion]);
-        const parsedGptCall = JSON.parse(gpt_call || ""); // no I need it to error to retry again for pulling 
-        setGptAnswer([...gpt_answer, parsedGptCall]);
-        setGPTAnswer(currentGPTAnswer + 1);
-        const newAnswers = [...answers];
-        newAnswers[currentQuestion] = answers[currentQuestion];
-        setAnswers(newAnswers);
-        console.log("test");
-        setCurrentQuestion(currentQuestion + 1);
-      }
-      catch(error){
-        console.log(error);
+      let gpt_call = await call_gpt(
+        questions[currentQuestion]["question"],
+        answers[currentQuestion]
+      );
+      setResults(gpt_call !== null ? gpt_call : "");
+      if(gpt_call !== null){
+        let parsedGptCall
+        try{
+          parsedGptCall = JSON.parse(gpt_call);
+        }catch(error){
+          console.log("JSON error from gpt");
+          handleNext();
+          return;
+        }
+        if(parsedGptCall["error"] === "Invalid key"){
+          alert("please eneter valid key")
+          return;
+        }else{
+          setGptAnswer([...gpt_answer, parsedGptCall]); 
+          setGPTAnswer(currentGPTAnswer + 1);
+          const newAnswers = [...answers];
+          newAnswers[currentQuestion] = answers[currentQuestion];
+          setAnswers(newAnswers);
+          console.log("test");
+          setCurrentQuestion(currentQuestion + 1);
+        }
       }
     } else if (
       currentQuestion === questions.length - 1 &&
       isLastQuestionAnswered
     ) {
-      // Handle the "Get Results" action here
+    navigate(`/results/`);
     }
   };
 
@@ -124,7 +139,7 @@ function DetailedQuestions() {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
       if (currentGPTAnswer > 0) {
-        setGptAnswer([...gpt_answer.slice(0,gpt_answer.length-1)])
+        setGptAnswer([...gpt_answer.slice(0, gpt_answer.length - 1)]);
         setGPTAnswer(currentGPTAnswer - 1);
       }
     }
@@ -143,13 +158,12 @@ function DetailedQuestions() {
     <div>
       <Header />
     <div style={{ alignItems: "center" }}>
-      <div style={{ backgroundColor: "#FFC38A" }}>
-        <br />
-        <br />
+      <div style={{ backgroundImage: `url(${backgroundImg})`}}>
         <div
           style={{
             animationName: "bounce",
             animationDuration: "2s",
+            padding: "2em 0 6em",
           }}
         >
           <div
@@ -157,9 +171,8 @@ function DetailedQuestions() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: "20px",
+              margin: "0 auto 20px",
               width: "80%",
-              margin: "0 auto",
             }}
           >
             <div
@@ -170,40 +183,42 @@ function DetailedQuestions() {
                 justifyContent: "space-between",
               }}
             >
-              <div className="progress-bar-container">
-                <div className="progress-bar">
-                  <div
-                    className="progress-bar-fill"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
+              <div className="progress-bar-container-detailed">
+              <ProgressBar
+                  now={progress}
+                  striped
+                  variant="info"
+                  style={{ flex: 1, borderRadius: "10px", overflow: "hidden", border: '3px solid black' }}
+                >
                 <div
-                  className="progress-bar-circle"
+                  className="progress-bar-fill-detailed"
+                  style={{ width: `${progress}%` }}
+                ></div>
+                <div
+                  className="progress-bar-circle-detailed"
                   style={{ left: `calc(${progress}% - 15px)` }}
                 >
-                  <div className="icon-check">
+                  <div className="icon-check-detailed">
                     {isLastQuestionAnswered &&
                     currentQuestion === questions.length - 1
                       ? "100%"
                       : `${progress.toFixed(0)}%`}
                   </div>
                 </div>
+                </ProgressBar>
               </div>
             </div>
           </div>
-          <br />
-          <br></br>
           <div
             style={{
               width: "80%",
               margin: "0 auto",
-              border: "5px solid #FFA254",
+              border: "5px solid #333",
               borderRadius: "10px",
-              backgroundColor: "#C3EEDF",
+              backgroundColor: "#0c416a",
+              paddingTop: "1em"
             }}
           >
-            <br />
-            <br />
             {questions.map((question, index) => (
               <div
                 key={index}
@@ -211,33 +226,33 @@ function DetailedQuestions() {
                   display: index === currentQuestion ? "block" : "none",
                   textAlign: "center",
                   width: "85%",
+                  margin: "0 auto",
+                  color: "white",
+                  fontWeight: "bold",
+                  paddingTop: "2em",
                 }}
               >
-                <p style={{ marginBottom: "20px" }}>{question.question}</p>
-                <br />
-                <br />
+                <p style={{ marginBottom: "20px", paddingBottom: "2em" }}>{question.question}</p>
                 <center>
                   <FormControl
                     as="textarea"
                     value={answers[index]}
                     onChange={handleAnswerChange}
-                    style={{ marginBottom: "20px", maxWidth: "75%" }}
+                    style={{ marginBottom: "20px", maxWidth: "75%", paddingBottom: "2em" }}
                   />
-                  <br />
-                  <br />
                 </center>
-                <div style={{ display: "flex", justifyContent: "center" }}>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: "2em" }}>
                   <div
                     onClick={handlePrevious}
                     className="button-div"
-                    style={{ backgroundColor: "#DEBFFD" }}
+                    style={{ backgroundColor: "antiquewhite" }}
                   >
                     Previous
                   </div>
                   <div
                     onClick={handleNext}
                     className="button-div"
-                    style={{ backgroundColor: "#DEBFFD" }}
+                    style={{ backgroundColor: "antiquewhite" }}
                   >
                     {currentQuestion === questions.length - 1 &&
                     isLastQuestionAnswered
@@ -245,8 +260,6 @@ function DetailedQuestions() {
                       : "Next"}
                   </div>
                 </div>
-                <br />
-                <br />
               </div>
             ))}
             {gpt_answer.map(
@@ -281,11 +294,6 @@ function DetailedQuestions() {
               </div>
             ))}
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
         </div>
       </div>
     </div>
