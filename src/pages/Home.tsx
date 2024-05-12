@@ -79,10 +79,12 @@ function Home() {
       await validateKey();
       if(getKeyState()){
         setPage("/choices");
+      }else{
+        window.location.reload();
       }
     }else{
       localStorage.setItem(keyState, JSON.stringify(false));
-      console.log("test");
+      window.location.reload();
     }
     // window.location.reload(); This may be needed for requirements but only thing is it double reload redirected page
   }
