@@ -106,7 +106,7 @@ function Home() {
         />
         </h1>
         <p>
-          Ready to embark on your career discovery? Enter APi key to get started!
+          Ready to embark on your career discovery? Enter API key to get started!
         </p>
         <footer>
           <Form>
