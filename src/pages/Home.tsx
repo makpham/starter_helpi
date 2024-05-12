@@ -78,7 +78,7 @@ function Home() {
       localStorage.setItem(saveKeyData, JSON.stringify(key));
       await validateKey();
       if(getKeyState()){
-        setPage("choices");
+        setPage("/choices");
       }
     }else{
       localStorage.setItem(keyState, JSON.stringify(false));

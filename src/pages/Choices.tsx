@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Choices.css";
 import Typewriter from 'typewriter-effect';
-import { Divider } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 function Choices() {
@@ -29,8 +28,8 @@ function Choices() {
             Embark on your exciting journey by selecting either a basic or a detailed questionnaire. This will help you discover the career path that aligns perfectly with your interests, skills, and aspirations!
         </div>
         <div id='wait-twice'>
-            <div id='basic'><h1>Basic</h1>{basic_description}<br /><br /><div id='get-started-basic'><button>Get Started</button></div></div>
-            <div id='detailed'><h1>Detailed</h1>{detailed_description}<br /><br /><div id='get-started-detailed'><button>Get Started</button></div></div>
+            <div id='basic'><h1>Basic</h1>{basic_description}<br /><br /><div id='get-started-basic'><button onClick={() => setPage("/basic-questions")}>Get Started</button></div></div>
+            <div id='detailed'><h1>Detailed</h1>{detailed_description}<br /><br /><div id='get-started-detailed'><button onClick={() => setPage("/detailed-questions")}>Get Started</button></div></div>
         </div>
     </div>
 }
