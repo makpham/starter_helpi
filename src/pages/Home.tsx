@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Home.css";
-// import sideImg from "../imgs/home-side-img.png"
 import { Button, Form } from 'react-bootstrap';
 import Typewriter from 'typewriter-effect';
 import OpenAI from 'openai';
