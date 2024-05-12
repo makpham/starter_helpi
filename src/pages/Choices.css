@@ -1,7 +1,7 @@
 #choice-body{
     text-align: center;
     align-content: center;
-    max-width: 100vw;
+    min-width: 100vw;
     width: 100%;
     color: #5C6B73;
     min-height: 100vh;
@@ -13,7 +13,7 @@
     display: flex;
     max-width: 100vw;
     justify-content: center;
-    gap: 1rem;
+    gap: 3rem;
     margin-top: 2rem;
 }
 #detailed, #basic {
@@ -32,6 +32,8 @@
 #get-started-basic, #get-started-detailed{
     text-align: center;
     font-size: 1.5rem;
+    position: sticky;
+    top: 100%;
 }
 #get-started-basic button, #get-started-detailed button {
     background-color: #E0FBFC;
