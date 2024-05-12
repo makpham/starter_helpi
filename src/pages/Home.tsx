@@ -20,6 +20,7 @@ function Home() {
     keyData = JSON.parse(prevKey);
   }
   const [key, setKey] = useState<string>(keyData);
+
   function getKeyState(): boolean{
     const valid = localStorage.getItem(keyState);
     if (valid !== null){
@@ -40,7 +41,7 @@ function Home() {
           {
             role: "system",
             content:
-              "You are a robot",
+              "robot, respond in one word",
           },
           {
             role: "user",
@@ -58,7 +59,6 @@ function Home() {
   }
   async function validateKey(){
     const valid_key = await call_gpt();
-    console.log("test");
     if(valid_key !== null){
       //make sure key is valid before moving on
       try{
@@ -74,12 +74,17 @@ function Home() {
   }
 
   async function handleSubmit() {
-    localStorage.setItem(saveKeyData, JSON.stringify(key));
-    await validateKey();
-    if(getKeyState()){
-      setPage("detailed-questions");
+    if(key.trim() !== ""){
+      localStorage.setItem(saveKeyData, JSON.stringify(key));
+      await validateKey();
+      if(getKeyState()){
+        setPage("detailed-questions");
+      }
+    }else{
+      localStorage.setItem(keyState, JSON.stringify(false));
+      console.log("test");
     }
-    // window.location.reload();
+    // window.location.reload(); This may be needed for requirements but only thing is it double reload redirected page
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
@@ -93,7 +98,8 @@ function Home() {
     <div id='home-body'>
       <div id='welcome-text' className='alegreya'>
         <h1 id='landing-title'>
-          Hello Future <Typewriter
+          Hello Future 
+          <Typewriter
           options={{
             strings: ['Manager', 'Software Developer', 'Nurse', "Doctor", "Firefighter", "Accountants", "Actuaries", "Artist", "Pilot"],
             autoStart: true,
@@ -113,7 +119,7 @@ function Home() {
               placeholder="Insert API Key Here"
               onChange={changeKey}
             ></Form.Control>
-            <Button className="Submit-Button api-form" id="sbutton" onClick={handleSubmit}>
+            <Button title='If you already input key before click the button' className="Submit-Button api-form" id="sbutton" onClick={handleSubmit}>
               Get Started
             </Button>
           </Form>

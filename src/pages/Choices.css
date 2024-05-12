@@ -1,0 +1,19 @@
+#choice-body{
+    text-align: center;
+    align-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+#wait-typewriter{
+    animation: fadeIn 7s;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    10% { opacity: 0; }
+    20% { opacity: 0; }
+    30% { opacity: 0; }
+    40% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
