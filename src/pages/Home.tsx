@@ -4,25 +4,74 @@ import "./Home.css";
 // import sideImg from "../imgs/home-side-img.png"
 import { Button, Form } from 'react-bootstrap';
 import Typewriter from 'typewriter-effect';
+import OpenAI from 'openai';
 
-
-const saveKeyData = "MYKEY";
-let keyData = "";
-const prevKey = localStorage.getItem(saveKeyData);
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
 
 function Home() {
   // const navigate = useNavigate();
   // const setPage = (path: string) => {
   //   navigate(path);
   // };
-
+  const saveKeyData = "MYKEY";
+  const keyState = "VALIDKEY";
+  let keyData = "";
+  const prevKey = localStorage.getItem(saveKeyData);
+  if (prevKey !== null) {
+    keyData = JSON.parse(prevKey);
+  }
   const [key, setKey] = useState<string>(keyData);
+  function getKeyState(): boolean{
+    const valid = localStorage.getItem(keyState);
+    if (valid !== null){
+      return JSON.parse(valid);
+    }
+    return false;
+  }
 
-  function handleSubmit() {
+  async function test_gpt(){
+    try {
+      const openai = new OpenAI({
+        apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+        dangerouslyAllowBrowser: true,
+      });
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are a robot",
+          },
+          {
+            role: "user",
+            content:
+              "hello"
+          },
+        ],
+        temperature: 0.7,
+        n: 1,
+      });
+      return response.choices[0].message.content;
+    } catch (error) {
+      return "{\"error\": \"Invalid key\"}"
+    }
+  }
+
+  async function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
+    //check if key is valid
+    const valid_key = await test_gpt();
+    if(valid_key !== null){
+      try{
+        if (JSON.parse(valid_key)['error'] !== null){
+          localStorage.setItem(keyState, JSON.stringify(false));
+        }else{
+          localStorage.setItem(keyState, JSON.stringify(true));
+        }
+      }catch(error){
+        localStorage.setItem(keyState, JSON.stringify(true));
+      }
+    }
     window.location.reload();
   }
 
@@ -61,6 +110,7 @@ function Home() {
               Get Started
             </Button>
           </Form>
+          <h6 id='invalid-api' hidden={getKeyState()}>*Invalid API key</h6>
         </footer>
       </div>
       <div id='side-img'>
