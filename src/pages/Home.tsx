@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Home.css";
+import sideImg from "../imgs/home-side-img.png"
 import { Button, Form } from 'react-bootstrap';
+import Typewriter from 'typewriter-effect';
 
 
 const saveKeyData = "MYKEY";
@@ -33,25 +35,35 @@ function Home() {
 
   return (
     <div id='home-body'>
-      <div id='welcome-text'>
-        <h1>Welcome future []!</h1>
+      <div id='welcome-text' className='alegreya'>
+        <h1 id='landing-title'>
+          Hello Future <Typewriter
+          options={{
+            strings: ['Manager', 'Software Developer', 'Nurse', "Doctor", "Firefighter"],
+            autoStart: true,
+            loop: true,
+          }}
+        />
+        </h1>
+        <p>
+          Ready to embark on your career discovery? Enter APi key to get started!
+        </p>
         <footer>
           <Form>
-          <Form.Label>API Key: </Form.Label>
-          <br/>
-          <Form.Control className='api-form' id="entry"
-            type="password"
-            placeholder="Insert API Key Here"
-            onChange={changeKey}
-          ></Form.Control>
-          <Button className="Submit-Button api-form" id="sbutton" onClick={handleSubmit}>
-            Get Started
-          </Button>
-        </Form>
+            <Form.Label>API Key: </Form.Label>
+            <br />
+            <Form.Control className='api-form' id="entry"
+              type="password"
+              placeholder="Insert API Key Here"
+              onChange={changeKey}
+            ></Form.Control>
+            <Button className="Submit-Button api-form" id="sbutton" onClick={handleSubmit}>
+              Get Started
+            </Button>
+          </Form>
         </footer>
       </div>
-      <div id='side-img'> 
-        <img src='/imgs/background.jpg'/>
+      <div id='side-img'>
       </div>
     </div>
   );
