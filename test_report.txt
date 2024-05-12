@@ -13,102 +13,62 @@ FAIL src/App.test.tsx
     [36m<body>[39m
       [36m<div>[39m
         [36m<div[39m
-          [33mclass[39m=[32m"main-container"[39m
-          [33mstyle[39m=[32m"background-image: url(homebg.png);"[39m
+          [33mid[39m=[32m"home-body"[39m
         [36m>[39m
-          [36m<header[39m
-            [33mclass[39m=[32m"header"[39m
-          [36m>[39m
-            [36m<br />[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"header-content"[39m
-            [36m>[39m
-              [36m<a[39m
-                [33mhref[39m=[32m"#/"[39m
-              [36m>[39m
-                [36m<img[39m
-                  [33malt[39m=[32m"Career Navigator logo"[39m
-                  [33mclass[39m=[32m"logo"[39m
-                  [33msrc[39m=[32m"logo.png"[39m
-                [36m/>[39m
-              [36m</a>[39m
-              [36m<h1[39m
-                [33mclass[39m=[32m"site-name"[39m
-              [36m>[39m
-                [0mCareer Navigator[0m
-              [36m</h1>[39m
-            [36m</div>[39m
-            [36m<br />[39m
-          [36m</header>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"options-wrapper"[39m
-            [33mstyle[39m=[32m"display: flex; justify-content: space-around;"[39m
+            [33mclass[39m=[32m"alegreya"[39m
+            [33mid[39m=[32m"welcome-text"[39m
           [36m>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"options-container"[39m
-              [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
+            [36m<h1[39m
+              [33mid[39m=[32m"landing-title"[39m
             [36m>[39m
+              [0mHello Future [0m
               [36m<div[39m
-                [33mclass[39m=[32m"container"[39m
+                [33mclass[39m=[32m"Typewriter"[39m
+                [33mdata-testid[39m=[32m"typewriter-wrapper"[39m
               [36m>[39m
-                [36m<h1[39m
-                  [33mclass[39m=[32m"title"[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"Typewriter__wrapper"[39m
+                [36m/>[39m
+                [36m<span[39m
+                  [33mclass[39m=[32m"Typewriter__cursor"[39m
                 [36m>[39m
-                  [0mDetailed Questions[0m
-                [36m</h1>[39m
-                [36m<p[39m
-                  [33mclass[39m=[32m"description"[39m
-                [36m>[39m
-                  [0mAre you ready to embark on a journey of self-discovery to find the perfect career path for you? Our detailed career quiz is designed to delve deep into your interests, skills, values, and personality traits to provide you with comprehensive insights into potential career options. Through a series of thought-provoking questions and scenarios, this quiz will analyze various aspects of your life, such as your passions, strengths, preferred work environment, and long-term goals. You can expect detailed feedback and recommendations tailored specifically to your unique profile, helping you make informed decisions about your future career path. Whether you're a recent graduate exploring your options or a seasoned professional seeking a change, our detailed career quiz is your first step towards finding a fulfilling and rewarding career that aligns with who you are.[0m
-                [36m</p>[39m
+                  [0m|[0m
+                [36m</span>[39m
               [36m</div>[39m
-            [36m</div>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"options-container"[39m
-              [33mstyle[39m=[32m"background-color: rgba(255, 255, 255, 0.8);"[39m
-            [36m>[39m
-              [36m<div[39m
-                [33mclass[39m=[32m"container"[39m
+            [36m</h1>[39m
+            [36m<p>[39m
+              [0mReady to embark on your career discovery? Enter APi key to get started![0m
+            [36m</p>[39m
+            [36m<footer>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m""[39m
               [36m>[39m
-                [36m<h1[39m
-                  [33mclass[39m=[32m"title"[39m
+                [36m<label[39m
+                  [33mclass[39m=[32m"form-label"[39m
                 [36m>[39m
-                  [0mBasic Questions[0m
-                [36m</h1>[39m
-                [36m<p[39m
-                  [33mclass[39m=[32m"description"[39m
+                  [0mAPI Key: [0m
+                [36m</label>[39m
+                [36m<br />[39m
+                [36m<input[39m
+                  [33mclass[39m=[32m"api-form form-control"[39m
+                  [33mid[39m=[32m"entry"[39m
+                  [33mplaceholder[39m=[32m"Insert API Key Here"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"Submit-Button api-form btn btn-primary"[39m
+                  [33mid[39m=[32m"sbutton"[39m
+                  [33mtype[39m=[32m"button"[39m
                 [36m>[39m
-                  [0mAre you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.[0m
-                [36m</p>[39m
-              [36m</div>[39m
-            [36m</div>[39m
+                  [0mGet Started[0m
+                [36m</button>[39m
+              [36m</form>[39m
+            [36m</footer>[39m
           [36m</div>[39m
-          [36m<footer[39m
-            [33mclass[39m=[32m"App-footer"[39m
-          [36m>[39m
-            [36m<form[39m
-              [33mclass[39m=[32m""[39m
-            [36m>[39m
-              [36m<label[39m
-                [33mclass[39m=[32m"form-label"[39m
-                [33mstyle[39m=[32m"color: white;"[39m
-              [36m>[39m
-                [0mAPI Key:[0m
-              [36m</label>[39m
-              [36m<input[39m
-                [33mclass[39m=[32m"form-control"[39m
-                [33mplaceholder[39m=[32m"Insert API Key Here"[39m
-                [33mtype[39m=[32m"password"[39m
-              [36m/>[39m
-              [36m<br />[39m
-              [36m<button[39m
-                [33mclass[39m=[32m"Submit-Button btn btn-primary"[39m
-                [33mtype[39m=[32m"button"[39m
-              [36m>[39m
-                [0mSubmit[0m
-              [36m</button>[39m
-            [36m</form>[39m
-          [36m</footer>[39m
+          [36m<div[39m
+            [33mid[39m=[32m"side-img"[39m
+          [36m/>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -134,24 +94,24 @@ FAIL src/App.test.tsx
 ------------------------|---------|----------|---------|---------|-------------------
 File                    | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------------|---------|----------|---------|---------|-------------------
-All files               |   10.14 |     1.92 |   14.28 |    9.75 |                   
+All files               |    6.69 |     1.88 |    4.87 |    6.76 |                   
  src                    |   15.38 |        0 |   33.33 |   15.38 |                   
   App.tsx               |     100 |      100 |     100 |     100 |                   
   index.tsx             |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts    |       0 |        0 |       0 |       0 | 3-10              
- src/components         |      70 |       50 |      50 |   68.42 |                   
-  Footer.tsx            |   63.63 |       50 |   33.33 |   63.63 | 8,15-20           
-  Header.tsx            |     100 |       50 |     100 |     100 | 25                
+ src/components         |      30 |       25 |       0 |   31.57 |                   
+  Footer.tsx            |   45.45 |       50 |       0 |   45.45 | 8,12-23           
+  Header.tsx            |   16.66 |        0 |       0 |      20 | 8-17              
   Menu.tsx              |       0 |      100 |       0 |       0 | 14-17             
-  Option.tsx            |     100 |      100 |     100 |     100 |                   
- src/pages              |    2.87 |        0 |    3.22 |    2.89 |                   
+  Option.tsx            |       0 |      100 |       0 |       0 | 12                
+ src/pages              |     3.4 |     1.02 |    3.33 |    3.42 |                   
   BasicQuestions.tsx    |       0 |        0 |       0 |       0 | 12-407            
   DetailedQuestions.tsx |       0 |        0 |       0 |       0 | 11-284            
-  Home.tsx              |    62.5 |      100 |      25 |    62.5 | 12,24-31          
+  Home.tsx              |      60 |       50 |   33.33 |      60 | 13,25-30          
   ResultsPage.tsx       |       0 |        0 |       0 |       0 | 10-97             
 ------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.826 s
+Time:        2.852 s
 Ran all test suites.
