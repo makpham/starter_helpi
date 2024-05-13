@@ -41,23 +41,23 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   const setPage = (path: string) => {
     navigate(path);
   };
-  // const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
+  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
 
-  // function updateProgress(answerList: string[]){
-  //   let numAnswers = 0;
-  //   answerList.forEach((value: String, index: number, array: String[]) => {
-  //     if(value !== ""){
-  //       numAnswers += 1;
-  //     } 
-  //   } );
-  //   console.log(progress)
-  //   setProgress((numAnswers/questions.length) * 100)
-  // }
-  // function updateAnswers(answer: string, question_index: number){
-  //   setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
-  //   updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
-  // }
+  function updateProgress(answerList: string[]){
+    let numAnswers = 0;
+    answerList.forEach((value: String, index: number, array: String[]) => {
+      if(value !== ""){
+        numAnswers += 1;
+      } 
+    } );
+    console.log(progress)
+    setProgress((numAnswers/questions.length) * 100)
+  }
+  function updateAnswers(answer: string, question_index: number){
+    setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+    updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+  }
 
   return <div id='detailed-body'>
   <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
@@ -75,6 +75,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
       return <div className='question' key={question_index}>
         <Form.Label >{question['question']}</Form.Label>
         <Form.Control
+          onChange={(event) => {
+            updateAnswers(event.target.value, question_index)
+          }}
           type="text"
           className='form-textbox'
         />
