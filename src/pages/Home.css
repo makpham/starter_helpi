@@ -8,7 +8,6 @@
 }
 body{
   font-family: 'Merienda';
-  /* font-family: 'Sofia'; */
   background-image: linear-gradient(to bottom right, #E0FBFC, #5C6B73);
   background-size: 100vw 100vh;
   width: 100%;
@@ -29,6 +28,7 @@ body{
   margin-left: 3rem;
   width: 100%;
   display: inline-block;
+  z-index: 2;
 }
 #side-img {
   background-image: url('/src/imgs/tree2v1.1.png');
@@ -103,6 +103,6 @@ input#entry:focus{
 }
 @media screen and (min-width: 1000px) {
   .intro-text {
-    max-width: 453px;
+    max-width: 550px;
   }
 }

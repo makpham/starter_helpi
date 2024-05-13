@@ -4,6 +4,7 @@ import ReactCardFlip from 'react-card-flip';
 import OpenAI from "openai";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import CherryBlossom from "./CherryBlossom";
 
 
 function ResultsPage({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -61,6 +62,7 @@ function ResultsPage({ results, setResults }: { results: string, setResults: Rea
       
   return (
     <div id="results-body">
+        <CherryBlossom />
         <h1>
             <Typewriter
                 options={{

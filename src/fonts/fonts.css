@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'Indie Flower';
-    src: url('../fonts/IndieFlower/IndieFlower-Regular.ttf');
-}
-
-@font-face {
     font-family: 'Merienda';
     src: url('../fonts/Merienda/static/Merienda-Regular.ttf');
 }
@@ -11,9 +6,4 @@
 @font-face {
     font-family: 'Pangolin';
     src: url('../fonts/Pangolin/Pangolin-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Sofia';
-    src: url('../fonts/Sofia/Sofia-Regular.ttf');
 }
