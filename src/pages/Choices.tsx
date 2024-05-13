@@ -1,6 +1,7 @@
 import "./Choices.css";
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
+import CherryBlossom from "./CherryBlossom";
 
 function Choices() {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ function Choices() {
     const basic_description = "Are you looking for a quick and easy way to get some direction on your career path? Our basic career quiz offers a simplified approach to helping you identify potential career options based on your interests and preferences. This quiz consists of straightforward questions designed to assess your likes, dislikes, and general aspirations. While it may not provide as much in-depth analysis as our detailed quiz, it offers a convenient starting point for those seeking some initial guidance. Whether you're a high school student exploring career options or someone considering a career change, our basic career quiz can help you narrow down your choices and point you in the right direction. It's a quick and efficient tool to kickstart your journey towards finding a career that suits you.";
 
     return <div id='choice-body'>
+        
         <h1>
             <Typewriter
                 options={{
@@ -25,6 +27,7 @@ function Choices() {
 
         <div id='wait-typewriter'>
             Embark on your exciting journey by selecting either a basic or a detailed questionnaire. This will help you discover the career path that aligns perfectly with your interests, skills, and aspirations!
+            <CherryBlossom />
         </div>
         <div id='wait-twice'>
             <div id='basic'><h1>Basic</h1>{basic_description}<br /><br /><div id='get-started-basic'><button onClick={() => setPage("/basic-questions")}>Get Started</button></div></div>

@@ -4,6 +4,7 @@ import "./Home.css";
 import { Button, Form } from 'react-bootstrap';
 import Typewriter from 'typewriter-effect';
 import OpenAI from 'openai';
+import CherryBlossom from './CherryBlossom';
 
 
 function Home() {
@@ -94,6 +95,7 @@ function Home() {
 
   return (
     <div id='home-body'>
+      <CherryBlossom />
       <div id='welcome-text' className='alegreya'>
         <h1 id='landing-title'>
           Hello Future 

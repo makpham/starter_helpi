@@ -2,9 +2,15 @@ import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
+import CherryBlossom from './CherryBlossom';
+import { useNavigate } from 'react-router-dom';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
   const questions = [
     {
       question:
@@ -89,12 +95,15 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
   return <div id='basic-body'>
-      <LoadingBar
-        color='#9DB4C0'
-        height={10}
-        progress={progress}
-        onLoaderFinished={() => setProgress(99.99)}
-      />
+    <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+      
+    <LoadingBar
+      color="#9DB4C0"
+      height={10}
+      progress={progress}
+      onLoaderFinished={() => setProgress(99.99)}
+    />
+    <CherryBlossom />
     <h1>Basic Questionaire</h1>
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
