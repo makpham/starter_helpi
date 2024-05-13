@@ -11,14 +11,17 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+#basic-body h1{
+  color: #253237;
+}
 #basic-body{
   font-family:monospace;
   text-align: center;
   align-content: center;
   padding-top: 1rem;
   /* min-width: 100vw; */
-  width: 100%;
-  color: black;
+  max-width: 100vw;
+  color: #C2DFE3;
   min-height: 100vh;
   height: 100%;
   background-image: linear-gradient(to bottom right, #E0FBFC, #5C6B73);

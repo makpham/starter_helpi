@@ -88,9 +88,6 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
-  function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
   return <div id='basic-body'>
       <LoadingBar
         color='#9DB4C0'
