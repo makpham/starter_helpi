@@ -1,5 +1,7 @@
+@import "../fonts/fonts.css";
+
 #choice-body{
-    font-family:monospace;
+    font-family: 'Pangolin';
     text-align: center;
     align-content: center;
     min-width: 100vw;
