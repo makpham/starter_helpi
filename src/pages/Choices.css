@@ -1,7 +1,7 @@
 @import "../fonts/fonts.css";
 
 #choice-body{
-    font-family: 'Pangolin';
+    font-family: 'Merienda';
     text-align: center;
     align-content: center;
     min-width: 100vw;
@@ -10,6 +10,7 @@
     min-height: 100vh;
     height: 100%;
     background-image: linear-gradient(to bottom right, #E0FBFC, #5C6B73);
+    z-index: 2;
 }
 #wait-twice{
     animation: fadeIn 10s;
@@ -19,6 +20,7 @@
     gap: 3rem;
     padding: 1rem;
     margin-top: 2rem;
+    z-index: 2;
 }
 #detailed, #basic {
     display: inline-block;
@@ -32,12 +34,14 @@
     border-radius: 10px;
     max-width: 500px;
     color: #253237;
+    z-index: 2;
 }
 #get-started-basic, #get-started-detailed{
     text-align: center;
     font-size: 1.5rem;
     position: sticky;
     top: 100%;
+    z-index: 2;
 }
 #get-started-basic button, #get-started-detailed button {
     background-color: #E0FBFC;
@@ -57,6 +61,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    z-index: 2;
 }
 
 #get-started-basic button:hover {
@@ -74,15 +79,18 @@
 }
 #detailed h1, #basic h1{
     text-align: center;
+    z-index: 2;
 }
 #detailed button, #basic button{
     text-align: center;
+    z-index: 2;
 }
 #wait-typewriter{
     max-width: 1000px;
     margin: auto;
     width: auto;
     animation: fadeIn 7s;
+    z-index: 2;
 }
 @keyframes fadeIn {
     0% { opacity: 0; }

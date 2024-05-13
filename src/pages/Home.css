@@ -28,6 +28,7 @@ body{
   margin-left: 3rem;
   width: 100%;
   display: inline-block;
+  z-index: 2;
 }
 #side-img {
   background-image: url('/src/imgs/tree2.png');
