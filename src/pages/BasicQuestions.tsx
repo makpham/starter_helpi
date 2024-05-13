@@ -1,6 +1,9 @@
-import { Button, Form, ProgressBar } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import { useState } from 'react';
 import "./BasicQuestions.css";
+import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
+import { useNavigate } from 'react-router-dom';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -70,8 +73,36 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       ],
     },
   ];
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
+  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
+  const [progress, setProgress] = useState<number>(0)
 
+  function updateProgress(answerList: string[]){
+    let numAnswers = 0;
+    answerList.forEach((value: String, index: number, array: String[]) => {
+      if(value !== ""){
+        numAnswers += 1;
+      } 
+    } );
+    console.log(progress)
+    setProgress((numAnswers/questions.length) * 100)
+  }
+  function updateAnswers(answer: string, question_index: number){
+    setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+    updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+  }
   return <div id='basic-body'>
+    <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+      
+    <LoadingBar
+      color="#9DB4C0"
+      height={10}
+      progress={progress}
+      onLoaderFinished={() => setProgress(99.99)}
+    />
     <CherryBlossom />
     <h1>Basic Questionaire</h1>
     <Form>
@@ -79,18 +110,19 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
         return <div className='question' key={question_index}>
           <Form.Label >{question['question']}</Form.Label>
           {question['choices'].map( (answer: string, answer_index) => {
-            return <Form.Check // prettier-ignore
+            return <Form.Check
             type="radio"
             key={answer_index}
+            onClick={()=>{updateAnswers(answer, question_index)}}
             name={question['question']}
             label={answer}
+            className='options'
           />;
           })}
         </div>
       })}
-      <Button>Submit</Button>
+      <Button disabled={progress !== 99.99}>Submit</Button>
     </Form>
-    <ProgressBar now={60} id='progress-bar-basic'/>
   </div>
 }
 

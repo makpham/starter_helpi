@@ -15,6 +15,7 @@
     max-width: 100vw;
     justify-content: center;
     gap: 3rem;
+    padding: 1rem;
     margin-top: 2rem;
 }
 #detailed, #basic {
@@ -78,6 +79,7 @@
 #wait-typewriter{
     max-width: 1000px;
     margin: auto;
+    width: auto;
     animation: fadeIn 7s;
 }
 @keyframes fadeIn {
