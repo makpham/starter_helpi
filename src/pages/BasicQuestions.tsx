@@ -3,6 +3,7 @@ import { useState } from 'react';
 import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
+import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -104,7 +105,17 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       onLoaderFinished={() => setProgress(99.99)}
     />
     <CherryBlossom />
-    <h1>Basic Questionaire</h1>
+    <h1>
+            <Typewriter
+                options={{
+                    delay: 50
+                }}
+                onInit={(typewriter) => {
+                    typewriter.typeString('Basic Questionaire')
+                        .start();
+                }}
+            />
+        </h1>
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
         return <div className='question' key={question_index}>

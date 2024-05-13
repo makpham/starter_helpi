@@ -6,7 +6,8 @@
   border-radius: 25px;
   text-align: left;
   font-weight: 600;
-  animation: fadeIn 1.5s linear forwards;
+  animation: fadeIn 2.5s linear forwards;
+
 }
 .form-textbox{
   background-color: #E0FBFC;

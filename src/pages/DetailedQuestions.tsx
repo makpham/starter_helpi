@@ -4,6 +4,7 @@ import "./DetailedQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
 import { useNavigate } from 'react-router-dom';
+import Typewriter from 'typewriter-effect';
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const questions = [
@@ -69,7 +70,17 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     onLoaderFinished={() => setProgress(99.99)}
   />
   <CherryBlossom />
-  <h1>Detailed Questionaire</h1>
+  <h1>
+            <Typewriter
+                options={{
+                    delay: 50
+                }}
+                onInit={(typewriter) => {
+                    typewriter.typeString('Detailed Questionaire')
+                        .start();
+                }}
+            />
+        </h1>
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
