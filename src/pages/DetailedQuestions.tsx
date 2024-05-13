@@ -60,7 +60,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   }
 
   return <div id='detailed-body'>
-  <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button></header>
     
   <LoadingBar
     color="#9DB4C0"

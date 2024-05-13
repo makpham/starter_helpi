@@ -95,7 +95,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
   return <div id='basic-body'>
-    <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+    <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button></header>
       
     <LoadingBar
       color="#9DB4C0"
