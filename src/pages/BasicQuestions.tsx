@@ -1,5 +1,7 @@
 import { Button, Form, ProgressBar } from 'react-bootstrap';
+import { useState } from 'react';
 import "./BasicQuestions.css";
+import LoadingBar from 'react-top-loading-bar';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -69,17 +71,31 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       ],
     },
   ];
+  let answers: Array<String> = new Array<String>(questions.length);
+  const [progress, setProgress] = useState(0)
 
+  function updateProgress(){
+  }
+  function updateAnswers(answer: string, question_index: number){
+    answers[question_index] = answer;
+    console.log(answers);
+  }
   return <div id='basic-body'>
+      <LoadingBar
+        color='#f11946'
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
     <h1>Basic Questionaire</h1>
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
         return <div className='question' key={question_index}>
           <Form.Label >{question['question']}</Form.Label>
           {question['choices'].map( (answer: string, answer_index) => {
-            return <Form.Check // prettier-ignore
+            return <Form.Check
             type="radio"
             key={answer_index}
+            onClick={()=>{updateAnswers(answer, question_index)}}
             name={question['question']}
             label={answer}
           />;
@@ -88,7 +104,6 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       })}
       <Button>Submit</Button>
     </Form>
-    <ProgressBar now={60} id='progress-bar-basic'/>
   </div>
 }
 
