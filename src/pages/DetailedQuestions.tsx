@@ -94,7 +94,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
         />
       </div>
     })}
-    <Button disabled={progress !== 99.99}>Submit</Button>
+    <Button disabled={progress !== 99.99} onClick={() => { navigate("/results", {state: answers});}}>Submit</Button>
   </Form>
 </div>
 }
