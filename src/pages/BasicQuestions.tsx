@@ -1,4 +1,4 @@
-import { Button, Form, ProgressBar } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
@@ -88,9 +88,13 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
+  function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
   return <div id='basic-body'>
       <LoadingBar
-        color='#f11946'
+        color='#9DB4C0'
+        height={10}
         progress={progress}
         onLoaderFinished={() => setProgress(99.99)}
       />
