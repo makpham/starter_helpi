@@ -71,20 +71,28 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       ],
     },
   ];
-  let answers: Array<String> = new Array<String>(questions.length);
-  const [progress, setProgress] = useState(0)
+  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
+  const [progress, setProgress] = useState<number>(0)
 
-  function updateProgress(){
+  function updateProgress(answerList: string[]){
+    let numAnswers = 0;
+    answerList.forEach((value: String, index: number, array: String[]) => {
+      if(value !== ""){
+        numAnswers += 1;
+      } 
+    } );
+    console.log(progress)
+    setProgress((numAnswers/questions.length) * 100)
   }
   function updateAnswers(answer: string, question_index: number){
-    answers[question_index] = answer;
-    console.log(answers);
+    setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+    updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
   return <div id='basic-body'>
       <LoadingBar
         color='#f11946'
         progress={progress}
-        onLoaderFinished={() => setProgress(0)}
+        onLoaderFinished={() => setProgress(99.99)}
       />
     <h1>Basic Questionaire</h1>
     <Form>
@@ -102,7 +110,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
           })}
         </div>
       })}
-      <Button>Submit</Button>
+      <Button disabled={progress !== 99.99}>Submit</Button>
     </Form>
   </div>
 }
