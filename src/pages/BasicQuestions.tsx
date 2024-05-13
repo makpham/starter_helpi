@@ -7,10 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
-  const navigate = useNavigate();
-  const setPage = (path: string) => {
-    navigate(path);
-  };
   const questions = [
     {
       question:
@@ -77,6 +73,10 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       ],
     },
   ];
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
 
@@ -116,6 +116,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
             onClick={()=>{updateAnswers(answer, question_index)}}
             name={question['question']}
             label={answer}
+            className='options'
           />;
           })}
         </div>

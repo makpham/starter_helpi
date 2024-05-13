@@ -6,6 +6,10 @@
   border-radius: 25px;
   text-align: left;
   animation: fadeIn 1.5s linear forwards;
+  font-weight: 700;
+}
+.options{
+  font-weight:100;
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
