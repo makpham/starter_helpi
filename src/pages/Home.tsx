@@ -96,7 +96,7 @@ function Home() {
   return (
     <div id='home-body'>
       <CherryBlossom />
-      <div id='welcome-text' className='alegreya'>
+      <div id='welcome-text'>
         <h1 id='landing-title'>
           Hello Future 
           <Typewriter
@@ -107,7 +107,7 @@ function Home() {
           }}
         />
         </h1>
-        <p>
+        <p className="intro-text">
           Ready to embark on your career discovery? Enter API key to get started!
         </p>
         <footer>
