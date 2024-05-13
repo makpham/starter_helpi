@@ -1,5 +1,6 @@
 import { Button, Form, ProgressBar } from 'react-bootstrap';
 import "./BasicQuestions.css";
+import CherryBlossom from './CherryBlossom';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -71,6 +72,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   ];
 
   return <div id='basic-body'>
+    <CherryBlossom />
     <h1>Basic Questionaire</h1>
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
