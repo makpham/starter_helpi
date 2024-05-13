@@ -1,6 +1,5 @@
 import "./ResultsPage.css";
 import Typewriter from 'typewriter-effect';
-import ReactCardFlip from 'react-card-flip';
 import OpenAI from "openai";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -58,7 +57,7 @@ function ResultsPage({ results, setResults }: { results: string, setResults: Rea
             };
       
         get_answers();
-      }, []);
+      });
       
   return (
     <div id="results-body">
