@@ -102,6 +102,6 @@ input#entry:focus{
 }
 @media screen and (min-width: 1000px) {
   .intro-text {
-    max-width: 453px;
+    max-width: 550px;
   }
 }
