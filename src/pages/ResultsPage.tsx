@@ -53,28 +53,29 @@ function ResultsPage({
   const answers: string = useLocation().state.join(" ");
   useEffect(() => {
     async function get_answers() {
-      let gpt_data = await call_gpt(answers);
-      console.log("test");
-      if (gpt_data != null)
-        try {
-          const parsedData = JSON.parse(gpt_data);
-          console.log(parsedData);
-          if (
-            parsedData.job === undefined ||
-            parsedData.job_description === undefined ||
-            parsedData.salaries === undefined ||
-            parsedData.work_environment === undefined ||
-            parsedData.top_companies === undefined ||
-            parsedData.how_to_start === undefined
-          ) {
-            throw new Error();
+      if(parsedData?.job === undefined || parsedData?.job === null || parsedData?.job === ""){
+        let gpt_data = await call_gpt(answers);
+        if (gpt_data != null)
+          try {
+            const parsedData = JSON.parse(gpt_data);
+            console.log(parsedData);
+            if (
+              parsedData.job === undefined ||
+              parsedData.job_description === undefined ||
+              parsedData.salaries === undefined ||
+              parsedData.work_environment === undefined ||
+              parsedData.top_companies === undefined ||
+              parsedData.how_to_start === undefined
+            ) {
+              throw new Error();
+            }
+            console.log(parsedData.work_environment);
+            setParsedData(parsedData);
+          } catch (error) {
+            console.log(error);
+            await get_answers();
           }
-          console.log(parsedData.work_environment);
-          setParsedData(parsedData);
-        } catch (error) {
-          console.log(error);
-          await get_answers();
-        }
+      }
     }
 
     get_answers();
