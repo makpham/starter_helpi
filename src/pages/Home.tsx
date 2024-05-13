@@ -96,7 +96,7 @@ function Home() {
   return (
     <div id='home-body'>
       <CherryBlossom />
-      <div id='welcome-text' className='alegreya'>
+      <div id='welcome-text' className='Indie Flower'>
         <h1 id='landing-title'>
           Hello Future 
           <Typewriter
