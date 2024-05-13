@@ -121,7 +121,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
           })}
         </div>
       })}
-      <Button disabled={progress !== 99.99}>Submit</Button>
+      <Button disabled={progress !== 99.99} onClick={() => setPage("/results")}>Submit</Button>
     </Form>
   </div>
 }
