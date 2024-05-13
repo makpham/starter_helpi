@@ -107,7 +107,7 @@ function Home() {
           }}
         />
         </h1>
-        <p>
+        <p className="intro-text">
           Ready to embark on your career discovery? Enter API key to get started!
         </p>
         <footer>
