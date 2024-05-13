@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+@import "fonts.css";
 
 .alegreya {
   font-family:monospace;
   font-optical-sizing: auto;
   font-style: normal;
 }
-@font-face {
+/* @font-face {
   font-family: 'Indie Flower';
   src: url('../fonts/IndieFlower/IndieFlower-Regular.ttf');
 }
@@ -20,7 +21,7 @@
 @font-face {
   font-family: 'Sofia';
   src: url('../fonts/Sofia/Sofia-Regular.ttf');
-}
+} */
 body{
   /* font-family: 'Indie Flower', cursive; */
   /* font-family: 'Merienda';*/
