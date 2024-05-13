@@ -76,7 +76,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   ];
   const navigate = useNavigate();
   const setPage = (path: string) => {
-    navigate(path);
+    navigate(path, {state: answers});
   };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
@@ -132,7 +132,9 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
           })}
         </div>
       })}
-      <Button disabled={progress !== 99.99}>Submit</Button>
+      <Button disabled={progress !== 99.99} onClick={() =>{
+        navigate("/results", {state: answers});
+      }}>Submit</Button>
     </Form>
   </div>
 }
