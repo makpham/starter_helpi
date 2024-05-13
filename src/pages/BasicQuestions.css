@@ -27,6 +27,7 @@
   top: -1.5rem;
   left:0px;
   transition: transform .2s;
+  animation: fadeIn 1.5s linear forwards;
 }
 #menu-bar:focus {
   outline: none;
