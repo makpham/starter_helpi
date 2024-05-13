@@ -7,7 +7,19 @@
 }
 @font-face {
   font-family: 'Indie Flower';
-  src: url(src/fonts/Indie_Flower/IndieFlower.ttf);
+  src: url('../fonts/Indie_Flower/IndieFlower.ttf');
+}
+@font-face {
+  font-family: 'Merienda';
+  src: url('../fonts/Fonts/Merienda/static/Merienda-Regular.ttf');
+}
+@font-face {
+  font-family: 'Pangolin';
+  src: url('../fonts/Fonts/Pangolin/Pangolin-Regular.ttf');
+}
+@font-face {
+  font-family: 'Sofia';
+  src: url('../fonts/Fonts/Sofia/Sofia-Regular.ttf');
 }
 body{
   font-family: 'Indie Flower', cursive;
