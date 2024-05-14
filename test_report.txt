@@ -1,9 +1,9 @@
 
 > starter_helpi@0.1.0 test
-> react-scripts test --coverage
+> node scripts/test.js --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (87 ms)
+  ✕ renders learn react link (90 ms)
 
   ● renders learn react link
 
@@ -20,123 +20,123 @@ FAIL src/App.test.tsx
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 83.61889097193172vw; animation-duration: 6.125761283839318s; animation-delay: -1.8690769002003293s;"[39m
+              [33mstyle[39m=[32m"left: 73.88074940022102vw; animation-duration: 9.884566930812221s; animation-delay: -2.297265647594947s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 14.454320215954608vw; animation-duration: 8.485405912517802s; animation-delay: -4.785138600388388s;"[39m
+              [33mstyle[39m=[32m"left: 86.77449606703502vw; animation-duration: 6.1340472513465025s; animation-delay: -3.634583573183475s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 9.90077703401977vw; animation-duration: 6.677964758840028s; animation-delay: -3.928128792168569s;"[39m
+              [33mstyle[39m=[32m"left: 89.92573498742577vw; animation-duration: 9.534760536740848s; animation-delay: -0.6857181643172361s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 19.463571027931014vw; animation-duration: 6.210268002997939s; animation-delay: -1.2373490340424331s;"[39m
+              [33mstyle[39m=[32m"left: 88.36580705880475vw; animation-duration: 9.816237817828679s; animation-delay: -2.4477287613522414s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 53.71465139023259vw; animation-duration: 5.100447358532255s; animation-delay: -3.7552501561224263s;"[39m
+              [33mstyle[39m=[32m"left: 76.58324613155958vw; animation-duration: 8.290548364520694s; animation-delay: -0.37473827450903885s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 27.21520069970216vw; animation-duration: 8.01477380028179s; animation-delay: -4.200116416862619s;"[39m
+              [33mstyle[39m=[32m"left: 49.01760547260563vw; animation-duration: 6.4215720598716794s; animation-delay: -3.3356396096862606s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 92.03253569042855vw; animation-duration: 9.741809252504819s; animation-delay: -2.7486280116816673s;"[39m
+              [33mstyle[39m=[32m"left: 66.25675315122434vw; animation-duration: 5.484802787000621s; animation-delay: -1.7514204440522652s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 5.694287313775193vw; animation-duration: 8.445385811628608s; animation-delay: -0.30734282285872494s;"[39m
+              [33mstyle[39m=[32m"left: 55.901537015937784vw; animation-duration: 7.243431593332391s; animation-delay: -2.2377267836833847s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 70.22777852018787vw; animation-duration: 5.150195201321143s; animation-delay: -0.6154815386593526s;"[39m
+              [33mstyle[39m=[32m"left: 42.45896846962771vw; animation-duration: 7.5331530709920695s; animation-delay: -3.6189873988939745s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 9.190202490837951vw; animation-duration: 5.274627818819484s; animation-delay: -4.583303302381097s;"[39m
+              [33mstyle[39m=[32m"left: 78.00419327260089vw; animation-duration: 9.875920730115022s; animation-delay: -1.9844152675002902s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 2.641235403888409vw; animation-duration: 9.581752435744452s; animation-delay: -0.22627526838405965s;"[39m
+              [33mstyle[39m=[32m"left: 62.37928883913477vw; animation-duration: 6.424342214082617s; animation-delay: -4.652329817023736s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 5.116163757471237vw; animation-duration: 7.350648936911442s; animation-delay: -3.5696022294157395s;"[39m
+              [33mstyle[39m=[32m"left: 59.9097639089466vw; animation-duration: 6.013816158565641s; animation-delay: -2.465575236225278s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 71.45852411458186vw; animation-duration: 8.749523013446357s; animation-delay: -2.405547169612766s;"[39m
+              [33mstyle[39m=[32m"left: 4.513040480571351vw; animation-duration: 7.329710728869471s; animation-delay: -3.1769566945459813s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 63.98563865177573vw; animation-duration: 7.809758389413476s; animation-delay: -2.8192399355788633s;"[39m
+              [33mstyle[39m=[32m"left: 99.88767105841502vw; animation-duration: 9.614871557198732s; animation-delay: -0.6076950134893944s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 61.23256102529751vw; animation-duration: 6.272527756503071s; animation-delay: -0.15236845745138727s;"[39m
+              [33mstyle[39m=[32m"left: 81.77950540818455vw; animation-duration: 6.38493808145442s; animation-delay: -2.7701306957834024s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 80.7990018369461vw; animation-duration: 6.716376317108055s; animation-delay: -1.5560029972592926s;"[39m
+              [33mstyle[39m=[32m"left: 40.43653815608206vw; animation-duration: 5.703348997797653s; animation-delay: -3.9990029093408475s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 88.39633436897665vw; animation-duration: 6.86814543390758s; animation-delay: -2.911392545767293s;"[39m
+              [33mstyle[39m=[32m"left: 16.95277410818463vw; animation-duration: 8.14962224710463s; animation-delay: -1.8928616745578308s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 38.12242351152661vw; animation-duration: 9.075924242282094s; animation-delay: -3.309086021805552s;"[39m
+              [33mstyle[39m=[32m"left: 26.262194038274743vw; animation-duration: 5.015539608671823s; animation-delay: -2.07569132026261s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 68.48856017890846vw; animation-duration: 8.923524503717147s; animation-delay: -0.5672582861539566s;"[39m
+              [33mstyle[39m=[32m"left: 12.824562673938434vw; animation-duration: 7.617452024873263s; animation-delay: -4.504367858828244s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 85.00657139607277vw; animation-duration: 6.528482760372807s; animation-delay: -4.362619092009736s;"[39m
+              [33mstyle[39m=[32m"left: 12.250322091994947vw; animation-duration: 9.08984193729242s; animation-delay: -1.637663612813992s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 31.070189883796616vw; animation-duration: 9.668835463389655s; animation-delay: -0.008955376581731844s;"[39m
+              [33mstyle[39m=[32m"left: 37.96929671578611vw; animation-duration: 6.118218450527973s; animation-delay: -0.8438047469916743s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 43.737679744964296vw; animation-duration: 6.022168015692598s; animation-delay: -1.9379229671425013s;"[39m
+              [33mstyle[39m=[32m"left: 44.78697035606516vw; animation-duration: 9.625807826552787s; animation-delay: -2.7512205081844785s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 50.378225352785044vw; animation-duration: 6.51360314033842s; animation-delay: -0.6279217770399714s;"[39m
+              [33mstyle[39m=[32m"left: 72.29705867921925vw; animation-duration: 7.732504453008038s; animation-delay: -3.089219138136939s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 79.70890558051691vw; animation-duration: 6.676797107667475s; animation-delay: -3.7033183227363686s;"[39m
+              [33mstyle[39m=[32m"left: 68.45078146863383vw; animation-duration: 6.616730326406436s; animation-delay: -1.7671010818313015s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 7.943451221873077vw; animation-duration: 5.392467821525321s; animation-delay: -1.7583658413305892s;"[39m
+              [33mstyle[39m=[32m"left: 1.2228494332005457vw; animation-duration: 6.612901119045982s; animation-delay: -0.3271313035847456s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 95.20289588971vw; animation-duration: 8.784231190798693s; animation-delay: -2.302788066731557s;"[39m
+              [33mstyle[39m=[32m"left: 73.45865956279202vw; animation-duration: 9.424860659635412s; animation-delay: -1.1069240564833227s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 96.86515647306409vw; animation-duration: 9.580806737279627s; animation-delay: -3.172870127050361s;"[39m
+              [33mstyle[39m=[32m"left: 76.950623042482vw; animation-duration: 8.346804583067717s; animation-delay: -4.705127848450072s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 85.15499313470289vw; animation-duration: 6.537906055325697s; animation-delay: -2.3242359614503707s;"[39m
+              [33mstyle[39m=[32m"left: 92.35425851390254vw; animation-duration: 9.274608954641991s; animation-delay: -2.3405964705295554s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 32.66507881396856vw; animation-duration: 5.580076708396548s; animation-delay: -4.259388195867352s;"[39m
+              [33mstyle[39m=[32m"left: 27.74559157214913vw; animation-duration: 6.892802306035631s; animation-delay: -2.7577350541487453s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33m...
+              [3...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -175,5 +175,5 @@ All files               |   13.95 |     3.63 |   12.28 |   13.95 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.824 s
+Time:        2.694 s
 Ran all test suites.

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.ee329250.css",
-    "main.js": "/starter_helpi/static/js/main.07502279.js",
+    "main.css": "/starter_helpi/static/css/main.fe2636e6.css",
+    "main.js": "/starter_helpi/static/js/main.ebdd018d.js",
     "static/js/453.dda23872.chunk.js": "/starter_helpi/static/js/453.dda23872.chunk.js",
     "static/media/Pangolin-Regular.ttf": "/starter_helpi/static/media/Pangolin-Regular.df5f537c56b8f162c1d1.ttf",
     "static/media/tree2v1.1.png": "/starter_helpi/static/media/tree2v1.1.86eccfe759bf5dcdb6bd.png",
@@ -10,12 +10,12 @@
     "static/media/JetBrainsMono-Regular.ttf": "/starter_helpi/static/media/JetBrainsMono-Regular.3eb7f2ebfc6706e5e704.ttf",
     "static/media/Merienda-Regular.ttf": "/starter_helpi/static/media/Merienda-Regular.69f026d4d19f0083af71.ttf",
     "index.html": "/starter_helpi/index.html",
-    "main.ee329250.css.map": "/starter_helpi/static/css/main.ee329250.css.map",
-    "main.07502279.js.map": "/starter_helpi/static/js/main.07502279.js.map",
+    "main.fe2636e6.css.map": "/starter_helpi/static/css/main.fe2636e6.css.map",
+    "main.ebdd018d.js.map": "/starter_helpi/static/js/main.ebdd018d.js.map",
     "453.dda23872.chunk.js.map": "/starter_helpi/static/js/453.dda23872.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee329250.css",
-    "static/js/main.07502279.js"
+    "static/css/main.fe2636e6.css",
+    "static/js/main.ebdd018d.js"
   ]
 }
