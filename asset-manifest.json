@@ -1,21 +1,18 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.58df369a.css",
-    "main.js": "/starter_helpi/static/js/main.bcccb49c.js",
-    "static/js/453.bad6c33a.chunk.js": "/starter_helpi/static/js/453.bad6c33a.chunk.js",
-    "static/media/tree2.png": "/starter_helpi/static/media/tree2.f8305d1cfd185818830d.png",
-    "static/media/officebg.png": "/starter_helpi/static/media/officebg.818f42142def5cf83e8a.png",
+    "main.css": "/starter_helpi/static/css/main.f2cfc72f.css",
+    "main.js": "/starter_helpi/static/js/main.9ba8e5e4.js",
+    "static/js/453.dda23872.chunk.js": "/starter_helpi/static/js/453.dda23872.chunk.js",
     "static/media/Pangolin-Regular.ttf": "/starter_helpi/static/media/Pangolin-Regular.df5f537c56b8f162c1d1.ttf",
-    "static/media/logo.png": "/starter_helpi/static/media/logo.cb498c0d466769306701.png",
-    "static/media/result.png": "/starter_helpi/static/media/result.3de352482598dcda2b97.png",
+    "static/media/tree2v1.1.png": "/starter_helpi/static/media/tree2v1.1.86eccfe759bf5dcdb6bd.png",
     "static/media/Merienda-Regular.ttf": "/starter_helpi/static/media/Merienda-Regular.69f026d4d19f0083af71.ttf",
     "index.html": "/starter_helpi/index.html",
-    "main.58df369a.css.map": "/starter_helpi/static/css/main.58df369a.css.map",
-    "main.bcccb49c.js.map": "/starter_helpi/static/js/main.bcccb49c.js.map",
-    "453.bad6c33a.chunk.js.map": "/starter_helpi/static/js/453.bad6c33a.chunk.js.map"
+    "main.f2cfc72f.css.map": "/starter_helpi/static/css/main.f2cfc72f.css.map",
+    "main.9ba8e5e4.js.map": "/starter_helpi/static/js/main.9ba8e5e4.js.map",
+    "453.dda23872.chunk.js.map": "/starter_helpi/static/js/453.dda23872.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.58df369a.css",
-    "static/js/main.bcccb49c.js"
+    "static/css/main.f2cfc72f.css",
+    "static/js/main.9ba8e5e4.js"
   ]
 }
