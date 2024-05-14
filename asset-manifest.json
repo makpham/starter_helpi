@@ -1,18 +1,21 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.f2cfc72f.css",
-    "main.js": "/starter_helpi/static/js/main.9ba8e5e4.js",
+    "main.css": "/starter_helpi/static/css/main.ee329250.css",
+    "main.js": "/starter_helpi/static/js/main.07502279.js",
     "static/js/453.dda23872.chunk.js": "/starter_helpi/static/js/453.dda23872.chunk.js",
     "static/media/Pangolin-Regular.ttf": "/starter_helpi/static/media/Pangolin-Regular.df5f537c56b8f162c1d1.ttf",
     "static/media/tree2v1.1.png": "/starter_helpi/static/media/tree2v1.1.86eccfe759bf5dcdb6bd.png",
+    "static/media/NovaMono-Regular.ttf": "/starter_helpi/static/media/NovaMono-Regular.4f3e514a299d9efd587e.ttf",
+    "static/media/UbuntuSansMono-Regular.ttf": "/starter_helpi/static/media/UbuntuSansMono-Regular.7567ee8af3f62b5855ec.ttf",
+    "static/media/JetBrainsMono-Regular.ttf": "/starter_helpi/static/media/JetBrainsMono-Regular.3eb7f2ebfc6706e5e704.ttf",
     "static/media/Merienda-Regular.ttf": "/starter_helpi/static/media/Merienda-Regular.69f026d4d19f0083af71.ttf",
     "index.html": "/starter_helpi/index.html",
-    "main.f2cfc72f.css.map": "/starter_helpi/static/css/main.f2cfc72f.css.map",
-    "main.9ba8e5e4.js.map": "/starter_helpi/static/js/main.9ba8e5e4.js.map",
+    "main.ee329250.css.map": "/starter_helpi/static/css/main.ee329250.css.map",
+    "main.07502279.js.map": "/starter_helpi/static/js/main.07502279.js.map",
     "453.dda23872.chunk.js.map": "/starter_helpi/static/js/453.dda23872.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f2cfc72f.css",
-    "static/js/main.9ba8e5e4.js"
+    "static/css/main.ee329250.css",
+    "static/js/main.07502279.js"
   ]
 }
