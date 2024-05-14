@@ -61,7 +61,10 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   }
 
   return <div id='detailed-body'>
-  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button></header>
+  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+  <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>&gt;</Button>
+  
+  </header>
     
   <LoadingBar
     color="#9DB4C0"

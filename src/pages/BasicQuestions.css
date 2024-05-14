@@ -23,7 +23,7 @@
 #basic-body h1{
   color: #253237;
 }
-#menu-bar{
+#menu-bar-choices{
   color: #9DB4C0;
   font-size: 5rem;
   margin: auto;
@@ -38,11 +38,26 @@
   transition: transform .2s;
   animation: fadeIn 1.5s linear forwards;
 }
-#menu-bar:focus {
+#change-type{
+  color: #505d63;
+  font-size: 5rem;
+  margin: auto;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  margin-left: 1rem;
+  top:0px;
+  position: fixed;
+  top: -1.5rem;
+  right:0px;
+  transition: transform .2s;
+  animation: fadeIn 1.5s linear forwards;
+}
+#menu-bar-choices:focus, #change-type:focus{
   outline: none;
   box-shadow: none;
 }
-#menu-bar:hover{
+#menu-bar-choices:hover, #change-type:hover{
   transform: scale(1.2);
 }
 #basic-body{

@@ -96,7 +96,12 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
   return <div id='basic-body'>
-    <header><Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
+    <header>
+      
+      <Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button>
+      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>&gt;</Button>
+    
+    </header>
       
     <LoadingBar
       color="#9DB4C0"

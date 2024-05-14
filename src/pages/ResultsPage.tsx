@@ -1,9 +1,10 @@
 import "./ResultsPage.css";
 import Typewriter from "typewriter-effect";
 import OpenAI from "openai";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CherryBlossom from "./CherryBlossom";
+import { Button } from "react-bootstrap";
 
 function ResultsPage({
   results,
@@ -51,6 +52,10 @@ function ResultsPage({
     }
   }
   const answers: string = useLocation().state.join(" ");
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
   useEffect(() => {
     async function get_answers() {
       if (
@@ -89,6 +94,7 @@ function ResultsPage({
 
   return (
     <div id="results-body">
+      <header><Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
       <CherryBlossom />
       <h1>
         <Typewriter
