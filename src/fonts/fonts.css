@@ -2,8 +2,19 @@
     font-family: 'Merienda';
     src: url('../fonts/Merienda/static/Merienda-Regular.ttf');
 }
-
 @font-face {
     font-family: 'Pangolin';
     src: url('../fonts/Pangolin/Pangolin-Regular.ttf');
+}
+@font-face {
+    font-family: 'Nova Mono';
+    src: url('../fonts/Nova_Mono/NovaMono-Regular.ttf');
+}
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf');
+}
+@font-face {
+    font-family: 'Ubuntu Sans Mono';
+    src: url('../fonts/Ubuntu_Sans_Mono/static/UbuntuSansMono-Regular.ttf');
 }

@@ -101,6 +101,14 @@ input#entry:focus{
   width:100%;
   margin: auto;
 }
+.company-text {
+  position: fixed;
+  left: 0;
+  Top: 0;
+  padding: 10px;
+  font-size: 20px;
+  color: #000;
+}
 @media screen and (min-width: 1000px) {
   .intro-text {
     max-width: 550px;
