@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.64c80657.css",
-    "main.js": "/starter_helpi/static/js/main.1d799dbe.js",
+    "main.css": "/starter_helpi/static/css/main.58df369a.css",
+    "main.js": "/starter_helpi/static/js/main.bcccb49c.js",
     "static/js/453.bad6c33a.chunk.js": "/starter_helpi/static/js/453.bad6c33a.chunk.js",
     "static/media/tree2.png": "/starter_helpi/static/media/tree2.f8305d1cfd185818830d.png",
     "static/media/officebg.png": "/starter_helpi/static/media/officebg.818f42142def5cf83e8a.png",
@@ -10,12 +10,12 @@
     "static/media/result.png": "/starter_helpi/static/media/result.3de352482598dcda2b97.png",
     "static/media/Merienda-Regular.ttf": "/starter_helpi/static/media/Merienda-Regular.69f026d4d19f0083af71.ttf",
     "index.html": "/starter_helpi/index.html",
-    "main.64c80657.css.map": "/starter_helpi/static/css/main.64c80657.css.map",
-    "main.1d799dbe.js.map": "/starter_helpi/static/js/main.1d799dbe.js.map",
+    "main.58df369a.css.map": "/starter_helpi/static/css/main.58df369a.css.map",
+    "main.bcccb49c.js.map": "/starter_helpi/static/js/main.bcccb49c.js.map",
     "453.bad6c33a.chunk.js.map": "/starter_helpi/static/js/453.bad6c33a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.64c80657.css",
-    "static/js/main.1d799dbe.js"
+    "static/css/main.58df369a.css",
+    "static/js/main.bcccb49c.js"
   ]
 }
