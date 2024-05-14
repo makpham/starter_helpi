@@ -101,13 +101,13 @@ input#entry:focus{
   width:100%;
   margin: auto;
 }
-.bottom-right-text {
+.company-text {
   position: fixed;
   left: 0;
   Top: 0;
   padding: 10px;
-  font-size: 20px; /* adjust as needed */
-  color: #000; /* adjust as needed */
+  font-size: 20px;
+  color: #000;
 }
 @media screen and (min-width: 1000px) {
   .intro-text {
