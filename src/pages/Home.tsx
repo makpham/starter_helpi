@@ -128,6 +128,7 @@ function Home() {
       </div>
       <div id='side-img'>
       </div>
+      <div className="company-text">Future「Quest」</div>
     </div>
   );
 }
