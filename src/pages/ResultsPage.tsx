@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./ResultsPage.css";
 import Typewriter from "typewriter-effect";
 import OpenAI from "openai";
@@ -51,6 +52,7 @@ function ResultsPage({
       return '{"error": "Invalid key"}';
     }
   }
+  const dummy = false;
   const answers: string = useLocation().state.join(" ");
   const navigate = useNavigate();
   const setPage = (path: string) => {
@@ -90,7 +92,8 @@ function ResultsPage({
     }
 
     get_answers();
-  }, []);
+    // eslint-disable-next-line
+  }, [dummy]);
 
   return (
     <div id="results-body">
