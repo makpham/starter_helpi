@@ -5,6 +5,8 @@ import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
+import ConfettiExplosion from 'react-confetti-explosion';
+
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const questions = [
@@ -61,6 +63,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   }
 
   return <div id='detailed-body'>
+
+{(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
+
   <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
   <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>Basic Questionaire</Button>
   
