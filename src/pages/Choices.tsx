@@ -92,7 +92,7 @@ function Choices() {
       }
       
     return <div id='choice-body'>
-        
+        <header><Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/")}>&lt;</Button></header>
         <h1>
             <Typewriter
                 options={{

@@ -4,6 +4,9 @@ import "./DetailedQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
 import { useNavigate } from 'react-router-dom';
+import Typewriter from 'typewriter-effect';
+import ConfettiExplosion from 'react-confetti-explosion';
+
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
   const questions = [
@@ -41,10 +44,32 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   const setPage = (path: string) => {
     navigate(path);
   };
+  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
 
+  function updateProgress(answerList: string[]){
+    let numAnswers = 0;
+    answerList.forEach((value: String, index: number, array: String[]) => {
+      if(value !== ""){
+        numAnswers += 1;
+      } 
+    } );
+    console.log(progress)
+    setProgress((numAnswers/questions.length) * 100)
+  }
+  function updateAnswers(answer: string, question_index: number){
+    setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+    updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+  }
+
   return <div id='detailed-body'>
-  <Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+
+{(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
+
+  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+  <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>Basic Questionaire</Button>
+  
+  </header>
     
   <LoadingBar
     color="#9DB4C0"
@@ -53,18 +78,31 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     onLoaderFinished={() => setProgress(99.99)}
   />
   <CherryBlossom />
-  <h1>Detailed Questionaire</h1>
+  <h1>
+            <Typewriter
+                options={{
+                    delay: 50
+                }}
+                onInit={(typewriter) => {
+                    typewriter.typeString('Detailed Questionaire')
+                        .start();
+                }}
+            />
+        </h1>
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
         <Form.Label >{question['question']}</Form.Label>
         <Form.Control
+          onChange={(event) => {
+            updateAnswers(event.target.value, question_index)
+          }}
           type="text"
           className='form-textbox'
         />
       </div>
     })}
-    <Button disabled={progress !== 99.99}>Submit</Button>
+    <Button disabled={progress !== 99.99} onClick={() => { navigate("/results", {state: answers});}}>Submit</Button>
   </Form>
 </div>
 }
