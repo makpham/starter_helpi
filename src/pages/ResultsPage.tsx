@@ -1,115 +1,147 @@
-import React, { useEffect, useState } from 'react';
-import { OpenAI } from 'openai';
 import "./ResultsPage.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import result from "../imgs/result.png";
-import officebg from "../imgs/officebg.png";
+import Typewriter from "typewriter-effect";
+import OpenAI from "openai";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import CherryBlossom from "./CherryBlossom";
+import { Button } from "react-bootstrap";
 
-function ResultsPage({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
-  const openai = new OpenAI({
-    apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-    dangerouslyAllowBrowser: true,
-  });
-
-  const call_gpt_jobs = async (results: string[]) => {
+function ResultsPage({
+  results,
+  setResults,
+}: {
+  results: string;
+  setResults: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const [parsedData, setParsedData] = useState<{
+    job: string;
+    job_description: string;
+    salaries: string;
+    work_environment: string;
+    top_companies: string[];
+    how_to_start: string;
+  }>();
+  async function call_gpt(answer: string) {
     try {
+      const openai = new OpenAI({
+        apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+        dangerouslyAllowBrowser: true,
+      });
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
             content:
-              "You are a job assistant. Given these traits: " + results.join(', ') + ", please provide 3 ideal job roles of any area, include their median salary and schooling requirements.",
+              "Robot that is helping with job selection that gives answers based on the user's specified format",
+          },
+          {
+            role: "user",
+            content:
+              "Given these statesments: " +
+              answer +
+              '. give me the most suitable job that suits these conditions. Give these in the format of: { "job": string,"job_description": string, "salaries": string, "work_environment": string, "top_companies": string[], "how_to_start": string}',
           },
         ],
         temperature: 0.7,
         n: 1,
       });
-      const content = response.choices[0].message.content;
-      if (content) {
-        const jobs = content.replace("Of course! Here are the job roles for you: ", "");
-        return jobs;
-      }
-      return "";
+      return response.choices[0].message.content;
     } catch (error) {
-      return "{\"error\": \"Invalid key\"}"
+      return '{"error": "Invalid key"}';
     }
-  };
-
-const [jobs, setJobs] = useState<string[]>([]);
-
-useEffect(() => {
-  const fetchJobs = async () => {
-    const traits = results.split(', ');
-    const gptResults = await call_gpt_jobs(traits);
-    if (gptResults) {
-      const jobs = gptResults.split(', ');
-      setJobs(jobs);
-    }
-  };
-
-  fetchJobs();
-}, );
-
-const call_gpt_synopsis = async (results: string[]) => {
-  try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are a motivator. Given these traits: " + results.join(', ') + ", the user is please provide a synopsis of strenths from these traits in a short paragraph without numbering them.",
-        },
-      ],
-      temperature: 0.7,
-      n: 1,
-    });
-    const content = response.choices[0].message.content;
-    if (content) {
-      const jobs = content.replace("Of course! Here are the job roles for you: ", "");
-      return jobs;
-    }
-    return "";
-  } catch (error) {
-    return "{\"error\": \"Invalid key\"}"
   }
-};
+  const answers: string = useLocation().state.join(" ");
+  const navigate = useNavigate();
+  const setPage = (path: string) => {
+    navigate(path);
+  };
+  useEffect(() => {
+    async function get_answers() {
+      if (
+        parsedData?.job === undefined ||
+        parsedData?.job === null ||
+        parsedData?.job === ""
+      ) {
+        let gpt_data = await call_gpt(answers);
+        if (gpt_data != null)
+          try {
+            const parsedData = JSON.parse(gpt_data);
+            console.log(parsedData);
+            if (
+              parsedData.job === undefined ||
+              parsedData.job_description === undefined ||
+              parsedData.salaries === undefined ||
+              parsedData.work_environment === undefined ||
+              parsedData.top_companies === undefined ||
+              parsedData.how_to_start === undefined
+            ) {
+              throw new Error();
+            }
+            console.log(parsedData.work_environment);
+            setParsedData(parsedData);
+          } catch (error) {
+            console.log(error);
+            await get_answers();
+          }
+      } else {
+        return;
+      }
+    }
 
-const [synopsis, setSynopsis] = useState<string[]>([]);
+    get_answers();
+  }, []);
 
-useEffect(() => {
-const fetchSynopsis = async () => {
-  const traits = results.split(', ');
-  const gptResults = await call_gpt_synopsis(traits);
-  if (gptResults) {
-    const synopsis = gptResults.split(', ');
-    setSynopsis(synopsis);
-  }
-};
-
-fetchSynopsis();
-}, );
-
-
-  
   return (
-    <div>
-      <Header />
-      <div className="results-container" style={{ backgroundImage: `url(${officebg})` }}>
-        <img src={result} alt="result" className="my-image" />
-        <div className="results-card">
-          <h1 className="results-title">Your Quiz Result</h1>
-          <h2 className="results-subtitle">Job Roles:</h2>
-          <p className="results-text">{jobs.join(', ')}</p>
-          <h2 className="results-subtitle">Synopsis:</h2>
-          <p className="results-text">{synopsis.join(', ')}</p>
-        </div>
+    <div id="results-body">
+      <header><Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
+      <CherryBlossom />
+      <h1>
+        <Typewriter
+          options={{
+            delay: 50,
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString(
+                "Congratulations! You’ve successfully completed the questionnaire! Now, let’s dive into the results. Below, you’ll find a summary of your answers and insights:"
+              )
+              .start();
+          }}
+        />
+      </h1>
+      <div id="paper">
+        <h2>
+          Hello future <b>{parsedData?.job}</b>
+        </h2>
+        <br />
+        <h5>
+          <b>Job Description:</b>
+        </h5>
+        <h6>{parsedData?.job_description}</h6>
+        <br />
+        <h5>
+          <b>Expected Salary:</b>
+        </h5>
+        <h6>{parsedData?.salaries}</h6>
+        <br />
+        <h5>
+          <b>Work Enviroment:</b>
+        </h5>
+        <h6>{parsedData?.work_environment}</h6>
+        <br />
+        <h5>
+          <b>Top Companies For You:</b>
+        </h5>
+        <h6>{parsedData?.top_companies.join(", ")}</h6>
+        <br />
+        <h5>
+          <b>How to get started</b>
+        </h5>
+        <h6>{parsedData?.how_to_start}</h6>
       </div>
-      <Footer />
-  </div>
+    </div>
   );
-};
+}
 
 export default ResultsPage;

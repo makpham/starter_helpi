@@ -3,7 +3,10 @@ import { useState } from 'react';
 import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from './CherryBlossom';
+import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
+import ConfettiExplosion from 'react-confetti-explosion';
+
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -75,7 +78,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   ];
   const navigate = useNavigate();
   const setPage = (path: string) => {
-    navigate(path);
+    navigate(path, {state: answers});
   };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
@@ -95,7 +98,14 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
   }
   return <div id='basic-body'>
-    <Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button>
+  {(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
+
+    <header>
+      
+      <Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button>
+      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>Detailed Questions</Button>
+    
+    </header>
       
     <LoadingBar
       color="#9DB4C0"
@@ -104,7 +114,17 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       onLoaderFinished={() => setProgress(99.99)}
     />
     <CherryBlossom />
-    <h1>Basic Questionaire</h1>
+    <h1>
+            <Typewriter
+                options={{
+                    delay: 50
+                }}
+                onInit={(typewriter) => {
+                    typewriter.typeString('Basic Questionaire')
+                        .start();
+                }}
+            />
+        </h1>
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
         return <div className='question' key={question_index}>
@@ -121,7 +141,9 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
           })}
         </div>
       })}
-      <Button disabled={progress !== 99.99}>Submit</Button>
+      <Button disabled={progress !== 99.99} onClick={() =>{
+        navigate("/results", {state: answers});
+      }}>Submit</Button>
     </Form>
   </div>
 }

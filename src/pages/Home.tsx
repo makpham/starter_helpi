@@ -86,7 +86,6 @@ function Home() {
       localStorage.setItem(keyState, JSON.stringify(false));
       window.location.reload();
     }
-    // window.location.reload(); This may be needed for requirements but only thing is it double reload redirected page
   }
 
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
