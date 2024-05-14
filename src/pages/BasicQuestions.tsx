@@ -99,7 +99,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     <header>
       
       <Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button>
-      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>&gt;</Button>
+      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>Detailed Questions</Button>
     
     </header>
       
