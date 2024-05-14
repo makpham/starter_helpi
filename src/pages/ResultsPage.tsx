@@ -27,7 +27,7 @@ function ResultsPage({
         dangerouslyAllowBrowser: true,
       });
       const response = await openai.chat.completions.create({
-        model: "gpt-4-turbo",
+        model: "gpt-3.5-turbo",
         messages: [
           {
             role: "system",
@@ -39,7 +39,7 @@ function ResultsPage({
             content:
               "Given these statesments: " +
               answer +
-              '. give me the most suitable job that suits these conditions. Give these in the format of: { "job": string,"job_description": string, "salaries": string, "work_enviroment": string, "top_companies": string[], "how_to_start": string}',
+              '. give me the most suitable job that suits these conditions. Give these in the format of: { "job": string,"job_description": string, "salaries": string, "work_environment": string, "top_companies": string[], "how_to_start": string}',
           },
         ],
         temperature: 0.7,
@@ -53,7 +53,11 @@ function ResultsPage({
   const answers: string = useLocation().state.join(" ");
   useEffect(() => {
     async function get_answers() {
-      if(parsedData?.job === undefined || parsedData?.job === null || parsedData?.job === ""){
+      if (
+        parsedData?.job === undefined ||
+        parsedData?.job === null ||
+        parsedData?.job === ""
+      ) {
         let gpt_data = await call_gpt(answers);
         if (gpt_data != null)
           try {
@@ -75,6 +79,8 @@ function ResultsPage({
             console.log(error);
             await get_answers();
           }
+      } else {
+        return;
       }
     }
 
