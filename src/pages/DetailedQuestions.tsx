@@ -1,4 +1,4 @@
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import "./DetailedQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
@@ -6,6 +6,7 @@ import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
+import RedirectModal from '../components/RedirectModal';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -106,21 +107,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
-  {/* <Modal show={showModal} onHide={handleCancel}>
-    <Modal.Header closeButton>
-      <Modal.Title>Confirmation</Modal.Title>
-    </Modal.Header>
-    <Modal.Body>Switching to a different questionnaire will erase your responses. 
-      Are you sure you want to proceed?</Modal.Body>
-    <Modal.Footer>
-      <Button variant="secondary" onClick={handleCancel}>
-        Cancel
-      </Button>
-      <Button variant="primary" onClick={handleConfirm}>
-        OK
-      </Button>
-    </Modal.Footer>
-  </Modal> */}
+  <RedirectModal show={showModal} handleCancel={handleCancel} handleConfirm={handleConfirm} />
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
