@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import ConfettiExplosion from 'react-confetti-explosion';
 import RedirectModal from '../components/RedirectModal';
 import BackButton from '../components/BackButton';
+import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -120,8 +121,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
 
     <header>
       <BackButton page='/choices'/>
-      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>Detailed Questions</Button>
-    
+      <ChangeQuestionType page='/detailed-questions' text='Detailed Questionaire'/>
     </header>
       
     <LoadingBar
