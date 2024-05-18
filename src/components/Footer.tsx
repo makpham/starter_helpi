@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import OpenAI from 'openai';
+import './Footer.css';
 
 function CheckAPIKey() {
     const navigate = useNavigate();
@@ -91,7 +92,7 @@ function CheckAPIKey() {
     return(
         <div>
             <Form>
-            <Form.Label>API Key: </Form.Label>
+            <Form.Label>API Key:  </Form.Label>
             <Form.Control className='api-form' id="entry"
             type="password"
             placeholder="Insert API Key Here"
