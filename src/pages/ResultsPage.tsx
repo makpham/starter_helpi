@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 import OpenAI from "openai";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import CherryBlossom from "./CherryBlossom";
+import CherryBlossom from "../components/CherryBlossom";
 import { Button } from "react-bootstrap";
 
 function ResultsPage({
