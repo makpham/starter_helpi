@@ -101,20 +101,21 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
-        <Modal show={showModal} onHide={handleCancel}>
-        <Modal.Header closeButton>
-          <Modal.Title>Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Switching to a different questionnaire will erase your responses. Are you sure you want to proceed?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCancel}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleConfirm}>
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
+  <Modal show={showModal} onHide={handleCancel}>
+    <Modal.Header closeButton>
+      <Modal.Title>Confirmation</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>Switching to a different questionnaire will erase your responses. 
+      Are you sure you want to proceed?</Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleCancel}>
+        Cancel
+      </Button>
+      <Button variant="primary" onClick={handleConfirm}>
+        OK
+      </Button>
+    </Modal.Footer>
+  </Modal>
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
