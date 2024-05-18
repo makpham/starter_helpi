@@ -8,6 +8,7 @@ import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
 import RedirectModal from '../components/RedirectModal';
 import BackButton from '../components/BackButton';
+import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -87,7 +88,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   <header>
     <BackButton page='/choices'/>
-  <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>Basic Questionaire</Button>
+    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire'/>
   
   </header>
     
