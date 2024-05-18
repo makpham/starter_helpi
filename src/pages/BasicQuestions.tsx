@@ -141,7 +141,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
                 }}
             />
         </h1>
-    <Modal show={showModal} onHide={handleCancel}>
+    {/* <Modal show={showModal} onHide={handleCancel}>
       <Modal.Header closeButton>
         <Modal.Title>Confirmation</Modal.Title>
       </Modal.Header>
@@ -155,7 +155,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
           OK
         </Button>
       </Modal.Footer>
-    </Modal>
+    </Modal> */}
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
         return <div className='question' key={question_index}>

@@ -106,7 +106,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
-  <Modal show={showModal} onHide={handleCancel}>
+  {/* <Modal show={showModal} onHide={handleCancel}>
     <Modal.Header closeButton>
       <Modal.Title>Confirmation</Modal.Title>
     </Modal.Header>
@@ -120,7 +120,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
         OK
       </Button>
     </Modal.Footer>
-  </Modal>
+  </Modal> */}
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
