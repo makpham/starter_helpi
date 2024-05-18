@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
 import RedirectModal from '../components/RedirectModal';
+import BackButton from '../components/backbutton';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -84,7 +85,8 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
 {(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
 
-  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
+  <header>
+    <BackButton page='/choices'/>
   <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>Basic Questionaire</Button>
   
   </header>
