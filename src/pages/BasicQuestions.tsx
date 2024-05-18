@@ -79,8 +79,13 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   const [showModal, setShowModal] = useState(false);
   const [nextPage, setNextPage] = useState("");
   const setPage = (path: string) => {
-    setNextPage(path);
-    setShowModal(true);
+    if (answers.some(answer => answer !== "")) {
+      setNextPage(path);
+      setShowModal(true);
+    }
+    else {
+      navigate(path);
+    }
   };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
