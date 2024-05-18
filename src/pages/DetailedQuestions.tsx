@@ -2,7 +2,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import "./DetailedQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
-import CherryBlossom from './CherryBlossom';
+import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
