@@ -6,6 +6,7 @@ import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
+import RedirectModal from '../components/RedirectModal';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -42,10 +43,27 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   const navigate = useNavigate();
   const setPage = (path: string) => {
-    navigate(path);
+    if (answers.some(answer => answer !== "")) {
+      setNextPage(path);
+      setShowModal(true);
+    }
+    else {
+      navigate(path);
+    }
   };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  const [showModal, setShowModal] = useState(false);
+  const [nextPage, setNextPage] = useState("");
+  
+  const handleConfirm = () => {
+    navigate(nextPage, {state: answers});
+    setShowModal(false);
+  };
+  
+  const handleCancel = () => {
+    setShowModal(false);
+  };
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -89,6 +107,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
+  <RedirectModal show={showModal} handleCancel={handleCancel} handleConfirm={handleConfirm} />
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
