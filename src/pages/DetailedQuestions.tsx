@@ -44,28 +44,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   ];
 
   const navigate = useNavigate();
-  const setPage = (path: string) => {
-    if (answers.some(answer => answer !== "")) {
-      setNextPage(path);
-      setShowModal(true);
-    }
-    else {
-      navigate(path);
-    }
-  };
+
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
-  const [showModal, setShowModal] = useState(false);
-  const [nextPage, setNextPage] = useState("");
-  
-  const handleConfirm = () => {
-    navigate(nextPage, {state: answers});
-    setShowModal(false);
-  };
-  
-  const handleCancel = () => {
-    setShowModal(false);
-  };
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -89,7 +70,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   <header>
     <BackButton page='/choices'/>
     <ChangeQuestionType page='/basic-questions' text='Basic Questionaire'/>
-  
   </header>
     
   <LoadingBar
@@ -110,7 +90,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
-  <RedirectModal show={showModal} handleCancel={handleCancel} handleConfirm={handleConfirm} />
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
