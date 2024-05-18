@@ -1,0 +1,15 @@
+#back-button{
+    color: #9DB4C0;
+    font-size: 5rem;
+    margin: auto;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin-left: 1rem;
+    top:0px;
+    position: fixed;
+    top: -1.5rem;
+    left:0px;
+    transition: transform .2s;
+    animation: fadeIn 1.5s linear forwards;
+  }

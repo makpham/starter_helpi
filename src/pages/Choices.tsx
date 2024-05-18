@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import CherryBlossom from "../components/CherryBlossom";
 import React, { useState } from 'react';
 import OpenAI from 'openai';
+import BackButton from "../components/backbutton";
 
 function Choices() {
     const navigate = useNavigate();
@@ -92,7 +93,9 @@ function Choices() {
       }
       
     return <div id='choice-body'>
-        <header><Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/")}>&lt;</Button></header>
+        <header>
+          <BackButton page="/"/>
+        </header>
         <h1>
             <Typewriter
                 options={{
