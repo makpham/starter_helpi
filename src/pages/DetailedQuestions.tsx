@@ -6,7 +6,6 @@ import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
-import RedirectModal from '../components/RedirectModal';
 import BackButton from '../components/BackButton';
 import ChangeQuestionType from '../components/ChangeQuestionType';
 
