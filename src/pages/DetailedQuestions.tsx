@@ -1,4 +1,4 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import "./DetailedQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
@@ -42,10 +42,22 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   const navigate = useNavigate();
   const setPage = (path: string) => {
-    navigate(path);
+    setNextPage(path);
+    setShowModal(true);
   };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  const [showModal, setShowModal] = useState(false);
+  const [nextPage, setNextPage] = useState("");
+  
+  const handleConfirm = () => {
+    navigate(nextPage, {state: answers});
+    setShowModal(false);
+  };
+  
+  const handleCancel = () => {
+    setShowModal(false);
+  };
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -89,6 +101,20 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
+        <Modal show={showModal} onHide={handleCancel}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Switching to a different questionnaire will erase your responses. Are you sure you want to proceed?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleConfirm}>
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
