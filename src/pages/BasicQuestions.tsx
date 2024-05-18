@@ -2,7 +2,7 @@ import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
-import CherryBlossom from './CherryBlossom';
+import CherryBlossom from '../components/CherryBlossom';
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 import ConfettiExplosion from 'react-confetti-explosion';

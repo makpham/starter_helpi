@@ -2,7 +2,7 @@ import "./Choices.css";
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
-import CherryBlossom from "./CherryBlossom";
+import CherryBlossom from "../components/CherryBlossom";
 import React, { useState } from 'react';
 import OpenAI from 'openai';
 
