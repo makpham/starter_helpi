@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import './RedirectModal.css';
 
 interface RedirectModalProps {
   show: boolean;
