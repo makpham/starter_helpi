@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import CherryBlossom from "../components/CherryBlossom";
 import React, { useState } from 'react';
 import OpenAI from 'openai';
-import BackButton from "../components/backbutton";
+import BackButton from "../components/BackButton";
 
 function Choices() {
     const navigate = useNavigate();

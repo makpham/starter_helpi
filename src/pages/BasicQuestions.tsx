@@ -7,7 +7,7 @@ import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 import ConfettiExplosion from 'react-confetti-explosion';
 import RedirectModal from '../components/RedirectModal';
-import BackButton from '../components/backbutton';
+import BackButton from '../components/BackButton';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
