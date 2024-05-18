@@ -42,6 +42,11 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   ];
 
   const navigate = useNavigate();
+  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
+  const [progress, setProgress] = useState<number>(0)
+  const [showModal, setShowModal] = useState(false);
+  const [nextPage, setNextPage] = useState("");
+
   const setPage = (path: string) => {
     if (answers.some(answer => answer !== "")) {
       setNextPage(path);
@@ -51,10 +56,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
       navigate(path);
     }
   };
-  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
-  const [progress, setProgress] = useState<number>(0)
-  const [showModal, setShowModal] = useState(false);
-  const [nextPage, setNextPage] = useState("");
   
   const handleConfirm = () => {
     navigate(nextPage, {state: answers});
