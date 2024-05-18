@@ -47,6 +47,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   const [showModal, setShowModal] = useState(false);
   const [nextPage, setNextPage] = useState("");
 
+  // Function to set the next page based on the provided path
+  // If there are any answers, it sets the next page and shows a modal
+  // Otherwise, it navigates to the next page directly
   const setPage = (path: string) => {
     if (answers.some(answer => answer !== "")) {
       setNextPage(path);
@@ -57,11 +60,16 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     }
   };
   
+  // Function to handle the confirmation of the modal
+  // It navigates to the next page and passes the answers as state
+  // Then it hides the modal
   const handleConfirm = () => {
     navigate(nextPage, {state: answers});
     setShowModal(false);
   };
   
+  // Function to handle the cancellation of the modal
+  // It simply hides the modal
   const handleCancel = () => {
     setShowModal(false);
   };

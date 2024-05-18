@@ -83,23 +83,31 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
 
+  // Function to set the next page based on the provided path
+  // If there are any non-empty answers, it sets the next page and shows a modal
+  // Otherwise, it navigates to the next page directly
   const setPage = (path: string) => {
-    if (answers.some(answer => answer !== "")) {
-      setNextPage(path);
-      setShowModal(true);
-    }
-    else {
-      navigate(path);
-    }
+      if (answers.some(answer => answer !== "")) {
+        setNextPage(path);
+        setShowModal(true);
+      }
+      else {
+        navigate(path);
+      }
   };
 
+  // Function to handle the confirmation of the modal
+  // It navigates to the next page and passes the answers as state
+  // Then it hides the modal
   const handleConfirm = () => {
-    navigate(nextPage, {state: answers});
-    setShowModal(false);
+      navigate(nextPage, {state: answers});
+      setShowModal(false);
   };
-  
+
+  // Function to handle the cancellation of the modal
+  // It simply hides the modal
   const handleCancel = () => {
-    setShowModal(false);
+      setShowModal(false);
   };
 
   function updateProgress(answerList: string[]){
