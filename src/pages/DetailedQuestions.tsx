@@ -78,7 +78,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     progress={progress}
     onLoaderFinished={() => setProgress(99.99)}
   />
-  <LoadingOverlay/>
   <CherryBlossom />
   <h1>
             <Typewriter
