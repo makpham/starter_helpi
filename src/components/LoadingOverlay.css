@@ -1,9 +1,0 @@
-#loader {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    padding: 1rem;
-    z-index: 5;
-    backdrop-filter: blur(10px);
-    color: black;
-  }
