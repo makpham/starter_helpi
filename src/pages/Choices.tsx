@@ -2,7 +2,7 @@ import "./Choices.css";
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 import CherryBlossom from "../components/CherryBlossom";
-import BackButton from "../components/BackButton";
+import BackButton from "../components/backbutton";
 
 function Choices() {
     const navigate = useNavigate();
