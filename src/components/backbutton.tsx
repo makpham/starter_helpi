@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 interface props{
     page: string;
 }
+
 function BackButton(prop: props){
     const navigate = useNavigate();
     const setPage = (path: string) => {

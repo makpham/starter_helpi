@@ -43,7 +43,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   ];
 
   const navigate = useNavigate();
-
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
   const isQuestionAnswered = answers.some(answer => answer !== "");
