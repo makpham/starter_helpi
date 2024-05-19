@@ -11,6 +11,7 @@ import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
+  // Question list 
   const questions = [
     {
       question:
@@ -45,11 +46,14 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   const navigate = useNavigate();
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  // This is so that we can prompt for user if they really want to change sites for it will reset answers
   const isQuestionAnswered = answers.some(answer => answer !== "");
 
+  //update the progressbar based on the answered questions 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
     answerList.forEach((value: String, index: number, array: String[]) => {
+      //check against answer is empty because on change calls whenever they change and it doesn't mean progress bar should increase
       if(value !== ""){
         numAnswers += 1;
       } 
@@ -57,6 +61,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     console.log(progress)
     setProgress((numAnswers/questions.length) * 100)
   }
+  //updating the answer array. 
   function updateAnswers(answer: string, question_index: number){
     setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
     updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
@@ -90,6 +95,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
             />
         </h1>
   <Form>
+    {/* Creating new form text entry components for each questions*/}
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>
         <Form.Label >{question['question']}</Form.Label>
@@ -102,6 +108,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
         />
       </div>
     })}
+    {/* Navigate to result, please note, we do gpt integration on result page load and do error handling there was we hope 
+        the typewriter effect act as a pseudo loading screen to make our results "faster"
+      */}
     <Button disabled={progress !== 99.99} onClick={() => { navigate("/results", {state: answers});}}>Submit</Button>
   </Form>
 </div>
