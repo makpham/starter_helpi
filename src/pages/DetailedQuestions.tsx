@@ -6,7 +6,8 @@ import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
-import RedirectModal from '../components/RedirectModal';
+import BackButton from '../components/BackButton';
+import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -42,37 +43,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   ];
 
   const navigate = useNavigate();
+
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
-  const [showModal, setShowModal] = useState(false);
-  const [nextPage, setNextPage] = useState("");
-
-  // Function to set the next page based on the provided path
-  // If there are any answers, it sets the next page and shows a modal
-  // Otherwise, it navigates to the next page directly
-  const setPage = (path: string) => {
-    if (answers.some(answer => answer !== "")) {
-      setNextPage(path);
-      setShowModal(true);
-    }
-    else {
-      navigate(path);
-    }
-  };
-  
-  // Function to handle the confirmation of the modal
-  // It navigates to the next page and passes the answers as state
-  // Then it hides the modal
-  const handleConfirm = () => {
-    navigate(nextPage, {state: answers});
-    setShowModal(false);
-  };
-  
-  // Function to handle the cancellation of the modal
-  // It simply hides the modal
-  const handleCancel = () => {
-    setShowModal(false);
-  };
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -93,9 +66,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
 {(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
 
-  <header><Button id='menu-bar' onClick={() => setPage("/choices")}>&lt;</Button>
-  <Button className="Merienda" id='change-type' onClick={() => setPage("/basic-questions")} title='Do basic questionaire instead'>Basic Questionaire</Button>
-  
+  <header>
+    <BackButton page='/choices'/>
+    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire'/>
   </header>
     
   <LoadingBar
@@ -116,7 +89,6 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
                 }}
             />
         </h1>
-  <RedirectModal show={showModal} handleCancel={handleCancel} handleConfirm={handleConfirm} />
   <Form>
     {questions.map((question: {question: string}, question_index) =>{
       return <div className='question' key={question_index}>

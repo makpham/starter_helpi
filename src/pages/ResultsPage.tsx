@@ -14,6 +14,7 @@ function ResultsPage({
   results: string;
   setResults: React.Dispatch<React.SetStateAction<string>>;
 }) {
+  const [failedGPT, setfailedGPT] = useState<boolean>(false);
   const [parsedData, setParsedData] = useState<{
     job: string;
     job_description: string;
@@ -52,6 +53,7 @@ function ResultsPage({
       return '{"error": "Invalid key"}';
     }
   }
+  let numTries = 0;
   const dummy = false;
   const answers: string = useLocation().state.join(" ");
   const navigate = useNavigate();
@@ -61,11 +63,17 @@ function ResultsPage({
   useEffect(() => {
     async function get_answers() {
       if (
-        parsedData?.job === undefined ||
+        (parsedData?.job === undefined ||
         parsedData?.job === null ||
-        parsedData?.job === ""
+        parsedData?.job === "")
       ) {
         let gpt_data = await call_gpt(answers);
+        if(numTries > 0){
+          setfailedGPT(true);
+          return;
+        }
+        numTries ++;
+        console.log(numTries);
         if (gpt_data != null)
           try {
             const parsedData = JSON.parse(gpt_data);
@@ -87,17 +95,20 @@ function ResultsPage({
             await get_answers();
           }
       } else {
+        
         return;
       }
     }
 
     get_answers();
+    // this eslint exception is created because if theres no sensitivity component it will continously run, if it is empty or constant it throws an eslint error too... 
     // eslint-disable-next-line
   }, [dummy]);
 
   return (
     <div id="results-body">
-      <header><Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
+      <header>
+        <Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
       <CherryBlossom />
       <h1>
         <Typewriter
@@ -113,6 +124,7 @@ function ResultsPage({
           }}
         />
       </h1>
+      {failedGPT && <div><br/><br/><h1>Error detected, too many unsucessful API calls, please restart your experience by going <a href="/#">here</a></h1></div>}
       <div id="paper">
         <h2>
           Hello future <b>{parsedData?.job}</b>
