@@ -1,6 +1,5 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import './RedirectModal.css';
 
 // Define the properties for the RedirectModal component
 interface RedirectModalProps {

@@ -46,6 +46,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  const isQuestionAnswered = answers.some(answer => answer !== "");
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -68,7 +69,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   <header>
     <BackButton page='/choices'/>
-    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire'/>
+    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire' isQuestionAnswered={isQuestionAnswered}/>
   </header>
     
   <LoadingBar

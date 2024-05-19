@@ -1,6 +1,5 @@
 import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
-import "./BasicQuestions.css";
 import LoadingBar from 'react-top-loading-bar';
 import CherryBlossom from '../components/CherryBlossom';
 import Typewriter from 'typewriter-effect';
@@ -8,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import ConfettiExplosion from 'react-confetti-explosion';
 import BackButton from '../components/backbutton';
 import ChangeQuestionType from '../components/ChangeQuestionType';
+import "./BasicQuestions.css";
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -81,6 +81,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   const navigate = useNavigate();
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  const isQuestionAnswered = answers.some(answer => answer !== "");
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -101,7 +102,7 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
 
     <header>
       <BackButton page='/choices'/>
-      <ChangeQuestionType page='/detailed-questions' text='Detailed Questionaire'/>
+      <ChangeQuestionType page='/detailed-questions' text='Detailed Questionaire' isQuestionAnswered={isQuestionAnswered}/>
     </header>
       
     <LoadingBar
