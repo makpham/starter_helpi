@@ -6,7 +6,8 @@ import CherryBlossom from '../components/CherryBlossom';
 import Typewriter from 'typewriter-effect';
 import { useNavigate } from 'react-router-dom';
 import ConfettiExplosion from 'react-confetti-explosion';
-import RedirectModal from '../components/RedirectModal';
+import BackButton from '../components/BackButton';
+import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
 function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -77,28 +78,8 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
     },
   ];
   const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
-  const [nextPage, setNextPage] = useState("");
-  const setPage = (path: string) => {
-    if (answers.some(answer => answer !== "")) {
-      setNextPage(path);
-      setShowModal(true);
-    }
-    else {
-      navigate(path);
-    }
-  };
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
-
-  const handleConfirm = () => {
-    navigate(nextPage, {state: answers});
-    setShowModal(false);
-  };
-  
-  const handleCancel = () => {
-    setShowModal(false);
-  };
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -118,10 +99,8 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
   {(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
 
     <header>
-      
-      <Button id='menu-bar-choices' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button>
-      <Button className="Merienda" id='change-type' onClick={() => setPage("/detailed-questions")} title='Do detailed questionaire instead'>Detailed Questions</Button>
-    
+      <BackButton page='/choices'/>
+      <ChangeQuestionType page='/detailed-questions' text='Detailed Questionaire'/>
     </header>
       
     <LoadingBar
@@ -142,7 +121,6 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
                 }}
             />
         </h1>
-    <RedirectModal show={showModal} handleCancel={handleCancel} handleConfirm={handleConfirm} />
     <Form>
       {questions.map((question: {question: string, choices: string[]}, question_index) =>{
         return <div className='question' key={question_index}>
