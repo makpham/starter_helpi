@@ -1,11 +1,9 @@
-.loader {
-    width: fit-content;
-    font-size: 3rem;
-    padding-bottom: 1rem;
-    background: black;
-    animation: moving-bar 2s linear infinite;
+#loader {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    padding: 1rem;
+    z-index: 5;
+    backdrop-filter: blur(10px);
+    color: black;
   }
-  .loader:before {
-    content:"Loading..."
-  }
-  @keyframes moving-bar {to{background-size: 100% 3px}}

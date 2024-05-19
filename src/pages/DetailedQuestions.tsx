@@ -8,6 +8,7 @@ import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
 import BackButton from '../components/BackButton';
 import ChangeQuestionType from '../components/ChangeQuestionType';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 
 function DetailedQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
@@ -77,6 +78,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
     progress={progress}
     onLoaderFinished={() => setProgress(99.99)}
   />
+  <LoadingOverlay/>
   <CherryBlossom />
   <h1>
             <Typewriter
