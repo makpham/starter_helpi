@@ -6,7 +6,7 @@ import CherryBlossom from '../components/CherryBlossom';
 import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import ConfettiExplosion from 'react-confetti-explosion';
-import BackButton from '../components/BackButton';
+import BackButton from '../components/backbutton';
 import ChangeQuestionType from '../components/ChangeQuestionType';
 
 
@@ -43,9 +43,9 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
   ];
 
   const navigate = useNavigate();
-
   const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
   const [progress, setProgress] = useState<number>(0)
+  const isQuestionAnswered = answers.some(answer => answer !== "");
 
   function updateProgress(answerList: string[]){
     let numAnswers = 0;
@@ -68,7 +68,7 @@ function DetailedQuestions({ results, setResults }: { results: string, setResult
 
   <header>
     <BackButton page='/choices'/>
-    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire'/>
+    <ChangeQuestionType page='/basic-questions' text='Basic Questionaire' isQuestionAnswered={isQuestionAnswered}/>
   </header>
     
   <LoadingBar
