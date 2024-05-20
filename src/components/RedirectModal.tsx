@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
 
 // Define the properties for the RedirectModal component
 interface RedirectModalProps {
@@ -9,15 +9,19 @@ interface RedirectModalProps {
 }
 
 // The RedirectModal displays a confirmation modal when the user is about to switch questionnaires
-const RedirectModal: React.FC<RedirectModalProps> = ({ show, handleCancel, handleConfirm }) => {
+const RedirectModal: React.FC<RedirectModalProps> = ({
+  show,
+  handleCancel,
+  handleConfirm,
+}) => {
   return (
     <Modal show={show} onHide={handleCancel}>
       <Modal.Header closeButton>
         <Modal.Title>Confirmation</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Switching to a different questionnaire will erase your responses. 
-        Are you sure you want to proceed?
+        Switching to a different questionnaire will erase your responses. Are
+        you sure you want to proceed?
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleCancel}>

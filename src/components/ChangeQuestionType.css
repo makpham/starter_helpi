@@ -1,14 +1,14 @@
-#change-type{
-    color: #505d63;
-    font-size: 1.5rem;
-    margin: auto;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    margin-left: 1rem;
-    left:1rem;
-    position: fixed;
-    bottom: 1.5rem;
-    transition: transform .2s;
-    animation: fadeIn 1.5s linear forwards;
-  }
+#change-type {
+  color: #505d63;
+  font-size: 1.5rem;
+  margin: auto;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  margin-left: 1rem;
+  left: 1rem;
+  position: fixed;
+  bottom: 1.5rem;
+  transition: transform 0.2s;
+  animation: fadeIn 1.5s linear forwards;
+}
