@@ -1,16 +1,22 @@
-import { Button, Form } from 'react-bootstrap';
-import { useState } from 'react';
-import LoadingBar from 'react-top-loading-bar';
-import CherryBlossom from '../components/CherryBlossom';
-import Typewriter from 'typewriter-effect';
-import { useNavigate } from 'react-router-dom';
-import ConfettiExplosion from 'react-confetti-explosion';
-import BackButton from '../components/backbutton';
-import ChangeQuestionType from '../components/ChangeQuestionType';
+import { Button, Form } from "react-bootstrap";
+import { useState } from "react";
+import LoadingBar from "react-top-loading-bar";
+import CherryBlossom from "../components/CherryBlossom";
+import Typewriter from "typewriter-effect";
+import { useNavigate } from "react-router-dom";
+import ConfettiExplosion from "react-confetti-explosion";
+import BackButton from "../components/backbutton";
+import ChangeQuestionType from "../components/ChangeQuestionType";
 import "./BasicQuestions.css";
 
-
-function BasicQuestions({ results, setResults }: { results: string, setResults: React.Dispatch<React.SetStateAction<string>> }) {
+function BasicQuestions({
+  results,
+  setResults,
+}: {
+  results: string;
+  setResults: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  // Question list
   const questions = [
     {
       question:
@@ -77,73 +83,123 @@ function BasicQuestions({ results, setResults }: { results: string, setResults: 
       ],
     },
   ];
-  
-  const navigate = useNavigate();
-  const [answers, setAnswers] = useState<string[]>(["","","","","","","",]);
-  const [progress, setProgress] = useState<number>(0)
-  const isQuestionAnswered = answers.some(answer => answer !== "");
 
-  function updateProgress(answerList: string[]){
+  const navigate = useNavigate();
+  const [answers, setAnswers] = useState<string[]>([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+  const [progress, setProgress] = useState<number>(0);
+  // This is so that we can prompt for user if they really want to change sites for it will reset answers
+  const isQuestionAnswered = answers.some((answer) => answer !== "");
+
+  //update the progressbar based on the answered questions
+  function updateProgress(answerList: string[]) {
     let numAnswers = 0;
     answerList.forEach((value: String, index: number, array: String[]) => {
-      if(value !== ""){
+      //check against answer is empty because on change calls whenever they change and it doesn't mean progress bar should increase
+      if (value !== "") {
         numAnswers += 1;
-      } 
-    } );
-    console.log(progress)
-    setProgress((numAnswers/questions.length) * 100)
+      }
+    });
+    setProgress((numAnswers / questions.length) * 100);
   }
-  function updateAnswers(answer: string, question_index: number){
-    setAnswers([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
-    updateProgress([...answers.slice(0,question_index), answer, ...answers.slice(question_index + 1)]);
+  //updating the answer array.
+  function updateAnswers(answer: string, question_index: number) {
+    setAnswers([
+      ...answers.slice(0, question_index),
+      answer,
+      ...answers.slice(question_index + 1),
+    ]);
+    updateProgress([
+      ...answers.slice(0, question_index),
+      answer,
+      ...answers.slice(question_index + 1),
+    ]);
   }
-  return <div id='basic-body'>
-  {(progress === 99.99) && <ConfettiExplosion height={"200vh"} particleCount={200} duration={2000}/>}
+  return (
+    <div id="basic-body">
+      {progress === 99.99 && (
+        <ConfettiExplosion
+          height={"200vh"}
+          particleCount={200}
+          duration={2000}
+        />
+      )}
 
-    <header>
-      <BackButton page='/choices'/>
-      <ChangeQuestionType page='/detailed-questions' text='Detailed Questionaire' isQuestionAnswered={isQuestionAnswered}/>
-    </header>
-      
-    <LoadingBar
-      color="#9DB4C0"
-      height={10}
-      progress={progress}
-      onLoaderFinished={() => setProgress(99.99)}
-    />
-    <CherryBlossom />
-    <h1>
-            <Typewriter
-                options={{
-                    delay: 50
-                }}
-                onInit={(typewriter) => {
-                    typewriter.typeString('Basic Questionaire')
-                        .start();
-                }}
-            />
-        </h1>
-    <Form>
-      {questions.map((question: {question: string, choices: string[]}, question_index) =>{
-        return <div className='question' key={question_index}>
-          <Form.Label >{question['question']}</Form.Label>
-          {question['choices'].map( (answer: string, answer_index) => {
-            return <Form.Check
-            type="radio"
-            key={answer_index}
-            onClick={()=>{updateAnswers(answer, question_index)}}
-            name={question['question']}
-            label={answer}
-            className='options'
-          />;
-          })}
-        </div>
-      })}
-      <Button disabled={progress !== 99.99} onClick={() =>{
-        navigate("/results", {state: answers});
-      }}>Submit</Button>
-    </Form>
-  </div>
+      <header>
+        <BackButton page="/choices" />
+        <ChangeQuestionType
+          page="/detailed-questions"
+          text="Detailed Questionaire"
+          isQuestionAnswered={isQuestionAnswered}
+        />
+      </header>
+
+      <LoadingBar
+        color="#9DB4C0"
+        height={10}
+        progress={progress}
+        onLoaderFinished={() => setProgress(99.99)}
+      />
+      <CherryBlossom />
+      <h1>
+        <Typewriter
+          options={{
+            delay: 50,
+          }}
+          onInit={(typewriter) => {
+            typewriter.typeString("Basic Questionaire").start();
+          }}
+        />
+      </h1>
+      <Form>
+        {/* Creating new form radio components for each questions*/}
+        {questions.map(
+          (
+            question: { question: string; choices: string[] },
+            question_index
+          ) => {
+            return (
+              <div className="question" key={question_index}>
+                <Form.Label>{question["question"]}</Form.Label>
+                {question["choices"].map((answer: string, answer_index) => {
+                  return (
+                    <Form.Check
+                      type="radio"
+                      key={answer_index}
+                      onClick={() => {
+                        updateAnswers(answer, question_index);
+                      }}
+                      name={question["question"]}
+                      label={answer}
+                      className="options"
+                    />
+                  );
+                })}
+              </div>
+            );
+          }
+        )}
+        {/* Navigate to result, please note, we do gpt integration on result page load and do error handling there was we hope 
+          the typewriter effect act as a pseudo loading screen to make our results "faster"
+      */}
+        <Button
+          disabled={progress !== 99.99}
+          onClick={() => {
+            navigate("/results", { state: answers });
+          }}
+        >
+          Submit
+        </Button>
+      </Form>
+    </div>
+  );
 }
 
 export default BasicQuestions;

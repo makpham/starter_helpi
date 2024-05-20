@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
-import './CherryBlossom.css';
+import React, { useEffect } from "react";
+import "./CherryBlossom.css";
 
 const CherryBlossom: React.FC = () => {
   const numPetals = 100;
-
+  // a lot of math...
   useEffect(() => {
-    const petals = document.querySelectorAll('.petal') as NodeListOf<HTMLElement>;
-    petals.forEach(petal => {
+    const petals = document.querySelectorAll(
+      ".petal"
+    ) as NodeListOf<HTMLElement>;
+    petals.forEach((petal) => {
       petal.style.left = `${Math.random() * 100}vw`;
       petal.style.animationDuration = `${5 + Math.random() * 5}s`;
       petal.style.animationDelay = `-${Math.random() * 5}s`;

@@ -1,6 +1,6 @@
 import "./Choices.css";
-import Typewriter from 'typewriter-effect';
-import { useNavigate } from 'react-router-dom';
+import Typewriter from "typewriter-effect";
+import { useNavigate } from "react-router-dom";
 import CherryBlossom from "../components/CherryBlossom";
 import BackButton from "../components/backbutton";
 
@@ -17,9 +17,7 @@ function Choices() {
   return (
     <div id="choice-body">
       <header>
-        <BackButton
-          page="/"
-        />
+        <BackButton page="/" />
       </header>
       <h1>
         <Typewriter

@@ -1,19 +1,19 @@
-import { Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import RedirectModal from './RedirectModal';
-import { useState } from 'react';
-import './ChangeQuestionType.css'
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import RedirectModal from "./RedirectModal";
+import { useState } from "react";
+import "./ChangeQuestionType.css";
 
 interface props {
-  page: string,
-  text: string
+  page: string;
+  text: string;
   isQuestionAnswered: boolean;
 }
 
 function ChangeQuestionType(prop: props) {
   const navigate = useNavigate();
 
-   // State to control the visibility of the RedirectModal
+  // State to control the visibility of the RedirectModal
   const [showModal, setShowModal] = useState(false);
 
   const setPage = (path: string) => {
@@ -35,8 +35,19 @@ function ChangeQuestionType(prop: props) {
 
   return (
     <>
-      <Button className="Merienda" id='change-type' onClick={() => setPage(prop.page)} title='Do detailed questionaire instead'>{prop.text}</Button>
-      <RedirectModal show={showModal} handleConfirm={handleConfirm} handleCancel={handleCancel} />
+      <Button
+        className="Merienda"
+        id="change-type"
+        onClick={() => setPage(prop.page)}
+        title="Do detailed questionaire instead"
+      >
+        {prop.text}
+      </Button>
+      <RedirectModal
+        show={showModal}
+        handleConfirm={handleConfirm}
+        handleCancel={handleCancel}
+      />
     </>
   );
 }
