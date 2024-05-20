@@ -27,7 +27,7 @@ function ResultsPage({
     try {
       const openai = new OpenAI({
         apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
-        // do this so gpt don't throw error for using in browser. 
+        // do this so gpt don't throw error for using in browser.
         dangerouslyAllowBrowser: true,
       });
       const response = await openai.chat.completions.create({
@@ -45,7 +45,7 @@ function ResultsPage({
               answer +
               '. give me the most suitable job that suits these conditions. Give these in the format of: { "job": string,"job_description": string, "salaries": string, "work_environment": string, "top_companies": string[], "how_to_start": string}',
           },
-        ], 
+        ],
         //changed to a stricter tempurature
         temperature: 0.2,
         n: 1,
@@ -59,7 +59,7 @@ function ResultsPage({
   let numTries = 0;
   // for sensitivity list for useEffect
   const dummy = false;
-  // change the given answers array passed through the questions page to string to give to gpt. 
+  // change the given answers array passed through the questions page to string to give to gpt.
   const answers: string = useLocation().state.join(" ");
   const navigate = useNavigate();
   const setPage = (path: string) => {
@@ -68,19 +68,19 @@ function ResultsPage({
   useEffect(() => {
     async function get_answers() {
       if (
-        // Check if (if updated in time) the current data is filled, if not then call gpt. 
-        (parsedData?.job === undefined ||
+        // Check if (if updated in time) the current data is filled, if not then call gpt.
+        parsedData?.job === undefined ||
         parsedData?.job === null ||
-        parsedData?.job === "")
+        parsedData?.job === ""
       ) {
         let gpt_data = await call_gpt(answers);
-        // since this is done on page load, cannot do useState because it does not update in time, 
-        // using var to store number of failed attempts instead. 
-        if(numTries > 3){
+        // since this is done on page load, cannot do useState because it does not update in time,
+        // using var to store number of failed attempts instead.
+        if (numTries > 3) {
           setfailedGPT(true);
           return;
         }
-        numTries ++;
+        numTries++;
         if (gpt_data != null)
           try {
             const parsedData = JSON.parse(gpt_data);
@@ -97,7 +97,7 @@ function ResultsPage({
             }
             setParsedData(parsedData);
           } catch (error) {
-            // call gpt again if error in getting answers or 
+            // call gpt again if error in getting answers or
             await get_answers();
           }
       } else {
@@ -106,14 +106,21 @@ function ResultsPage({
     }
 
     get_answers();
-    // this eslint exception is created because if theres no sensitivity component it will continously run, if it is empty or constant it throws an eslint error too... 
+    // this eslint exception is created because if theres no sensitivity component it will continously run, if it is empty or constant it throws an eslint error too...
     // eslint-disable-next-line
   }, [dummy]);
 
   return (
     <div id="results-body">
       <header>
-        <Button id='menu-bar' className="Merienda" onClick={() => setPage("/choices")}>&lt;</Button></header>
+        <Button
+          id="menu-bar"
+          className="Merienda"
+          onClick={() => setPage("/choices")}
+        >
+          &lt;
+        </Button>
+      </header>
       <CherryBlossom />
       <h1>
         <Typewriter
@@ -129,7 +136,16 @@ function ResultsPage({
           }}
         />
       </h1>
-      {failedGPT && <div><br/><br/><h1>Error detected, too many unsucessful API calls, please restart your experience by going <a href="/#">here</a></h1></div>}
+      {failedGPT && (
+        <div>
+          <br />
+          <br />
+          <h1>
+            Error detected, too many unsucessful API calls, please restart your
+            experience by going <a href="/#">here</a>
+          </h1>
+        </div>
+      )}
       <div id="paper">
         <h2>
           Hello future <b>{parsedData?.job}</b>
