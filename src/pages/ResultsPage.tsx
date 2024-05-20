@@ -27,10 +27,11 @@ function ResultsPage({
     try {
       const openai = new OpenAI({
         apiKey: JSON.parse(localStorage.getItem("MYKEY") || ""),
+        // do this so gpt don't throw error for using in browser. 
         dangerouslyAllowBrowser: true,
       });
       const response = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
+        model: "gpt-4-turbo",
         messages: [
           {
             role: "system",
@@ -44,8 +45,9 @@ function ResultsPage({
               answer +
               '. give me the most suitable job that suits these conditions. Give these in the format of: { "job": string,"job_description": string, "salaries": string, "work_environment": string, "top_companies": string[], "how_to_start": string}',
           },
-        ],
-        temperature: 0.7,
+        ], 
+        //changed to a stricter tempurature
+        temperature: 0.2,
         n: 1,
       });
       return response.choices[0].message.content;
@@ -53,8 +55,11 @@ function ResultsPage({
       return '{"error": "Invalid key"}';
     }
   }
+  // store number of attemps site called gpt
   let numTries = 0;
+  // for sensitivity list for useEffect
   const dummy = false;
+  // change the given answers array passed through the questions page to string to give to gpt. 
   const answers: string = useLocation().state.join(" ");
   const navigate = useNavigate();
   const setPage = (path: string) => {
@@ -63,21 +68,23 @@ function ResultsPage({
   useEffect(() => {
     async function get_answers() {
       if (
+        // Check if (if updated in time) the current data is filled, if not then call gpt. 
         (parsedData?.job === undefined ||
         parsedData?.job === null ||
         parsedData?.job === "")
       ) {
         let gpt_data = await call_gpt(answers);
-        if(numTries > 0){
+        // since this is done on page load, cannot do useState because it does not update in time, 
+        // using var to store number of failed attempts instead. 
+        if(numTries > 3){
           setfailedGPT(true);
           return;
         }
         numTries ++;
-        console.log(numTries);
         if (gpt_data != null)
           try {
             const parsedData = JSON.parse(gpt_data);
-            console.log(parsedData);
+            // if valid json is parsed but empty, throw error and try again.
             if (
               parsedData.job === undefined ||
               parsedData.job_description === undefined ||
@@ -88,14 +95,12 @@ function ResultsPage({
             ) {
               throw new Error();
             }
-            console.log(parsedData.work_environment);
             setParsedData(parsedData);
           } catch (error) {
-            console.log(error);
+            // call gpt again if error in getting answers or 
             await get_answers();
           }
       } else {
-        
         return;
       }
     }
