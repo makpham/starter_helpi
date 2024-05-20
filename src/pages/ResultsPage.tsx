@@ -23,6 +23,7 @@ function ResultsPage({
     top_companies: string[];
     how_to_start: string;
   }>();
+  const [loadingGPT, setLoadingGPT] = useState(true);
   async function call_gpt(answer: string) {
     try {
       const openai = new OpenAI({
@@ -96,6 +97,7 @@ function ResultsPage({
               throw new Error();
             }
             setParsedData(parsedData);
+            setLoadingGPT(false);
           } catch (error) {
             // call gpt again if error in getting answers or
             await get_answers();
@@ -142,11 +144,13 @@ function ResultsPage({
           <br />
           <h1>
             Error detected, too many unsucessful API calls, please restart your
-            experience by going <a href="/#">here</a>
+            experience by going <a href="/starter_helpi/?#/">here</a>
           </h1>
         </div>
       )}
       <div id="paper">
+        {loadingGPT ? <h1>Loading...</h1>
+        : <div>
         <h2>
           Hello future <b>{parsedData?.job}</b>
         </h2>
@@ -174,7 +178,7 @@ function ResultsPage({
         <h5>
           <b>How to get started</b>
         </h5>
-        <h6>{parsedData?.how_to_start}</h6>
+        <h6>{parsedData?.how_to_start}</h6></div>}
       </div>
     </div>
   );
