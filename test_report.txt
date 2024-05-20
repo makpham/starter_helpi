@@ -3,7 +3,7 @@
 > node scripts/test.js --coverage
 
 FAIL src/tests/App.test.tsx
-  ✕ renders learn react link (93 ms)
+  ✕ renders learn react link (92 ms)
 
   ● renders learn react link
 
@@ -20,123 +20,123 @@ FAIL src/tests/App.test.tsx
           [36m>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 70.26606030798463vw; animation-duration: 8.484535951075314s; animation-delay: -2.6118221976571165s;"[39m
+              [33mstyle[39m=[32m"left: 74.01836979327425vw; animation-duration: 9.725474654817162s; animation-delay: -1.0136798010690928s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 70.89580906021217vw; animation-duration: 6.77874769045575s; animation-delay: -0.8212094111476442s;"[39m
+              [33mstyle[39m=[32m"left: 92.61750201959728vw; animation-duration: 6.104490101460135s; animation-delay: -4.04290026849123s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 34.108080262477046vw; animation-duration: 5.307830242892621s; animation-delay: -4.772777363671556s;"[39m
+              [33mstyle[39m=[32m"left: 51.07863492762596vw; animation-duration: 9.761469215048905s; animation-delay: -3.285617738023511s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 99.64408895644414vw; animation-duration: 9.039789302306973s; animation-delay: -0.5042232015739145s;"[39m
+              [33mstyle[39m=[32m"left: 34.37165078018651vw; animation-duration: 6.354055243057855s; animation-delay: -2.700892446803035s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 35.95745018899328vw; animation-duration: 7.294895762192292s; animation-delay: -2.009362167625116s;"[39m
+              [33mstyle[39m=[32m"left: 46.60939836384485vw; animation-duration: 8.599792880336507s; animation-delay: -3.211021077529584s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 9.357512202807872vw; animation-duration: 9.702624384841098s; animation-delay: -3.625282269636332s;"[39m
+              [33mstyle[39m=[32m"left: 52.6957941618003vw; animation-duration: 8.653154134620127s; animation-delay: -0.4940719265852267s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 24.481063705887472vw; animation-duration: 8.881883178750956s; animation-delay: -2.0499632149431077s;"[39m
+              [33mstyle[39m=[32m"left: 90.81585752942145vw; animation-duration: 5.704258580738674s; animation-delay: -3.2271852560457805s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 80.55683821661744vw; animation-duration: 6.768802991979444s; animation-delay: -1.2126890820130198s;"[39m
+              [33mstyle[39m=[32m"left: 76.99619849044925vw; animation-duration: 8.727552813930464s; animation-delay: -0.6270345204340189s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 82.93614018908606vw; animation-duration: 8.00933208393352s; animation-delay: -1.8548173101383947s;"[39m
+              [33mstyle[39m=[32m"left: 73.27549631426547vw; animation-duration: 9.608540796854326s; animation-delay: -4.895034829977474s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 77.45194447381225vw; animation-duration: 7.965332901539039s; animation-delay: -3.176221817363152s;"[39m
+              [33mstyle[39m=[32m"left: 61.42860111230151vw; animation-duration: 8.12350569305353s; animation-delay: -1.7719914579757712s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 9.887745050306162vw; animation-duration: 9.694008407189074s; animation-delay: -4.920346780989259s;"[39m
+              [33mstyle[39m=[32m"left: 62.28188696056611vw; animation-duration: 7.521100204577503s; animation-delay: -4.647937388189148s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 2.840936788451587vw; animation-duration: 7.449598018475264s; animation-delay: -4.323363694034205s;"[39m
+              [33mstyle[39m=[32m"left: 76.00358345014403vw; animation-duration: 6.863663457368s; animation-delay: -3.2256658209178513s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 85.22993894302186vw; animation-duration: 7.08775009392379s; animation-delay: -3.55273009556883s;"[39m
+              [33mstyle[39m=[32m"left: 71.31073832321349vw; animation-duration: 9.483203864978726s; animation-delay: -4.408165632545137s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 6.7476249424820445vw; animation-duration: 8.455411243001617s; animation-delay: -0.26498536635458203s;"[39m
+              [33mstyle[39m=[32m"left: 6.19174297341567vw; animation-duration: 9.995800893847445s; animation-delay: -2.622909225425577s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 10.25594059519257vw; animation-duration: 9.39931688581794s; animation-delay: -1.1126254581264527s;"[39m
+              [33mstyle[39m=[32m"left: 17.012623793437264vw; animation-duration: 8.452890582979883s; animation-delay: -3.5845584719489407s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 74.8334455470131vw; animation-duration: 8.761944342345002s; animation-delay: -4.64470778302217s;"[39m
+              [33mstyle[39m=[32m"left: 32.753888731469694vw; animation-duration: 7.547502159586514s; animation-delay: -0.572014332273092s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 24.629104992967466vw; animation-duration: 5.1466571289515795s; animation-delay: -3.0103472682779584s;"[39m
+              [33mstyle[39m=[32m"left: 29.112706595354187vw; animation-duration: 8.553105523220808s; animation-delay: -0.09079872581807535s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 72.05851254319691vw; animation-duration: 7.650079517538417s; animation-delay: -2.0018263758636037s;"[39m
+              [33mstyle[39m=[32m"left: 66.73874983479111vw; animation-duration: 8.37662935865903s; animation-delay: -3.2162008494253858s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 65.22035930100394vw; animation-duration: 5.10140047810601s; animation-delay: -0.9695879053017986s;"[39m
+              [33mstyle[39m=[32m"left: 37.76909601748854vw; animation-duration: 7.133580840073776s; animation-delay: -3.1170598094009163s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 23.598897875555004vw; animation-duration: 7.785322375917291s; animation-delay: -1.542624225923095s;"[39m
+              [33mstyle[39m=[32m"left: 40.88901998617742vw; animation-duration: 7.533490337777077s; animation-delay: -0.30820602285710375s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 3.7555923406134673vw; animation-duration: 9.633718088411415s; animation-delay: -1.1889081273455493s;"[39m
+              [33mstyle[39m=[32m"left: 5.601461638082328vw; animation-duration: 6.851798882591216s; animation-delay: -4.726757189743926s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 79.521144668026vw; animation-duration: 9.470136211195673s; animation-delay: -3.716455439610181s;"[39m
+              [33mstyle[39m=[32m"left: 85.2692063212487vw; animation-duration: 5.503516312593883s; animation-delay: -1.8292919503182659s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 16.929882101553417vw; animation-duration: 5.46800047836876s; animation-delay: -0.9544569544901427s;"[39m
+              [33mstyle[39m=[32m"left: 55.18136961270479vw; animation-duration: 6.875134522369123s; animation-delay: -0.39480684664183197s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 8.586981279208938vw; animation-duration: 8.345775339771533s; animation-delay: -4.139868871428931s;"[39m
+              [33mstyle[39m=[32m"left: 40.68751466107776vw; animation-duration: 7.140177529197088s; animation-delay: -3.4716026206090933s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 73.55025731711757vw; animation-duration: 7.15122402088364s; animation-delay: -1.7458346743482767s;"[39m
+              [33mstyle[39m=[32m"left: 67.11294017187413vw; animation-duration: 9.086353060060581s; animation-delay: -3.416831987039032s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 91.1260469845282vw; animation-duration: 8.863212144650575s; animation-delay: -3.276365723543939s;"[39m
+              [33mstyle[39m=[32m"left: 43.45288355630985vw; animation-duration: 6.7344418750291s; animation-delay: -4.488001955268052s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 26.378811986740413vw; animation-duration: 8.99157235491888s; animation-delay: -1.2858032017246157s;"[39m
+              [33mstyle[39m=[32m"left: 70.06796665290138vw; animation-duration: 7.612401739097105s; animation-delay: -0.6596088953233792s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 95.74499691664748vw; animation-duration: 5.413771052563321s; animation-delay: -1.870102136269225s;"[39m
+              [33mstyle[39m=[32m"left: 87.56571133556508vw; animation-duration: 6.028504346669461s; animation-delay: -1.210164971329667s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[39m=[32m"left: 6.293157979372532vw; animation-duration: 8.485279674222422s; animation-delay: -0.9180185511558847s;"[39m
+              [33mstyle[39m=[32m"left: 20.956781365959554vw; animation-duration: 9.809723491943261s; animation-delay: -4.95281234021477s;"[39m
             [36m/>[39m
             [36m<div[39m
               [33mclass[39m=[32m"petal"[39m
-              [33mstyle[3...
+              [33mstyle[39m...
 
        5 | test('renders learn react link', () => {
        6 |   render(<App />);
@@ -159,26 +159,26 @@ FAIL src/tests/App.test.tsx
 -------------------------|---------|----------|---------|---------|-------------------
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------------|---------|----------|---------|---------|-------------------
-All files                |   15.66 |     4.08 |   14.03 |   15.95 |                   
+All files                |   16.14 |     4.08 |   14.03 |   16.35 |                   
  src                     |   15.38 |        0 |   33.33 |   15.38 |                   
   App.tsx                |     100 |      100 |     100 |     100 |                   
   index.tsx              |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts     |       0 |        0 |       0 |       0 | 3-10              
- src/components          |   34.84 |     12.5 |      30 |   35.38 |                   
-  ChangeQuestionType.tsx |       0 |        0 |       0 |       0 | 14-38             
+ src/components          |   34.84 |     12.5 |      30 |   34.84 |                   
+  ChangeQuestionType.tsx |       0 |        0 |       0 |       0 | 14-41             
   CherryBlossom.tsx      |     100 |      100 |     100 |     100 |                   
-  Footer.tsx             |   33.33 |    14.28 |   28.57 |   33.33 | 10,17,24,30-89    
-  RedirectModal.tsx      |      50 |      100 |       0 |      50 | 13                
-  backbutton.tsx         |       0 |      100 |       0 |       0 | 10-14             
- src/pages               |    1.14 |        0 |    2.94 |    1.17 |                   
-  BasicQuestions.tsx     |       0 |        0 |       0 |       0 | 14-143            
-  Choices.tsx            |       0 |      100 |       0 |       0 | 8-63              
-  DetailedQuestions.tsx  |       0 |        0 |       0 |       0 | 14-105            
+  Footer.tsx             |   33.33 |    14.28 |   28.57 |   33.33 | 10,19,27,34-97    
+  RedirectModal.tsx      |      50 |      100 |       0 |      50 | 17                
+  backbutton.tsx         |       0 |      100 |       0 |       0 | 10-18             
+ src/pages               |    1.21 |        0 |    2.94 |    1.25 |                   
+  BasicQuestions.tsx     |       0 |        0 |       0 |       0 | 20-195            
+  Choices.tsx            |       0 |      100 |       0 |       0 | 8-61              
+  DetailedQuestions.tsx  |       0 |        0 |       0 |       0 | 20-149            
   Home.tsx               |     100 |      100 |     100 |     100 |                   
-  ResultsPage.tsx        |       0 |        0 |       0 |       0 | 17-119            
+  ResultsPage.tsx        |       0 |        0 |       0 |       0 | 17-131            
 -------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.779 s
+Time:        2.743 s
 Ran all test suites.
