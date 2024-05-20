@@ -1,21 +1,21 @@
-#results-body{
-    font-family: 'Nova Mono';
-    text-align: center;
-    align-content: center;
-    padding: 5rem;
-    /* min-width: 100vw; */
-    max-width: 100vw;
-    min-height: 100vh;
-    height: 100%;
-    background-image: linear-gradient(to bottom right, #E0FBFC, #5C6B73);
+#results-body {
+  font-family: "Nova Mono";
+  text-align: center;
+  align-content: center;
+  padding: 5rem;
+  /* min-width: 100vw; */
+  max-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  background-image: linear-gradient(to bottom right, #e0fbfc, #5c6b73);
 }
-#paper{
-    animation: fadeIn 20s;
-    background-color: #E0FBFC;
-    height: 100%;
-    margin: auto;
-    margin-top: 5rem;
-    border-radius: 5px;
-    padding: 1rem;
-    text-align: left;
+#paper {
+  animation: fadeIn 20s;
+  background-color: #e0fbfc;
+  height: 100%;
+  margin: auto;
+  margin-top: 5rem;
+  border-radius: 5px;
+  padding: 1rem;
+  text-align: left;
 }

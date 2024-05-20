@@ -1,7 +1,7 @@
 @import "../fonts/fonts.css";
 
-.question{
-  background-color: #5C6B73;
+.question {
+  background-color: #5c6b73;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 2rem;
@@ -9,76 +9,79 @@
   text-align: left;
   font-weight: 600;
   animation: fadeIn 2.5s linear forwards;
-
 }
-.form-textbox{
-  background-color: #E0FBFC;
+.form-textbox {
+  background-color: #e0fbfc;
   border: 0px;
-  color: #9DB4C0;
-  border-bottom: 2px solid #C2DFE3;
+  color: #9db4c0;
+  border-bottom: 2px solid #c2dfe3;
   outline: 0;
   background: transparent;
 }
-.form-textbox:focus{
+.form-textbox:focus {
   background: transparent;
   outline: none;
-  color: #9DB4C0;
-  border-bottom: 2px solid #C2DFE3;
+  color: #9db4c0;
+  border-bottom: 2px solid #c2dfe3;
   box-shadow: none;
 }
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-#detailed-body h1{
+#detailed-body h1 {
   color: #253237;
 }
-#menu-bar{
-  color: #9DB4C0;
+#menu-bar {
+  color: #9db4c0;
   font-size: 5rem;
   margin: auto;
   padding: 0;
   background-color: rgba(0, 0, 0, 0);
   border: none;
   margin-left: 1rem;
-  top:0px;
+  top: 0px;
   position: fixed;
   top: -1.5rem;
-  left:0px;
-  transition: transform .2s;
+  left: 0px;
+  transition: transform 0.2s;
   animation: fadeIn 1.5s linear forwards;
 }
 #menu-bar:focus {
   outline: none;
   box-shadow: none;
 }
-#menu-bar:hover{
+#menu-bar:hover {
   transform: scale(1.2);
 }
-#detailed-body{
-  font-family: 'Merienda';
+#detailed-body {
+  font-family: "Merienda";
   text-align: center;
   align-content: center;
   padding-top: 1rem;
   /* min-width: 100vw; */
   max-width: 100vw;
-  color: #C2DFE3;
+  color: #c2dfe3;
   min-height: 100vh;
   height: 100%;
-  background-image: linear-gradient(to bottom right, #E0FBFC, #5C6B73);
+  background-image: linear-gradient(to bottom right, #e0fbfc, #5c6b73);
 }
 #detailed-body Form {
   text-align: right;
   width: 50vw;
-  margin:auto;
+  margin: auto;
   padding-bottom: 1rem;
 }
-#detailed-body Form Button{
+#detailed-body Form Button {
   border-radius: 10px;
-  background-color: #5C6B73;
-  border-color: #E0FBFC;
+  background-color: #5c6b73;
+  border-color: #e0fbfc;
 }
-#progress-bar-basic{
+#progress-bar-basic {
   position: relative;
   top: -100;
 }
