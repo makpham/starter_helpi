@@ -34,7 +34,7 @@ function Home() {
         </p>
         <CheckAPIKey />
       </div>
-      <div id="side-img"></div>
+      <div id="side-img" title="Cherry Tree"></div>
       <div className="company-text">Future「Quest」</div>
     </div>
   );
